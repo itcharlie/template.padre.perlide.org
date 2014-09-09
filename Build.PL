@@ -60,7 +60,7 @@ Mandatory. Specifies the name of the base directory where the web site
 templates, static files and source data are located.
 
 This is the checked out local working copy coming from the SVN path
-L<http://svn.perlide.org/padre/trunk/template.padre.perlide.org>.
+L<https://github.com/PadreIDE/template.padre.perlide.org>.
 
 =item --destdir
 
