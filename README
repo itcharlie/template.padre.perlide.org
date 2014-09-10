@@ -31,6 +31,9 @@ To setup the environment for building the site perform the following actions:
     2) Open a command prompt Start-->Run-->CMD-->"Enter"
        To  install the parent, Template tooklkit run
        "cpan parent Template Text::Unaccent::PurePerl autodie IPC::System::Simple"
+       (On the current server we use the 'system-perl' and only install modules using aptitude. as Text::Unaccent::PurePerl
+        is not available for this Ubuntu system, we have included a copy of the .pm file in the lib/ directory)
+
        Use the default settings (when asked questions like about XS just press "Enter")
     2) When the above is finished run the follwing "cpan Path::Class"
     3) When the above is finished run the follwing "cpan YAML::Tiny"
