@@ -1,0 +1,115 @@
+[% DEFAULT
+   title="Features/PreferenceSystem"
+   description="Features/PreferenceSystem"
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+<h1 id="PreferenceSystem">Preference System</h1>
+<p>
+There are several types of preferences we can think of.
+There are the current view printed preferences such as B&lt;Show newlines&gt;
+or <strong>Show Line numbers</strong> and there are the project and file
+oriented preferences such as the use of tabulators or white space
+for indentation.
+</p>
+<p>
+Currently some of the preferences are accessible via the
+<strong>Edit =&gt; Preferences</strong> menu options, others via the <strong>View</strong>
+menu option.
+</p>
+<p>
+We have to make sure that when changing the preferences via
+the GUI it change for the correct things.
+</p>
+<p>
+E.g. when changing the <strong>Use Tabulators</strong> preference it currently
+applies to all the files open currently or in the future.
+It should probably apply to the current file and/or the
+current project. Such options - when changing them - might even
+be applied <i>retroactively</i>. That is when I change the tabulator/space
+mode of a file or a project it should ask if I want to reflow the
+file with the new method of indentation?
+</p>
+<p>
+On the other hand the <i>Tabulator display size</i> is purely a local, editor
+oriented preference. It should probably apply to all files currently
+open.
+</p>
+<p>
+There are other aspects of preferences as well that might not exactly
+overlap with the above set:
+</p>
+<p>
+The developer might work on the same project on different machines.
+In such case some of the personal preferences should apply only
+only on one computer while others apply in both places.
+</p>
+<p>
+In particular if Padre is installed in a Portable Perl it might
+run on machines with different parameters. Screen size and resolution
+might be different along other parameters. We would like to make sure
+the relevant preferences are separated from those that are constant
+even when moving between computers.
+</p>
+<h2 id="Editororvieworientedpreferences">Editor or view oriented preferences</h2>
+<p>
+* Size and location of windows
+* Files recently opened
+* Files that were open last time, cursor location
+* Highlight indentation guide (TO DO)
+</p>
+<p>
+This should be a separate option available only
+if the <strong>Show indentation guide</strong> and brace matching is on.
+</p>
+<p>
+If <strong>SetHighlightGuide</strong> is set to 8 then when the user reaches one
+side of a pair of braces the indentation guide - if there is one
+on column 8 - will be highlighted. (in green).
+</p>
+<p>
+As I understand Padre should constantly adjust the <strong>SetHighlightGuide</strong>
+so that in every block the &quot;correct&quot; indentation guide is highlighted.
+</p>
+<p>
+* Tabulator display size
+* Allow experimental features
+</p>
+<p>
+In order to allow the experimental features one needs to manually turn on the
+experimental flag to 1 in <strong>config.yml</strong>. As Padre keeps overwriting this file you'll
+have to make this change with another editor and while Padre is B&lt;not&gt; open.
+</p>
+<p>
+The <strong>config.yml</strong> file is in <strong>~/.padre/</strong> on Linux/Unix and in general in
+your home directory on Windows. In any case the <strong>Help/About</strong> box will show
+you the path of the <strong>.padre</strong> directory of Padre.
+</p>
+<p>
+Once you set the experimental flag when you start Padre you will see a new
+menu on the right side of the menu bar called <strong>Experimental</strong>.
+</p>
+<p>
+* Open file policy
+</p>
+<p>
+What files to open when launching Padre?
+nothing, new, those that were open last time?
+</p>
+<p>
+* Max/Min number of modules to display in POD viewer
+</p>
+<h2 id="FileandProjectorientedpreferences">File and Project oriented preferences</h2>
+<p>
+* Indentation should be by tabulators or spaces
+* In case of using spaces for indentation, the width  of every indentation level
+</p>
+<h2 id="Tickets">Tickets</h2>
+<p>
+[[TicketQuery(component=Preference System,order=id,desc=1,format=table,col=resolution|summary|owner|reporter)]]
+</p>
+[% END %]
+[% END %]
