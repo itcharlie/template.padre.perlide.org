@@ -1,4 +1,7 @@
 Build
+META.*
 MYMETA.*
 _build/
 *.swp
+Makefile
+inc/
