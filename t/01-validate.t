@@ -8,6 +8,8 @@ use File::Next qw();
 use File::Which qw(which);
 use Test::More;
 
+plan skip_all => 'install xmllint';
+
 # Skip means sweep bugs under the rug.
 # I want this test to be actually run.
 BAIL_OUT 'xmllint (part of the libxml2 package) not installed.'
