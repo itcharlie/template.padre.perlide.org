@@ -7,7 +7,7 @@ use Test::More;
 
 plan tests => 3;
 
-my ($stdout, $stderr, @results) = capture { system "$^X Build.PL"; };
+my ($stdout, $stderr, @results) = capture { system "$^X build_site.pl"; };
 is $stdout, '';
 chomp $stderr;
 is $stderr, 'Mandatory parameter --destdir was not specified.';
