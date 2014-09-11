@@ -7,7 +7,7 @@ use Test::More;
 
 my $dir = tempdir( CLEANUP => 1 );
 
-plan tests => 4;
+plan tests => 6;
 
 {
 	my ($stdout, $stderr, @results) = capture { system "$^X build_site.pl"; };
@@ -24,5 +24,12 @@ plan tests => 4;
 	is $stdout, '';
 	chomp $stderr;
 	is $stderr, 'Mandatory parameter --sourcedir was not specified.';
+}
+
+{
+	my ($stdout, $stderr, @results) = capture { system "$^X build_site.pl --destdir $dir --sourcedir ."; };
+	like $stdout, qr/Creating new/;
+	chomp $stderr;
+	like $stderr, qr/WARNING/;
 }
 
