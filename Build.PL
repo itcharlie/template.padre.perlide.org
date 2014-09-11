@@ -2,7 +2,7 @@ use 5.008008;
 use utf8;
 use strict;
 use warnings FATAL => 'all';
-use lib 'inc';
+use lib 'lib';
 use Local::Padre::Website::Builder qw(); # about Local:: see perlmodlib
 
 my $self = Local::Padre::Website::Builder->new(

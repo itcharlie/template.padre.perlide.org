@@ -8,7 +8,7 @@ use File::Copy qw(copy);
 use File::Basename qw(basename);
 use File::Next qw();
 use Path::Class qw(dir file);
-use inc::Local::Pod::Xhtml qw();
+use Local::Pod::Xhtml qw();
 use Template qw();
 use Text::Unaccent::PurePerl qw(unac_string);
 use Time::Piece qw(localtime);
