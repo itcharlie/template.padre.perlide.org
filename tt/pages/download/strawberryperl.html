@@ -1,28 +1,22 @@
 [% DEFAULT
-   title="StrawberryPerl"
-   description="StrawberryPerl"
+   title="Install Padre on Strawberry Perl for Windows"
+   description="Install Padre on Strawberry Perl for Windows"
 %]
 [% WRAPPER lib/xhtml_doc
-
 %]
 
 [% WRAPPER chrome/styled_panel %]
-<h1 id="Windows(StrawberryPerl)InstallationInstructions">Windows (Strawberry Perl) Installation Instructions</h1>
 <p>
-Download Strawberry Perl from here: <a class="ext-link" href="http://www.strawberryperl.com/"><span class="icon"></span>http://www.strawberryperl.com/</a>
+Download <a href="http://www.strawberryperl.com/">Strawberry Perl</a>
 </p>
 <p>
-On Strawberry Perl 5.10, starting from version 5.10.0.3 you 
-can install Padre by starting the CPAN shell and typing
-<tt>
+You should be able to install Padre by just tying
 </p>
 <blockquote>
-<p>
-  cpan&gt; install Padre
-</p>
+  cpan Padre
 </blockquote>
 <p>
-<tt>
+on the command window (cmd).
 </p>
 <p>
 However, before you do that, you may wish to install Alien::wxWidgets and Wx as .par files - they build on Windows, but on slower systems, they're... slow.
@@ -32,15 +26,14 @@ However, before you do that, you may wish to install Alien::wxWidgets and Wx as 
   C:\&gt;perl -MPAR::Dist -e&quot;install_par(q(http://www.strawberryperl.com/download/padre/Wx-0.94-MSWin32-x86-multi-thread-5.10.1.par))&quot;
 </pre>
 <p>
-<strong>Note</strong>: installing Padre in a fresh install of Strawberry Perl can lead to weird behaviour, like preferences not being saved on exit (due to Padre crashing on exit). See the comments for <a class="ticket" href="/ticket/258">#258</a> for a workaround.
+<strong>Note</strong>: installing Padre in a fresh install of Strawberry Perl can lead to weird behaviour, like preferences not being saved on exit (due to Padre crashing on exit). See the comments for <a  href="http://padre.perlide.org/trac/ticket/258">#258</a> for a workaround.
 </p>
 <p>
 On previous releases of Strawberry Perl 5.10 you can install it 
 following these steps
 <tt>
 </p>
-<blockquote>
-<p>
+<pre>
   cpan&gt; look Alien::wxWidgets
   $ perl Makefile.PL
   $ dmake
@@ -53,9 +46,8 @@ following these steps
   $ dmake test
   $ dmake install
   $ exit
-  cpan&gt; install Padre
-</p>
-</blockquote>
+  cpan> install Padre
+</pre>
 <p>
 <tt>
 </p>
