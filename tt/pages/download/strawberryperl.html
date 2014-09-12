@@ -13,34 +13,33 @@ Download <a href="http://www.strawberryperl.com/">Strawberry Perl</a>
 You should be able to install Padre by just tying
 </p>
 <blockquote>
-  cpan Padre
+  c:\> cpan Padre
 </blockquote>
 <p>
 on the command window (cmd).
 </p>
 <p>
-However, before you do that, you may wish to install Alien::wxWidgets and Wx as .par files - they build on Windows, but on slower systems, they're... slow.
-</p>
-<pre class="wiki">
-  C:\&gt;perl -MPAR::Dist -e&quot;install_par(q(http://www.strawberryperl.com/download/padre/Alien-wxWidgets-0.46-MSWin32-x86-multi-thread-5.10.1.par))&quot;
-  C:\&gt;perl -MPAR::Dist -e&quot;install_par(q(http://www.strawberryperl.com/download/padre/Wx-0.94-MSWin32-x86-multi-thread-5.10.1.par))&quot;
-</pre>
-<p>
-<strong>Note</strong>: installing Padre in a fresh install of Strawberry Perl can lead to weird behaviour, like preferences not being saved on exit (due to Padre crashing on exit). See the comments for <a  href="http://padre.perlide.org/trac/ticket/258">#258</a> for a workaround.
-</p>
-<p>
-On previous releases of Strawberry Perl 5.10 you can install it 
-following these steps
-<tt>
+However, before you do that, you may wish to install Alien::wxWidgets and Wx as those can sometime cause a bit of a headache.
 </p>
 <pre>
-  cpan&gt; look Alien::wxWidgets
+  C:\> cpan Alien::wxWidgets
+  C:\> cpan Wx
+</pre>
+<p>
+Please note, each of these command can take quite some time depending on your system.
+</p>
+<p>
+If the above does not work you can try an even more manual approach:
+</p>
+<pre>
+  c:\> cpan
+  cpan> look Alien::wxWidgets
   $ perl Makefile.PL
   $ dmake
   $ dmake test
   $ dmake install
   $ exit
-  cpan&gt; look Wx
+  cpan> look Wx
   $ perl Makefile.PL
   $ dmake
   $ dmake test
@@ -48,48 +47,49 @@ following these steps
   $ exit
   cpan> install Padre
 </pre>
-<p>
-<tt>
-</p>
+
 <p>
 Once it is installed you can start Padre either by Start/Run and type in
-<tt>
+<pre>
 padre
-</tt>
+</pre>
 </p>
 <p>
 or by creating a shortcut and then clicking on it.
 </p>
 <p>
 When creating the shortcut use the following as command:
-<tt>
+<pre>
 C:\strawberry\perl\bin\wperl.exe C:\strawberry\perl\bin\padre.bat
-</tt>
+</pre>
 note we are using wperl here instead of perl in order to avoid the extra 
 command shell window.
 </p>
 <p>
-<strong>Note</strong>: For updating Padre on Strawberry Perl you can use the CPAN shell client of Strawberry: 
-<tt>
-C:\strawberry\perl\bin\perl -MCPAN -e shell
-</tt>
+<strong>Note</strong>: installing Padre in a fresh install of Strawberry Perl can lead to weird behaviour,
+like preferences not being saved on exit (due to Padre crashing on exit). See the comments for <a  href="http://padre.perlide.org/trac/ticket/258">#258</a> for a workaround.
 </p>
-<pre class="wiki">
-upgrade Padre
+<p>
+<strong>Note</strong>: For updating Padre on Strawberry Perl you can use the CPAN shell client of Strawberry: 
+</p>
+<pre>
+  c:\> cpan
+  cpan> upgrade Padre
 </pre>
 <p>
 To find whether there's an update - you can do: 
-<tt>
-i /Padre/
-</tt>
+<pre>
+ cpan> i /Padre/
+</pre>
 (or simply follow the mailing list ;-)
 </p>
-<h2 id="StillNotWorking?">Still Not Working?</h2>
+
+<h2>Still Not Working?</h2>
 <p>
 Following the instructions on this page did not lead to a successful installation?
 </p>
 <p>
-<a class="ext-link" href="/contact.html"></span>Contact us</a>.
+<a href="/contact.html"></span>Contact us</a>.
 </p>
 <p>
 We will do our best to help you.
