@@ -1,6 +1,6 @@
 [% DEFAULT
-   title="Feature: AutoDiff"
-   description="Feature: AutoDiff"
+   title="Feature: Edit/Auto-Diff"
+   description="Feature: Edit/Auto-Diff"
 %]
 [% WRAPPER lib/xhtml_doc
 
@@ -8,19 +8,19 @@
 
 [% WRAPPER chrome/styled_panel %]
 <p>
-[[PageOutline(1-4)]]
-<a class="wiki" href="/wiki/Features"><-back</a>
-= Edit -&gt; //Auto-Diff draft//
+Edit/Auto-Diff (draft)
 </p>
 <hr />
 <p>
-== Margin Markers
+<h2>Margin Markers</h2>
 </p>
 <p>
 Revision 16300 marks a new milestone in Padre version control system (VCS) support. You can now type and Padre will automatically calculate differences and display them as margin markers.
-* plus (added), dark green.
-* minus (deleted), red.
-* right arrow marker (changed), blue.
+<ul>
+  <li>plus (added), dark green.</li>
+  <li>minus (deleted), red.</li>
+  <li>right arrow marker (changed), blue.</li>
+</ul>
 You can click then on those margin markers to show what has actually been added, deleted or changed.
 </p>
 <p>
@@ -28,113 +28,104 @@ You can click then on those margin markers to show what has actually been added,
 </p>
 <hr />
 <p>
-== Diff-Box
+<h2>Diff-Box</h2>
 </p>
 <p>
 Just wanted to say that I recently added a differences popup window to Padre's editor.
-* You can now traverse all differences in your current document (via **Ctrl + comma**).
-* The dialog shows you what was added, deleted or changed at the current difference and enables you to revert the change if needed.
-* Padre can also automatically detect and find differences against your local repository (subversion or git) or the locally saved document.
+<ul>
+  <li>You can now traverse all differences in your current document (via **Ctrl + comma**).</li>
+  <li>The dialog shows you what was added, deleted or changed at the current difference and enables you to revert the change if needed.</li>
+  <li>Padre can also automatically detect and find differences against your local repository (subversion or git) or the locally saved document.</li>
+</ul>
 </p>
 <p>
 <img src="/images/autodiff/cool_diff_box.png" />
 </p>
 <p>
-\\
 Note two Tabs -&gt; 8 Chr per Tab = 16 charters indent Ouch!
 </p>
 <p>
-\\
 <img src="/images/autodiff/diff-box.png" />
 </p>
 <p>
-\\
-* suggest 1 Tab = 2 charters, will maximise the diff-box real-estate.
+<ul>
+  <li>suggest 1 Tab = 2 charters, will maximise the diff-box real-estate.</li>
+</ul>
 </p>
 <p>
-=== Previous Diff
+<h3>Previous Diff</h3>
 <img src="/images/autodiff/go-up.png" /> Move to Previous Diff.
 </p>
 <p>
-=== Next Diff
+<h3>Next Diff</h3>
 <img src="/images/autodiff/go-down.png" /> Move to Next Diff.
 </p>
 <p>
-=== Revert
+<h3>Revert</h3>
 <img src="/images/autodiff/edit-undo.png" /> Revert current Diff.
 </p>
 <hr />
 <p>
-== VCS
+<h2>VCS</h2>
 To Diff against VCS you need to enable **feature_vcs_support = TRUE** in Tool-&gt;Preferences-&gt;Advanced
 </p>
 <p>
 Currently supported vcs.
-* SUBVERSION =&gt; 'SVN',
-* GIT        =&gt; 'Git',
+<ul>
+  <li>SUBVERSION =&gt; 'SVN',</li>
+  <li>GIT        =&gt; 'Git',</li>
+</ul>
 </p>
 <hr />
 <p>
-== Miscellaneous
+<h2>Miscellaneous</h2>
 Q, I do not see any content in the Diff-Box for add, only changed and deleted.
 </p>
 <p>
-A, aha...\\
+A, aha...
 </p>
 <blockquote>
 <p>
-   that's the trick\\
-   you get old text in your diff box\\
-   so you can revert it\\
-   if you add new lines, then nothing\\
-   get it?\\
+   that's the trick
+   you get old text in your diff box
+   so you can revert it
+   if you add new lines, then nothing
+   get it?
 </p>
 </blockquote>
 <p>
-\\
 Q, So the diff stuff is relying on the underlying VCS tools and not an internal Padre thing.
 </p>
 <p>
-A, svn =&gt; does a trick by reading .svn\file to diff in memory\\
+A, svn =&gt; does a trick by reading .svn\file to diff in memory
 </p>
 <blockquote>
 <p>
-   git =&gt; git show HEAD:$filename and then diff in memory\\
-   diff in memory using Algorithm::Diff\\
-   so they are not network bound\\
+   git =&gt; git show HEAD:$filename and then diff in memory
+   diff in memory using Algorithm::Diff
+   so they are not network bound
    and it is a background task...
-   svn or git failed... fallback to editor buffer against saved document diff\\
-   and the cool thing is that you can revert what's changed...\\
+   svn or git failed... fallback to editor buffer against saved document diff
+   and the cool thing is that you can revert what's changed...
 </p>
 </blockquote>
 <p>
-\\
 Q, Until you save it?
 </p>
 <p>
-A, local =&gt; until you save\\
+A, local =&gt; until you save
 </p>
 <blockquote>
 <p>
-   svn project =&gt; svn diff\\
-   git project =&gt; git diff\\
+   svn project =&gt; svn diff
+   git project =&gt; git diff
 </p>
 </blockquote>
-<hr />
-ARRAY(0x7fd6e99d8088)
-<p>
-== <tt><a class="wiki" href="/wiki/ToDo">ToDo</a></tt>
-</p>
-<p>
 <ul>
   <li>MERCURIAL  =&gt; 'Mercurial',</li>
   <li>BAZAAR     =&gt; 'Bazaar',</li>
   <li>CVS        =&gt; 'CVS',</li>
 </ul>
-</p>
-<p>
-\\
-**<tt><span class="underline">END</span></tt>**
 </p>
 <p>
 <a class="wiki" href="/wiki/Features"><-back</a>
