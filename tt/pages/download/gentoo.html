@@ -1,0 +1,67 @@
+[% DEFAULT
+   title="Installing Padre on Gentoo"
+   description="Gentoo"
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+<h2>Installation using the Package Manager</h2>
+<p>
+Padre 0.60 is available in Gentoo: <a href="http://packages.gentoo.org/package/app-editors/padre">package page</a>
+</p>
+<pre>
+emerge app-editors/padre
+</pre>
+<h2>Installation from CPAN</h2>
+<p>
+Gentoo has <a href="http://packages.gentoo.org/package/dev-perl/wxperl">Wx version 0.9702</a>
+</p>
+<p>
+<a href="http://www.nntp.perl.org/group/perl.wxperl.users/2008/07/msg5993.html">msg5993</a>
+</p>
+<pre>
+   g-cpan -i Padre
+</pre>
+<p>
+should work but you need a threaded perl. If you have trouble
+installing please file a bug here or on <a href="http://bugs.gentoo.org">http://bugs.gentoo.org</a>
+depending where do you think the problem is.
+</p>
+<p>
+More detailed instructions:
+</p>
+<ol>
+  <li>Make sure your perl is compiled with USE="ithreads" ( generally in /etc/make.conf ) and <tt>emerge perl</tt></li>
+  <li>If you don't have g-cpan installed, <tt>emerge app-portage/g-cpan</tt></li>
+  <li>g-cpan -i Padre</li>
+</ol>
+<p>
+g-cpan often is <a href="http://bugs.gentoo.org/show_bug.cgi?id=99569">incapable of properly detecting dependencies</a>. Installing from source often works better:
+</p>
+<pre>
+   emerge dev-perl/Alien-wxWidgets dev-perl/wxperl
+   perl -MCPAN -e 'install Padre'
+</pre>
+</p>
+<p>
+Installing Padre from the CPAN shell may upgrade core modules provided by the core Gentoo perl install, so be prepared to downgrade those modules when emerging other packages or upgrading the system. A 'force install Padre' afterwards can help upgrade the conflicts again.
+</p>
+<p>
+Also, one or more of the modules may require perl 5.10. This is not a part of any portage tree as of yet and can only be found in the perl overlay. See <a href="http://bugs.gentoo.org/show_bug.cgi?id=206455">Gentoo Bug#206455</a>.
+</p>
+<h2>Still Not Working?</h2>
+<p>
+Following the instructions on this page did not lead to a successful installation?
+</p>
+<p>
+<a href="http://padre.perlide.org/contact.html"><span class="icon"></span>Contact us</a>.
+</p>
+<p>
+We will do our best to help you.
+By letting us know that something does not work you will help us, too.
+When we know about it, we can improve this documentation and Padre itself.
+</p>
+[% END %]
+[% END %]
