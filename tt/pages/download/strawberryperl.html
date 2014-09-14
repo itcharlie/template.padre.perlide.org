@@ -13,7 +13,7 @@ Download <a href="http://www.strawberryperl.com/">Strawberry Perl</a>
 You should be able to install Padre by just tying
 </p>
 <blockquote>
-  c:\> cpan Padre
+  c:\> cpanm Padre
 </blockquote>
 <p>
 on the command window (cmd).
@@ -22,8 +22,8 @@ on the command window (cmd).
 However, before you do that, you may wish to install Alien::wxWidgets and Wx as those can sometime cause a bit of a headache.
 </p>
 <pre>
-  C:\> cpan Alien::wxWidgets
-  C:\> cpan Wx
+  C:\> cpanm Alien::wxWidgets
+  C:\> cpanm Wx
 </pre>
 <p>
 Please note, each of these command can take quite some time depending on your system.
@@ -32,20 +32,19 @@ Please note, each of these command can take quite some time depending on your sy
 If the above does not work you can try an even more manual approach:
 </p>
 <pre>
-  c:\> cpan
-  cpan> look Alien::wxWidgets
+  c:\> cpanm --look Alien::wxWidgets
   $ perl Makefile.PL
   $ dmake
   $ dmake test
   $ dmake install
   $ exit
-  cpan> look Wx
+  c:\> cpanm --look Wx
   $ perl Makefile.PL
   $ dmake
   $ dmake test
   $ dmake install
   $ exit
-  cpan> install Padre
+  c:\> cpanm Padre
 </pre>
 
 <p>
@@ -90,7 +89,7 @@ To find whether there's an update - you can do:
 If one of the dependencies fails to install, there are a number things you can do. 
 <ul>
   <li>Got to <a href="http://metacpan.org/">MetaCPAN</a>, look for the module that failed to install and check if the problem has been reported. If, please report it.</li>
-  <li>If the problem is only in the tests you could install the module while skipping the tests using <b>notest install Module::Name</b></li>
+  <li>If the problem is only in the tests you could install the module while skipping the tests using <b>cpanm --notest Module::Name</b></li>
 </ul>
 </p>
 
