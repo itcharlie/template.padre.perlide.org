@@ -20,21 +20,22 @@
  [% INCLUDE chrome/navigation_list  css_class="bottomheavy"%]
  </div>
 
-<div id="top_ad">
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- padre_wide_top -->
-<ins class="adsbygoogle"
-     style="display:inline-block;width:728px;height:90px"
-     data-ad-client="ca-pub-7760157643054954"
-     data-ad-slot="1707619733"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-</div>
-
 <div id="content_wrapper">
 
  <div id="content" class="center_column" >
+
+   <div id="top_ad">
+   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+   <!-- padre_wide_top -->
+   <ins class="adsbygoogle"
+        style="display:inline-block;width:728px;height:90px"
+        data-ad-client="ca-pub-7760157643054954"
+        data-ad-slot="1707619733"></ins>
+   <script>
+   (adsbygoogle = window.adsbygoogle || []).push({});
+   </script>
+   </div>
+
 
   <!-- wrap content -->
   [% content %]
