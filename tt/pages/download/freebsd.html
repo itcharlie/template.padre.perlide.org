@@ -40,25 +40,25 @@ usethreads='define';
 </p>
 <p>
 If the result is <tt>define</tt> then you have already threaded Perl installed, otherwise execute:
-<tt>
+<pre>
 # cd /usr/ports/lang/perl5.8 &amp;&amp; make WITH_THREADS=yes
 # make deinstall &amp;&amp; make reinstall
-</tt>
+</pre>
 Optionally you can substitute <tt>make WITH_THREADS=yes</tt> with the following and choose <tt>THREADS</tt> in the menu.
 Then uninstall and reinstall Perl as above.
 This has an advantage over the previous method, because the preferred configuration options will be stored in your system's packing database.
 This way next time you'll be building Perl (i.e. updating) all stored options will be applied without the need to manually specify them.
-<tt>
+<pre>
 # make config
 # make
-</tt>
+</pre>
 </p>
 <p>
 To install Padre and its dependencies just execute:
-<tt>
+<pre>
 # cd /usr/ports/editors/p5-Padre
 # make install clean
-</tt>
+</pre>
 </p>
 <h2>Installation from CPAN</h2>
 <p>
