@@ -1,0 +1,36 @@
+[% DEFAULT
+   title="Padre Installation Instructions on OpenSUSE"
+   description="OpenSUSE"
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+<h2>Installation using the Package Manager</h2>
+<h2>Installation from CPAN</h2>
+<ol><li><a  href="http://opensuse-community.org/Repositories/11.1">Add the packman repository.</a>
+</li><li>Install the package »wxWidgets-devel« and the schema »C/C++ Development«.</li></ol>
+<p>
+<img src="http://padre.perlide.org/trac/raw-attachment/wiki/DownloadOpenSUSE/yast.png" alt=YaST" />
+ 3. <a  href="/wiki/DownloadCPAN">Install Padre from CPAN.</a>
+</p>
+<p>
+Configure <a  href="http://search.cpan.org/perldoc?CPAN#Config_Variables">make_install_make_command and mbuild_install_build_command</a> to enable <tt>sudo</tt> support in CPAN.
+</p>
+<h2>Still Not Working?</h2>
+<p>
+Following the instructions on this page did not lead to a successful installation?
+</p>
+<p>
+<a  href="/contact.html">Contact us</a>.
+</p>
+<p>
+We will do our best to help you.
+By letting us know that something does not work you will help us, too.
+When we know about it, we can improve this documentation and Padre itself.
+</p>
+
+[% END %]
+[% END %]
+
