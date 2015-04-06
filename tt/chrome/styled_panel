@@ -3,7 +3,7 @@
  <div class="styled_panel">
  [% content %]
  </div>
- <div class="right_side">
+ <div id="right_side">
 
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <!-- padre_right_1 -->

@@ -285,6 +285,10 @@ b.shadowed {
     width:200px;
 }
 
+#right_side {
+    width: 310px;
+}
+
 div.widget_wrapper {
     position: relative;
     margin-bottom: 1em;
