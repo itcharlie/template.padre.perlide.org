@@ -7,12 +7,89 @@
 %]
 
 [% WRAPPER chrome/styled_panel %]
-This is a placeholder. See the instructions at the <a href="/download.html">download</a> page.
+<p>
+Padre is released as a CPAN package. You can download and install it using <tt>cpan</tt>, <tt>cpanm</tt> or CPANPLUS.
+The released versions can be seen <a  href="https://metacpan.org/pod/Padre">here</a>.
+</p>
+<p>
+As Padre has many dependencies probably the easiest is to install the binary distribution
+where available from the vendor (Mandriva, Fedora, Debian, FreeBSD) and then use <tt>cpanm</tt> to upgrade.
+</p>
+<p>
+If this is not possible read on.
+</p>
 
+<h2>Install from CPAN</h2>
+
+<h3>Strawberry Perl on Windows</h3>
+<p>
+On Strawberry Perl you should be able to install/upgrade Padre by just opening the &quot;cmd&quot; 
+and typing
+</p>
+<pre>
+  c:&gt; cpan Padre
+</pre>
+
+<h3>Active Perl in Windows</h3>
+<p>
+Probably the same as for Strawberry Perl but you might first need to install the C compiler they supply.
+</p>
+
+<h3>Linux</h3>
+<p>
+On Linux you should probably start by installing from the binary repository of your distribution
+(see below) and then upgrading from CPAN using local::lib.
+</p>
+<p>
+That part starts by installing local::lib using the <a  href="https://metacpan.org/module/local::lib#The-bootstrapping-technique">Bootstrapping technique</a>
+and once that's done type
+</p>
+
+<pre>
+  $ cpan Padre
+</pre>
+
+<h2>Common Problems</h2>
+
+<h3>Corporate Proxy</h3>
+<p>
+People behind a (corporate) proxy will not be able to access the CPAN servers directly. 
+First they need to tell the CPAN client which proxy to use.
+For this, launch the cpan client by typing <strong>cpan</strong> on the command line. 
+You should get a cpan&gt; prompt and in there type the following: (obviously replace
+the address of the proxy server with the one you have in your company).
+</p>
+<pre>
+  cpan&gt; o conf http_proxy http://proxy.corporate.com:8080
+  cpan&gt; o conf commit
+  cpan&gt; q
+</pre>
+<p>
+Once you did this the cpan command should work.
+</p>
+
+<h3><a  href="/trac/wiki/WxWidgets">WxWidgets</a> and <a  href="/trac/wiki/WxPerl">WxPerl</a></h3>
+<p>
+The difficult part is sometimes to install some of the prerequisites:
+</p>
+<ul><li>Installing wxWidgets (that <a  href="http://metacpan.org/pod/Alien::wxWidgets">Alien::wxWidgets</a> tries to solve)
+</li><li>Installing wxPerl (the <a  href="http://metacpan.org/pod/Wx">Wx</a> distro) from CPAN.</li></ul>
+<p>
+Mattia Barbon did a great job with them but they still may be difficult to install in some cases. 
+</p>
+
+<h2>Platform-specific Instructions</h2>
 <ul>
-  <li><a href="/download/">Various vendors</a></li>
+  <li><a  href="/download/debian.html">Debian</a> </li>
+  <li><a  href="/download/fedora.html">Fedora</a> </li>
+  <li><a  href="/download/freebsd.html">FreeBSD</a> </li>
+  <li><a  href="/download/mandriva.html">Mandriva</a> </li>
+  <li><a  href="/download/netbsd.html">NetBSD</a> </li>
+  <li><a  href="/download/ubuntu.html">Ubuntu</a> </li>
+  <li><a  href="/download/windows.html">Windows</a></li>
 </ul>
-[% END %]
 
+
+[% END %]
 [% END %]
 
