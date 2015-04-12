@@ -1,0 +1,40 @@
+[% DEFAULT
+   title="CPAN"
+   description="Install Padre using Perlbrew"
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+<p>
+The combination of <a  href="http://perlbrew.pl">perlbrew</a> and  <a  href="http://cpanmin.us/">cpanminus</a> allows you to easily build your own Perl installation and add additional CPAN programs (including Padre) without bothering to setup a CPAN client.
+</p>
+
+<p>
+perlbrew is a tool to manage multiple perl installations in your $HOME directory. They are completely isolated perl universes. This approach has many benefits:
+* No need to run sudo to install CPAN modules, any more.
+* Try the monthly released new perls.
+* Learn new language features.
+* Test production code.
+* Leave vendor perl (the one that comes with OS) alone
+</p>
+<p>
+cpanminus is a script to get, unpack, build and install modules from CPAN and does nothing else. It's dependency free (can bootstrap itself), requires zero configuration, and stands alone. When running, it requires only 10MB of RAM. 
+</p>
+<p>
+The websites of both project explain how to install them. Once the perlbrew and cpanminus is setup, you can install Padre by simply typing &quot;cpanm Padre&quot; in a shell.
+</p>
+<p>
+Additionall howtos (by a Padre developer), can be found below. The examples were taken from a Debian/Ubuntu and Solaris system, but it's applicable to other systems as well:
+<ul>
+  <li>Get the latest Perl release with perlbrew <a  href="http://nxadm.wordpress.com/2010/12/10/get-the-latest-perl-release-with-perlbrew/">release-with-perlbrew/</a></li>
+  <li>App::cpanminus: zero-conf CPAN client <a  href="http://nxadm.wordpress.com/2010/12/10/appcpanminus-zero-conf-cpan-client/">zero-conf-cpan-client/</a></li>
+  <li>Build Padre svn easily with perlbrew and cpanm <a  href="http://nxadm.wordpress.com/2010/12/10/build-padre-svn-easily-with-perlbrew-and-cpanm/">build-padre-svn-easily-with-perlbrew-and-cpanm/</a></li>
+</p>
+
+[% WRAPPER chrome/styled_panel %]
+
+[% END %]
+[% END %]
+
+
