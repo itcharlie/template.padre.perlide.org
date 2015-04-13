@@ -1,0 +1,57 @@
+[% DEFAULT
+   title="Feature: Project Browser"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<h2>Description</h2>
+<p>
+Padre provides automatic project management for &quot;standard&quot; Perl projects. A project is a directory structure.
+The root of the directory tree is where Padre finds on of the project indicators:
+ * Makefile.PL
+ * Build.PL
+ * dist.ini
+ * or if none of those exist creating an empty padre.yml file will tell padre what is the root.
+</p>
+<p>
+The project browser is a window on the left hand side of Padre that allows the user to see the directory structure
+of the project and the files in the project. It also allows opening files and other files-system related operations.
+</p>
+
+<h2>Test</h2>
+<ol>
+  <li>Launch Padre</li>
+  <li>Close all files using <strong>File -&gt; Close -&gt; Close all files</strong></li>
+  <li>Open the project browser using <strong>View -&gt; Show Project Browser/Tree</strong></li>
+  <li>A window should open on the left hand side of Padre</li>
+  <li>It should be empty (TBD. I am not sure this is a good behavior)</li>
+  <li>Open the Makefile.PL of the Padre project using Ctrl+O</li>
+  <li>The project browser window should be filled with the directory tree of Padre</li>
+  <li>close Makefile.PL</li>
+  <li>The project browser window should become empty (TBD. should it become empty?)</li>
+  <li>Now open the share/styles/default.yml in the Padre project</li>
+  <li>The project browser should show the directory of the Padre project again</li>
+  <li>browse the directories of the Padre project</li>
+  <li>open a file from the project by double-clicking on its name in the project browser</li>
+  <li>save it under another name using F12</li>
+  <li>check if the file appears in the Project Browser window</li>
+  <li>delete the newly created file (using the tools of your operating system, outside of Padre)</li>
+  <li>observe that the listing of the file has disappeared from the Project browser</li>
+  <li>load file using &quot;Search&quot; -&gt; &quot;Open Resource ...&quot;</li>
+</ol>
+
+
+<h2>TODO</h2>
+<ul>
+  <li>describe what padre.yml is for</li>
+  <li>projects for non perl 5 projects</li>
+  <li>Integrate with VCS</li>
+</ul>
+
+[% END %]
+[% END %]
+
