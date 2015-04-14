@@ -1,0 +1,60 @@
+[% DEFAULT
+   title="Perl Tidy"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<h2>Description</h2>
+<p>
+The CPAN package Perl::Tidy provides a command line tool to process and reformat a Perl 5 script or module.
+</p>
+<p>
+Padre has a plugin called Padre::Plugin::PerlTidy that provides integration with the above module.
+It uses the default settings of perltidy or the settings of the current project to tidy the current file 
+or the current selection in the editor.
+</p>
+
+<h2>Test</h2>
+
+<ol>
+  <li>Create a new document and paste in the following:
+    <pre>
+      if ( $x eq $y     ) { print 1;
+      }
+    </pre>
+  </li>
+  <li>Click on <b>Tools/Perl Tidy/Tidy the Active Document</b></li>
+  <li>The output window at the bottom is opened and the following is printed:
+    <pre>
+      Perl::Tidy running with default or user configuration }}}
+    </pre>
+  </li>
+  <li>The content now looks like this:
+    <pre>
+      if ( $x eq $y ) {
+      	print 1;
+      }
+    </pre>
+  </li>
+</ol>
+
+<p>
+TODO: saved file, redo change, 
+</p>
+
+<h2>TODO</h2>
+
+<ul>
+  <li>A GUI tool to configure the settings of perltidy (there is  very limited implementation already)</li>
+  <li>Allow the user to set "tidy-on-save" so when a file is saved first it goes through a tidy process</li>
+</ul>
+
+
+[% END %]
+[% END %]
+
+
