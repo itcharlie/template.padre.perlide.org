@@ -1,0 +1,95 @@
+[% DEFAULT
+   title="Edit Patch"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+
+<h2>Edit -> Patch</h2>
+<p>
+Patch only works on files in local editor that are saved, ie it ignores files with leading * prefix in there name.
+</p>
+<p>
+It is simplistic in it's approach, as it only works on one file at a time, If you need to work with files/projects look at one of our Plug-ins.
+</p>
+<p>
+Patch tries to auto select the correct file in each list where relevant.
+</p>
+
+<p>
+the techie one liner <b>Action, Against, Select File-1, Select File-2 if appropriate and then Process</b>
+</p>
+
+<h2>Right Click</h2>
+<p>
+If your current file in Padre is a patch file ( *.patch or *.diff ) and you Right click you get the following.
+</p>
+<img src="/images/edit_patch_right_click.png">
+<p>
+You will notice a short cut to Patch... has appeared.
+</p>
+
+
+<h2>Using Patch</h2>
+
+<ul>
+  <li>To Launch the Patch Dialogue, Menu Bar, Edit->Patch...</li>
+  <li>By default Patch will assume it is working in Patch mode and if started with a {{{*.patch}}} file as current file. Patch will try to find among the other open files a corresponding file to apply the {{{*.patch}}} against as shown below.</li>
+</ul>
+
+<img src="/images/edit_patch.png">
+
+<h3>Logic</h3>
+
+<pre>
+                Against  comments
+Patch   File-1  File-2   auto select File-1 based on File-2 name, File-2 auto select based on extension
+Action  Diff    File-1   File-2=||auto select File-1 based on current file, File-2 auto select file 0
+        Diff    File-1   SVN=||auto select File-1 based on current file,File-2 n/a
+</pre>
+
+<h3>Output</h3>
+
+<ul>
+  <li>Normal information will go to Padre status bar.
+    <br>
+    We have assumed Show low-priority info messages on Status-bar (not in a pop-up) is true, 
+  </li>
+  <li>Patch results in a new Tab in Padre editor titled unsaved</li>
+  <li>Diff results in file-name suffixed with .patch, saved in same location as file-name and opened in Padre editor.</li>
+</ul>
+
+<h3>Error / Info</h3>
+
+<ul>
+  <li>Any error message will be displayed in Padre Output panel.</li>
+  <li>SVN version violation information is displayed in the status bar.</li>
+</ul>
+
+<h3>Miscellaneous</h3>
+
+<ul>
+  <li>Patch uses Text::Patch.</li>
+  <li>Diff uses Text::Diff.M<br>SVN local client is used if present, if not SVN radio button will be greyed out.</li>
+  <li>Patch... will be greyed out if there are no open files in editor.</li>
+</ul>
+
+<h2>Limitations</h2>
+
+<ul>
+  <li>File List display in order files were loaded into Padre, if you have move files around by dragging there Tab this will not be reflected in List display order.</li>
+  <li>If you have multiple files open with same name but with different paths only the first will get matched.</li>
+  <li>SVN local Client is also tested for version greater than or equal to 1.6.2.
+     <br>From Subversion changes:- fixed: segfault on merge with servers &lt; 1.6 (r37363, -67, -68, -79)
+  </li>
+  <li>Patch some times throws errors relating to POD lines starting with ( C&lt;, =, ) giving the following output.<br>
+       Hunk #n failed at line xxx.</li>
+</ul>
+
+[% END %]
+[% END %]
+
