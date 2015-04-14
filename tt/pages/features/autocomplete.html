@@ -1,0 +1,72 @@
+[% DEFAULT
+   title="Autocompletition of variables, functions and methods"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<p>
+Also called Suggest &amp; complete
+</p>
+<p>
+Padre knows two types of source code auto-complete:
+</p>
+<ul>
+ <li>Manual <strong>Edit -&gt; Autocomplete</strong> or pressing the hotkey <strong>Ctrl+Space</strong></li>
+ <li>Automatically while typing</li>
+</ul>
+<p>
+Both of them are configurable using the <a  href="/wiki/Features/PreferenceSystem">Preference System</a> <strong>Tools -&gt; Preferences -&gt; Perl Auto Complete</strong>
+</p>
+<p>
+Options:
+</p>
+<ul>
+  <li>Autocomplete always while typing</li>
+  <li>Autocomplete new methods in packages</li>
+  <li>Autocomplete new subroutines in scripts</li>
+  <li>Minimum length of suggestions: 3</li>
+  <li>Maximum number of suggestions: 20</li>
+  <li>Minimum characters for autocompletition: 1</li>
+</ul>
+
+<p>
+Only known keys of this hash are suggested within hash brackets.
+</p>
+
+<h2>Test</h2>
+
+<ul>
+  <li>Open any Perl source file</li>
+  <li>begin typing a variable name used in that file</li>
+  <li>Manual: Press Ctrl+P, Automatic: No need to press anything</li>
+  <li>A dropdown list should pop up near the cursor suggesting the rest of the variable name</li>
+</ul>
+
+<h2>Implementation</h2>
+<p>
+Each document class should implement its own method called 'autocomplete'. For Perl here are the implementations:
+</p>
+<ul>
+  <li><a  href="/trac/browser/trunk/Padre/lib/Padre/Document/Perl.pm">Padre::Document::Perl</a></li>
+  <li><a  href="/trac/browser/trunk/Padre/lib/Padre/Document/Perl/Autocomplete.pm">Padre::Document::Perl::Autocomplete</a></li>
+</ul>
+
+<h2>TODO</h2>
+<p>
+This feature considers the local file as source for suggestions. A perltags file is used if the project has one.
+</p>
+<ul>
+  <li>Suggest from overall word list if a hash has no known keys</li>
+  <li>Enable creation of perltags files using the UI or automatically (the menu item from the Perl menu might not work properly)</li>
+  <li>Support references ($www = WWW::Mechanize-&gt;new(); type $www-&gt; to show a list of methods; type $www-&gt;{ to show a list of useable keys)</li>
+  <li>Use all words from a project within all files of this project (configurable!!!)</li>
+</ul>
+
+
+[% END %]
+[% END %]
+
