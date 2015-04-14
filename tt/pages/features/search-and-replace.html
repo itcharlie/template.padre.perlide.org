@@ -1,0 +1,92 @@
+[% DEFAULT
+   title="Search, Find and Replace"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+
+(the following text was taken from Padre.pm. It needs rewriting.
+
+<h2>Search</h2>
+
+<b>Ctrl+F</b> opens the search window, if something was selected then that is given as the search text. Otherwise the last search string should be displayed.
+<p>
+
+Provide option to search backwards
+<p>
+
+Limit action to current block, current subroutine, current file (should be the default) current project, current directory with some file filters.
+<p>
+
+When the user presses Find
+<p>
+
+<ul>
+  <li>We find the first hit and the search window disappears. <b>F3</b> jumps to next one.</li>
+  <li>The first match is highlighted and focused but the window stays When the user clicks on the Find button again, we jump to the next hit
+      In this case the user must be able to edit the document while the search window is on.</li>
+  <li>All the matches are highlighted and we go to the first match, window disappears. <b>F3</b> jumps to next one</li>
+  <li>All the matches are highlighted and we go to the first one, window stays open user can edit text</li>
+</ul>
+
+<h2>Find and Replace</h2>
+
+<ul>
+  <li>Find - find the next occurrence</li>
+  <li>Replace all - do just that</li>
+  <li>Replace - if currently a match is selected then replace it find the next occurrence and select it</li>
+</ul>
+
+<h2>TODO</h2>
+
+Describe what to do if we have to deal with files that are not in the editor ==
+
+If "Replace all" was pressed then do just that
+
+<ol>
+  <li>without opening editors for the files.</li>
+  <li>opening an editor for each file and keep it in unsaved state (sounds crazy having 1000 editors open...)</li>
+</ol>
+<p>
+if Search or Replace is clicked then we might show the next location in the lower pane.
+If the user then presses Replace we open the file in an editor window and go on.
+If the user presses Search then we show the next occurrence.
+Opened and edited files will be left in a not saved state.
+
+<h2>Test</h2>
+
+<ol>
+  <li>Open {{{lib/Padre/Wx/Main.pm}}} from the Padre source code</li>
+  <li>Hit Ctrl+F for "Find"</li>
+  <li>Enter the search term "sprintf"</li>
+  <li>Click on "Find Next" several times</li>
+  <li>Make sure that each result is nicely visible in the center of the editor window</li>
+  <li>Activate "Search Backwards" to change the search direction</li>
+  <li>Click on "Find Next" several times</li>
+  <li>Activate "Case Sensitive"</li>
+  <li>Modify the search term to "Sprintf"</li>
+  <li>Click on "Find Next": you should not get a hit now</li>
+  <li>Deactivate "Case Sensitive"</li>
+  <li>Click on "Find Next": you should get a hit again</li>
+  <li>Modify the search term to "Wx..gettext"</li>
+  <li>Activate "Regular Expression"</li>
+  <li>Click on "Find Next": you should get a hit</li>
+  <li>Activate "Close Window on Hit"</li>
+  <li>Click on "Find Next": you should get a hit, and the window should close</li>
+  <li>Select "Search"->"Find" from the menu: The same search term as before should be in the dialog</li>
+  <li>Click on "Find All" (<b>remark: currently does not work</b>)</li>
+  <li>Close the Window</li>
+  <li>Hit F3: you should get a hit</li>
+  <li>Hit F3 another time</li>
+  <li>Hit Shift-F3: you should be back to the former hit</li>
+</ol>
+
+
+
+[% END %]
+[% END %]
+
