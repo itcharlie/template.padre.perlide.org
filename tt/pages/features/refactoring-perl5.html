@@ -1,0 +1,33 @@
+[% DEFAULT
+   title="Refactoring Perl 5"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+
+<h2>Description</h2>
+
+<ul>
+  <li>Lexically Rename Variable</li>
+  <li>Extract Subroutine</li>
+  <li>Introduce Temporary Variable</li>
+  <li>Rename subroutine</li>
+</ul>
+
+<h2>Test</h2>
+
+<ol>
+  <li>Open padre.</li>
+  <li>Write a script or open perl module.</li>
+  <li>Press double click on a variable that you would like to rename.</li>
+  <li>Go to ''"Refactoring -> Rename Variable"'' it should pop up a window.</li>
+  <li>Now you can rename you're variable name and you can change he's type (#Remember, you're only changing he's type not he's value!),
+      after you wrote the new name you can now press ok.</li>
+</ol>
+
+[% END %]
+[% END %]
