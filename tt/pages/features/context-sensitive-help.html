@@ -1,0 +1,39 @@
+[% DEFAULT
+   title="Context Sensitive Help"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<h2>Description</h2>
+
+<p>
+Padre currently provides context sensitive help for Perl 5 and via the Perl6 plugin to Perl 6.
+The feature is extendable so it could be added to any type of file. It could be even added to things such as JQuery.
+</p>
+
+<p>
+In order to activate the feature select some Perl 5 construct in a file that was recognized
+as Perl 5 and press F2. (<b>Help -> Context Help</b>)
+</p>
+
+<p>
+See example in <a href="http://ahmadzawawi.blogspot.com/2009/09/whats-new-in-padre-046.html">this blog</a>.
+</p>
+<p>
+Or this <a href="http://www.youtube.com/watch?v=yGPLXNUbffY">screencast on youtube</a>.
+</p>
+
+<h2>TODO</h2>
+
+<ul>
+  <li>improve speed</li>
+  <li>factor out the feature to Code::Explain to be usable by other editors and tools</li>
+</ul>
+
+
+[% END %]
+[% END %]
