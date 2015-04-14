@@ -1,0 +1,40 @@
+[% DEFAULT
+   title="Run"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+
+<h2>Run an application from within the editor</h2>
+
+Simple running works but there are several options here.
+<p>
+
+Default: If the files is .pl save automatically and run it with the current perl.
+<p>
+
+Any other file, don't run for now, just display a message.
+<p>
+
+When running a script disable the Run menu and show a stop menu point.
+Make sure both STDOUT and STDERR are displayed along with all of their newlines.
+Allow for STDIN to be redirected to the external process.
+<p>
+
+
+<ul>
+  <li>When developing a script we would like to run the current file (the one we currently watch) with some predefined options we should save these options before runs</li>
+  <li>When developing a larger application with several modules and a script we would like to run a predefined script with some predefined options</li>
+  <li>Both of the above should be either directly or using a debugger </li>
+  <li>STDERR and STDOUT should be captured - for simple command line script we might want to have a full command line emulation?</li>
+  <li>Run the unit tests assuming Makefile.PL or Build.PL</li>
+</ul>
+
+
+[% END %]
+[% END %]
+
