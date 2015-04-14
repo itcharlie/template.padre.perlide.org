@@ -1,0 +1,71 @@
+[% DEFAULT
+   title="Features: Project Management"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<p>
+Padre will have the notion of a Perl project. As we would like to make things as natural as possible for the Perl developer
+and we think the distribution methods used for CPAN module are a good way to handle any project Padre will understand a project
+as a CPAN module. This does not mean that your project needs to end up on CPAN of course. But if your projects directory structure
+follows that of the modules on CPAN, Padre will be automatically recognize it.
+</p>
+<p>
+One suggestion was to use Devel::<a  href="/trac/wiki/PerlySense">PerlySense</a> <a  href="http://use.perl.org/comments.pl?sid=40446">http://use.perl.org/comments.pl?sid=40446</a> 
+that seems to support some (or all?) of the requirements below and even more.
+</p>
+<p>
+Anyway here are some thoughts of what a project should look like.
+</p>
+<p>
+First we need to think in terms of a Perl project, but one that can include actually
+lots of other languages and technologies. Later we should have an idea for projects where 
+the main language is not necessarily Perl and the directory layout is different.
+</p>
+<p>
+We need to assume that the current working directory of the editor can be anywhere.
+</p>
+<p>
+For Perl project management we will assume a directory layout similar to what we have
+in most CPAN distributions. That is
+</p>
+<pre>
+  lib/    holding the modules
+  bin/    holding the executable scripts
+  t/      holding the test files
+</pre>
+<p>
+There should be a Makefile.PL or a Build.PL
+</p>
+<p>
+Select a project is basically select a directory.
+</p>
+<p>
+It will try to guess the preferred installation system Build.PL or Makefile.PL
+Then one should have all the standard steps ready in the menu
+Project Build.PL, Build, Build test, Build testcover, Build dist Build testdist
+</p>
+<p>
+Create a new project will create the directory and the standard files
+</p>
+<p>
+Select a project == select a directory assuming the files are already there
+</p>
+<p>
+or
+</p>
+<p>
+Select a project that was already selected once
+</p>
+<p>
+Later we can integrate with various version control system so a new project might start by 
+pointing to the repository (e.g. svn repo) and checking it out to some local place etc...
+</p>
+<p>
+How to keep the path of projects on a stick?
+Their path can be different in different machines.
+</p>
