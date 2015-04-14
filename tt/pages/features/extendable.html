@@ -1,0 +1,24 @@
+[% DEFAULT
+   title="Extendable"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+
+<ul>
+  <li>Extendable in Perl 6: There is a very experimental way to extend Padre using Perl 6 via the very limited Inline::Rakudo module. See Padre::Plugin::PSI for a simple example. (Last checked in March 2009)</li>
+  <li>Extendable in Python/PHP/Ruby/etc.: By embedding the Parrot virtual machine into Padre we can allow extending Padre by any language implemented on top of Parrot. The Padre::Plugin::Parrot has the code to embed Parrot and it has an example on coding in PIR.</li>
+</ul>
+
+<h2>TODO</h2>
+
+Describe this better
+
+
+[% END %]
+[% END %]
+
