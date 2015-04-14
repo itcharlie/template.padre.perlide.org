@@ -1,0 +1,21 @@
+[% DEFAULT
+   title="Bookmarks"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<ul>
+ <li><b>View -> Set Bookmark</b> or <b>Ctrl+B</b> brings up a window with the content of the current line along with the file name and line number.</li>
+ <li><b>View -> Go to Bookmark</b> or <b>Ctrl+Shift+B</b> brings up a window with the list of available bookmarks. You can select one and press <b>OK</b> to jump to that location. If the file where the bookmark belongs to is not open currently, it will be opened and the cursor will jump to the desired place.</li>
+</ul>
+
+In both cases while the window is open you can select existing bookmarks and press the <b>Delete</b> button to remove the selected one or press <b>Delete All</b> to remove all the existing bookmarks.
+
+
+[% END %]
+[% END %]
+
