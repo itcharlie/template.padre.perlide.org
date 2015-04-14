@@ -1,0 +1,89 @@
+[% DEFAULT
+   title="Session Management"
+   description="
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<h2>Description</h2>
+
+Padre recognizes the fact that people work on sets of files not necessarily belong to the same "project". Occasionally they might want to switch to another set of files. In Padre we call this <b>Session Management</b>.
+<p>
+
+When editing in Padre you can Save the set of currently opened files as a "Session" by pressing <b>File -> Save Session...</b> (or Ctrl+Alt+S)
+This will open a window listing the already saved sessions. (There is a default session called <b>padre-last</b>). 
+<p>
+
+<img src="/images/save_session.png">
+
+At this point you can either select
+the name of an existing session or you you can type in the name of a new session. You can also add a description for your convenience.
+Pressing <b>Save</b> will save the list of the currently open files. If you know close all the files you could return to the current situation by using <b>Open Session</b> via <b>File -> Open Session...</b> (Ctrl+Alt+O) and selecting the name of the desired session.
+<p>
+
+If you saved a session and open a few more files they will be added to the session only if you save the session again using the <b>Save Session</b> menu option.
+<p>
+
+At any time you are editing a bunch of files you can switch to a previously saved session using <b>Open Session</b>. This will close all the existing files and open those that were open when the other session was saved.
+<p>
+
+In order to make this feature even more useful you can tell padre to alway open a session when it starts. You can do it by setting 
+<b>Preferences -> Behaviour -> Open files:</b> to <b>session</b>. If you have set this then every time you launch Padre it will first show 
+you the list of saved sessions and you will be able to pick one of them to be opened. You can also press ESC to open Padre without any files.
+<p>
+
+You can also open padre with any session by running
+<pre>
+padre --session='Session Name'
+</pre>
+
+
+<h2>Test</h2>
+
+<ol>
+  <li>Start padre</li>
+  <li>Open 3 files</li>
+  <li>Save the session via <b>File -> Save Session..</b> and call it <b>Abc</b></li>
+  <li>Close the middle tab</li>
+  <li>Open a 4th file</li>
+  <li>Open the session that you saved before by <b>File -> Open Session</b> (TODO: it probably should NOT close the files that are already open)</li>
+  <li>Observer that the original 3 files are now open</li>
+  <li>Close the middle tab again</li>
+  <li>Open the 4th file again</li>
+  <li>Press Ctrl+Alt+S</li>
+  <li>You should see the Save Session dialog with the current session selected</li>
+  <li>Save it</li>
+  <li>Close all tabs (via <b>File -> Close ... -> Close All Files</b>)</li>
+  <li>Open the earlier session by pressing Ctrl+Alt+O and selecting the name of the session</li>
+  <li>Open the preferences window and set <b>Preferences -> Behaviour -> Open files:</b> to <b>session</b></li>
+  <li>Close padre</li>
+</ol>
+
+<ol>
+  <li>Start Padre</li>
+  <li>Observe there is a pop-up window listing all the sessions you saved</li>
+  <li>Select session "Abc" and load</li>
+  <li>Observe that the 4 files that we last open are opened again.</li>
+  <li>Close Padre</li>
+</ol>
+
+<ol>
+  <li>Start Padre with  {{{ padre --session=Abc }}}</li>
+  <li>Observe that Padre opens with the 4 files that were open earlier</li>
+</ol>
+
+<h2>TODO</h2>
+
+<ul>
+  <li>Improve the speed at which Padre can switch between sessions.</li>
+  <li>Describe autosave of session and include it in the test case.</li>
+</ul>
+
+
+
+[% END %]
+[% END %]
+
