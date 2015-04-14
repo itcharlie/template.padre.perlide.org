@@ -1,0 +1,37 @@
+[% DEFAULT
+   title="Padre Features"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+
+<h2>Rectangular Text Selection</h2>
+
+<p>
+Simple text editors usually only allow you to select contiguous lines of text with your mouse.
+Sometimes, however, it is handy to be able to select a rectangular area of text for more precise
+cutting/copying/pasting or performing search/replace on. You can select a rectangular area in Padre
+by holding down '''Shift+Alt''' whilst selecting text with your mouse or the arrow keys.
+</p>
+
+<p>
+For example, imagine you have the following nicely formatted hash assignment in a Perl source file:
+</p>
+<pre>
+  my %hash = (
+      key1 => 'value1',
+      key2 => 'value2',
+      key3 => 'value3',
+ );
+</pre>
+<p>
+With a rectangular text selection you can select only the keys, only the values, etc..
+</p>
+
+[% END %]
+[% END %]
+
