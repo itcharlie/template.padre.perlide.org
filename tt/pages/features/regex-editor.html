@@ -1,0 +1,79 @@
+[% DEFAULT
+   title="Regiex Editor"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<h2>Description</h2>
+<p>
+Padre provides an easy way to build and analyze regular expressions compatible with Perl 5.
+</p>
+
+<p>
+The <b>Regex Editor</b> can be used for building and debugging regular expressions.
+</p>
+
+<ol>
+  <li>You can open the Regex editor via <b>Tools -> Regex Editor</b></li>
+  <li>At the top you will see 5 check-boxes for the modifiers of the regex</li>
+  <li>The first window called <b>Regular Expression</b> is where you can type in the regex. By default you will see \w+ in there</li>
+  <li>The <b>Replace with text</b> contains <b>Baz</b> and is interesting when you are trying to build a substitution</li>
+  <li><b>Original text</b> is the place where you should type in sample strings you'd like to match. By default it contains <b>Foo Bar</b></li>
+  <li><b>Matched text</b> is a copy of the Original text with the actual match  (in the default case <b>Foo</b>) being red and underline</li>
+  <li><b>Result from replace</b> contains the result of a substitution. By default it shows. <b>Baz Bar</b></li>
+</ol>
+
+<img src="/images/regex_editor.png">
+
+<h2>Test</h2>
+<p>
+The regex editor currently provides a single way to build both regexes and substitutes.
+</p>
+
+<ol>
+  <li>Regex {{{ \d+ }}} Text: {{{ Foo 123 Bar }}}, Expected Match: 123</li>
+  <li>Regex {{{ \d* }}} Text: {{{ Foo 123 Bar }}}, Expected Match: empty string before F and to give a warning accordingly (in 0.84 this marks the whole string)</li>
+  <li>Regex empty, Text: {{{ Foo 123 Bar }}}, Expected Match: nothing   (in 0.84 this marks the whole string)</li>
+  <li>Regex {{{ (?=b) }}}, Text: {{{ abc }}}, Expected to Match the empty string between a and b.</li>
+</ol>
+
+
+<h2>TODO</h2>
+
+<p>
+For ideas install kregexpeditor or regexxer on Linux or try
+<a href="http://weitz.de/regex-coach/">Regex Coach</a>  on Windows
+See also  <a href="http://www.regexbuddy.com/">Regex Buddy</a>.
+</p>
+
+<ul>
+  <li>Support various versions of the perl 5 regexes (5.8, 5.10, 5.12 etc)
+    <ul>
+      <li>There should be an option (a selector on this window) to decide which regex dialect to support</li>
+      <li>(That is, there are certain new features in the regex engine and information about then under the
+          buttons should be displayed along witht the minimum version required)</li>
+    </ul>
+  </li>
+  <li>Support Perl 6 style regexes</li>
+  <li>Probably the regex and substitute part should be separated. At the top should be 
+    <ul>
+      <li><b>Regular Expression</b></li>
+      <li><b>Original text</b></li>
+      <li><b>Matched text</b></li>
+      <li>Checkbox to enable/disable substitution</li>
+      <li><b>Replace with text</b> window</li>
+      <li><b>Result from replace</b> window</li>
+    </ul>
+  </li>
+  <li>Also test the <b>Insert</b> button in both match and substitute</li>
+  <li>Allow the user to change the delimiters of the regex from // to {} in the editor already</li>
+</ul>
+
+
+[% END %]
+[% END %]
+
