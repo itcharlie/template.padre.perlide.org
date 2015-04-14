@@ -1,0 +1,47 @@
+[% DEFAULT
+   title="Command Line Window"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<h2>Description</h2>
+<p>
+While Padre is primarily a GUI based IDE we (ok, at least some of us) think that using 
+the command line has advantages at least in some of use-cases. For example there is 
+no really usable way in a GUI to remember and to select from the names of the last 
+100 or 1000 opened files. On the command line (shell) of Unix it is quite simple to 
+look up previous commands in the history.
+</p>
+
+<p>
+This can be very useful if I want to open a file I opened a while ago or if I want to
+open a file which has a similar name to what I had earlier.
+The <b>Command Line Window</b> of Padre is an experiment to provide an integrated way
+to enjoy the features of command line with the IDE.
+</p>
+
+<h2>Test</h2>
+
+<ul>
+  <li>enable the command line window.  <b>View -> Show Command Line Window</b>.</li>
+  <li>press <b>?</b> to get the list of commands.</li>
+  <li><b>:! cmd</b> - run command in shell.  do <b>:! ls</b> to get the list of files and dirs.</li>
+  <li><b>:e filename</b> - open file.  do <b>:e Padre.pm</b> (or every other file) to open the file on padre.</li>
+  <li><b>:history</b> - shows the history of all the commands.</li>
+  <li><b>:keycatcher Number</b> - shows the value of a single event.</li>
+  <li><b>:padre cmd</b> - runs a perl command. example: <b>:padre Padre::Current->main->message("hi")</b>.</li>
+</ul>
+
+
+<h2>TODO</h2>
+<p>
+A lot more features need to be added before this becomes really usable.
+</p>
+
+[% END %]
+[% END %]
+
