@@ -1,0 +1,90 @@
+[% DEFAULT
+   title="Remote Editing"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<h2>Description</h2>
+<p>
+This feature has a partial implementation and it needs a better description how it should work.
+<p>
+Remote editing via FTP (#12), HTTP, SSH and other protocols
+<p>
+Use <b>File ->  Open... -> Open URL</b> to open a remote file.
+<p>
+Examples of valid URLs:
+<p>
+<ul>
+  <li>http://padre.perlide.org</li>
+  <li>http://padre.perlide.org/trac/wiki/Features/RemoteEditing</li>
+  <li>ftp://user:pass@perlide.org/pub/Makefile.PL</li>
+</ul>
+
+Some parts have special behavior depending on the URL type. Example: The file-refreshed-on-disk check is done less often.
+
+<h2>Current state</h2>
+
+<h3>HTTP</h3>
+
+<ul>
+  <li>Currently read-only</li>
+</ul>
+
+<h3>FTP</h3>
+
+<ul>
+  <li>Read/Write access</li>
+  <li>Supports anonymous ftp</li>
+  <li>Supports authenticated ftp (username/password)</li>
+</ul>
+
+<h3>SSH</h3>
+
+(Need to check)
+
+<h2>Test</h2>
+
+Automated tests are in t/94.padre-file-remote.t but you have to set the environment variable PADRE_NETWORK_T to true to enable them.
+<p>
+
+Manual test: Open the following URLs with <b>File ->  Open... -> Open URL</b>:
+<p>
+<ul>
+  <li>http://www.google.com (Should give you the HTML source of the Google homepage)</li>
+  <li>http://padre.perlide.org/trac/browser/trunk/Padre/Makefile.PL?format=txt
+    <ul>
+      <li>Should open the Padre Makefile.PL</li>
+      <li>Should be discovered as Perl source (see status bar)</li>
+    </ul>
+  </li> 
+</ul>
+
+
+<h2>TODO</h2>
+
+<ul>
+  <li>Build a better UI for the open dialog
+    <ul>
+      <li>Good example: VLC open dialog with different tab's for each supported protocol (source for vlc)</li>
+    </ul>
+  </li>
+  <li>Convert all Padre disk i/o to use Padre::File</li>
+  <li>Find a solution for syntax check and "run file"
+    <ul>
+      <li>A file edited over SSH could be checked/run at the remote server</li>
+      <li>HTTP/FTP don't easily support run, but FTP files might be run-able via HTTP (CGI scripts)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2>Related</h2>
+
+<a href="/trac/wiki/PadrePluginReDevel">Padre::Plugin::ReDevel</a> - remote development through SSH
+
+
+[% END %]
+[% END %]
