@@ -1,0 +1,41 @@
+[% DEFAULT
+   title="Single Instance"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<h2>Description</h2>
+
+In some operating system (especially Windows) allows people to browse the file-system right-click on a file
+and either 'open with application' or 'open with running instance of Application'. The latter will open the file
+in a an already running instance of Padre.
+<p>
+
+The same will happen if you launch padre again when it is already running.
+<p>
+
+
+<h2>Test</h2>
+
+<ol>
+  <li>Start Padre</li>
+  <li>In <b>Tools -> Preferences -> Behaviour</b>: Enable <b>Open Files in existing Padre</b></li>
+  <li>Restart Padre</li>
+  <li>Open a file via Ctrl+O</li>
+  <li>In the command line of your operating system (Cmd in Windows) type {{{padre SOME_FILE}}}</li>
+  <li>Observe the file opened in the same instance of Padre as you had earlier</li>
+  <li>Now disable <b>Open Files in existing Padre</b></li>
+  <li>Restart Padre</li>
+  <li>In the command line of the OS type again {{{padre SOME_FILE}}}</li>
+  <li>Observe that it start a new instance of Padre with the selected file open in it.</li>
+</ol>
+
+
+[% END %]
+[% END %]
+
+
