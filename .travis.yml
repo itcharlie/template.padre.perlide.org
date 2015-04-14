@@ -2,9 +2,9 @@ language: perl
 perl:
   - '5.20'
 #  - '5.18' # for some reason it fails
-  - '5.16'
-  - '5.14'
-  - '5.12'
-  - '5.10'
+#  - '5.16'
+#  - '5.14'
+#  - '5.12'
+#  - '5.10'
 before_install:
    - cpanm --notest Module::Install
