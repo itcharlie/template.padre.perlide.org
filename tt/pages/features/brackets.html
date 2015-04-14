@@ -1,0 +1,147 @@
+[% DEFAULT
+   title="Bracket or brace matching and completion"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<p>
+When the cursor reaches an opening or closing brace { }, square bracket [ ]
+or parentheses ( ), Padre automatically highlight the pair of the braces.
+</p>
+<pre>
+    ()    # Brackets
+    []    # Square Brackets
+    {}    # Braces
+    ''    # Single-Quoted String Literals
+    ""    # Double-Quoted String Literals
+</pre>
+<ul>
+  <li><i>brace</i> implies (Brackets, Square Brackets &amp; Braces)</li>
+</ul>
+
+<h3>Perl -&gt; Find Unmatched Brace (brace)</h3>
+
+Initial observations, 
+<ul>
+  <li>works in current editor, does not require the file to be saved :)</li>
+  <li>highlights the last unmatched ;-(</li>
+  <li>I think it must be counting charter types, with little reference to Perl syntax ;-(</li>
+</ul>
+
+<p>
+This file passes, this is rubbish ;-((
+<pre>
+#!/usr/bin/perl
+# based on 03_Good_Morning.pl
+# This file assumes that you already read (and understood) earlier sessions!
+
+use strict; # This will be discussed later
+use warnings;
+### line 7 added [
+my [( $sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst ) = localtime( time() );
+
+if ( $hour &lt; 10 ) { print &quot;Good morning!\n&quot;; }
+
+elsif {( $hour == 12 ) { print &quot;Out for lunch...\n&quot;; }} ### added {}
+elsif ( $hour &lt;= 18 ) { print &quot;Hello world!\n&quot;; }]  ### line 13 added ]
+elsif (( $hour &lt; 23 )  { print &quot;Good night.\n&quot;; })  ### added ()
+
+else { print &quot;sleep well!\n;&quot; }
+</pre>
+
+<p>
+run against Padre <tt><a  href="/trac/changeset/14200">r14200</a></tt>
+</p>
+<p>
+Opps should have run the Syntax Checker first, or should I
+</p>
+
+<hr>
+<ul>
+  <li>the editor appears to highlight matching braces in luminous green :)</li>
+</ul>
+
+<h3>Edit-&gt; Brace Matching (//brace//) Ctrl+1</h3>
+
+<ul>
+  <li>moves the cursor for you</li>
+  <li>If the cursor is outside a //brace//, it matches to the outside of it's pair. either forward or backwards :)</li>
+  <li>If the cursor is inside a //brace//, it matches to the inside of it's pair. either forward or backwards :)</li>
+</ul>
+<p>
+Q, why is this on the menu and not just a keyboard shortcut!
+</p>
+
+<h3>Edit -&gt; Select To Brace Matching (//brace//) Ctrl+4</h3>
+
+<ul>
+  <li>Cool :)</li>
+  <li>Inside outside matching //braces// as above, and highlights selection for you :)</li>
+  <li>you still need to explicitly copy to place selection on clipboard</li>
+  <li>X11 copy don't work</li>
+</ul>
+
+<p>
+<b>NB</b> the above actions also work with &quot;line 7 added [" &amp; "line 13 added ]&quot; hence we are treating //brace// behind a # comment as active ;-((
+</p>
+
+<hr />
+<h3>Perl -&gt; Find Unmatched Brace (//brace//)</h3>
+<ul>
+  <li>Checkes for a lone single //brace//</li>
+  <li>appears to work, but in following code in stead of highlighting **}**#odd brace not found, highlights my **[**( $sec on the preceding line.</li>
+</ul>
+
+<pre>
+#!/usr/bin/perl
+# based on 03_Good_Morning.pl
+# This file assumes that you already read (and understood) earlier sessions!
+
+use strict; # This will be discussed later
+use warnings;
+### line 7 added [
+my [( $sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst ) = localtime( time() );
+} #odd brace not found
+if ( $hour &lt; 10 ) { print &quot;Good morning!\n&quot;; }
+
+elsif {( $hour == 12 ) { print &quot;Out for lunch...\n&quot;; }} ### added {}
+elsif ( $hour &lt;= 18 ) { print &quot;Hello world!\n&quot;; }]  ### line 13 added ]
+elsif (( $hour &lt; 23 )  { print &quot;Good night.\n&quot;; })  ### added ()
+
+else { print &quot;sleep well!\n;&quot; }
+</pre>
+
+<ul>
+  <li><b>Q</b> are we are using more than one algorithm to do //brace//</li>
+</ul>
+<hr />
+
+<h3>Tools -&gt; Preferences -&gt; Behaviour</h3>
+<p>
+the image below shows a composite of the pertinent information.
+<img src="/images/prefs_braces.png">
+</p>
+
+<h4>Auto-complete Brackets</h4>
+<p>
+When checked, if you type an opening //brace// or String Literal, you get the closing inserted immediately after for you.
+</p>
+
+<h4>Add another closing bracket</h4>
+<p>
+appears to be superfluous
+</p>
+
+<h2>TO DO</h2>
+<p>
+make this optional, let the user set the colour
+</p>
+
+
+[% END %]
+[% END %]
+
