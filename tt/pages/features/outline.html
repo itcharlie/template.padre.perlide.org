@@ -1,0 +1,37 @@
+[% DEFAULT
+   title="Functions and Outline"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<p>
+The tool shows the layout (class, methods, functions, etc.) and will also show the list of variables declared in the code.
+</p>
+<p>
+There are two tools to show the layout of the code. The simpler one is using a simple regex and shows only the functions in the current file.
+You can turn it on using <b>View -> Show Functions</b>. At the top of the window there is a search box for filtering the functions names.
+Clicking on the name of a function will let you jump to the definition of that function. There is currently no right-click support in this window. 
+</p>
+
+<img src="/images/functions.png">
+
+<p>
+The more complex system is called Outline. You can turn it on via <b>View -> Show Outline</b>. It is using PPI hence it is slower and more CPU intensive
+but it is also more correct and it show additional information such as the name of the package, the list of pragmata, list of modules used, list of functions or methods declared in the file. Double-clicking on the items (or pressing ENTER) will let you jump to their definintion or to their use statement. Right-click on the entries will show a list of actions. Currently this includes ''Go to Element'' which is just the same as double-clicking on the item. Clicking on ''Open Documentation'' where available, will open the documentation of the specific pragmata or module. Unfortunately when closing the documentation it currently crashes Padre. ( #1178 )
+</p>
+
+<img src="/images/outline.png">
+
+<p>
+Padre 0.97+ showing Moose Methods and Attributes
+</p>
+
+<img src="/images/outline2.png">
+
+[% END %]
+[% END %]
+
