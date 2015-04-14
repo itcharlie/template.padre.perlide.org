@@ -1,0 +1,104 @@
+[% DEFAULT
+   title="Basic Editor Features"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<ul>
+  <li><strong>File -&gt; New</strong>  or <strong>Ctrl+N</strong> to create a new empty file. A file name is not needed at this point. By default Padre will treat the file as a Perl 5 file.</li>
+  <li><strong>File -&gt; New -&gt; </strong> TODO, describe these under code generation and <a  href="/wiki/Features/ProjectSkeletonGeneration">Project Skeleton Generation</a></li>
+  <li><strong>File -&gt; Open</strong> or <strong>Ctrl+O</strong>  to navigate the file system and open an existing files. Padre will use the file extension to recognize the file type. It will also apply certain heuristics to determine if a file without an extension and files with extensions that are use for several file types. In particular, Padre will try to guess if the file is a Perl 5 or a Perl 6 file.</li>
+  <li><strong>File -&gt; Open -&gt; </strong></li>
+  <li><strong>File -&gt; Open -&gt; Open Selection</strong> or <strong>Ctrl+Shift+O</strong> if there is a selected text this will try to locate files that match the selection. If the selection looks like a path Padre will try to open that path either absolute or relative. If it looks like a module name (Some::Thing) it will try to find the appropriate file Some/Thing.pm in @INC and open it. currently this feature opens the first file encountered. </li>
+</ul>
+
+<p>
+(TO DO it should find all the possibilities and if there are multiple hits offer the user to choose. This will be especially important if we are
+working on a module that is also already installed. Padre might find the installed version first while we might want to open the development version.)
+</p>
+
+<p>
+(TO DO: when the file is not of Perl type we should have other ways to recognize files from internal naming and have paths to search. Surprise, not every language uses @INC.)
+</p>
+
+<ul>
+  <li><strong>File -&gt; Reload File</strong> - Reloads the file. This is interesting if you either made changes and want to discard them </li>
+</ul>
+
+<p>
+and/or if the file has changed on the disk. If there are unsaved changes Padre will ask you if you really want to throw them away. (TO DO: make a backup of the file before discarding it)
+</p>
+
+<ul>
+  <li><strong>File -&gt; Save</strong>  or <strong>Ctrl+S</strong> will save the current file. If the file does not have a name yet, Padre will open a </li>
+</ul>
+
+<p>
+directory browser to let you pick the name of the file. If you are currently working on a project then 
+in certain cases Padre will try to determine the name of the file by itself. See <a  href="/wiki/ProjectManagement">ProjectManagement</a> for more details.
+</p>
+
+<ul>
+  <li><strong>File -&gt; Save As...</strong> or <strong>F12</strong> will open a directory browser and let you find a new locations and give a new name</li>
+</ul>
+
+<p>
+to save the file. If the file was changed already in the editor the changes will only be saved to the new file and the old file will remain as it was before.
+After saving the file with a new name any subsequent saves will go to this new file.
+</p>
+
+<ul>
+  <li><strong>File -&gt; Save All</strong> or <strong>Alt+F12</strong> will save all the files currently open. If there are one or more tabs open with content but without a filename, Padre will prompt for a name for each one of the files.</li>
+  <li><strong>File -&gt; Close</strong> or <strong>Ctrl+W</strong> checks if the file is saved, if it is closes the current tab. If it is not then offers to save it first.</li>
+  <li><strong>File -&gt; Close -&gt;  Close all Files</strong> - closes all opened files (in case they are not saved yet, asks for instructions).</li>
+  <li><strong>File -&gt; Close -&gt; Close All but Current</strong> - closes all opened files except for the currently being edited.</li>
+  <li><strong>Files -&gt; Recent Files</strong> - a list of recently opened files to open them easily. (TO DO: update the list when we open a file, not only when opening padre) (TO DO: allow the user to configure size of history)</li>
+  <li><strong>File -&gt; Document Statistics</strong> - just random statistics about the current document. If you miss anything important let us know!</li>
+  <li><strong>File -&gt; Quit</strong> - Exits Padre</li>
+</ul>
+
+<h2> Simple editing</h2>
+<p>
+The simple editing features (should) provide the expected behavior for Windows users.
+</p>
+
+<ul>
+  <li><strong>Edit -&gt; Undo</strong> or <strong>Ctrl+Z</strong></li>
+  <li><strong>Edit -&gt; Redo</strong></li>
+  <li><strong>Edit -&gt; Select -&gt; Select All</strong> or <strong>Ctrl+A</strong>, select all the characters in the current document</li>
+  <li><strong>Edit -&gt; Cut</strong> or <strong>Ctrl+X</strong></li>
+  <li><strong>Edit -&gt; Copy</strong> or <strong>Ctrl+C<strong></li>
+  <li><strong>Edit -&gt; Paste</strong> or <strong>Ctrl+V</strong></li>
+</ul>
+<p>
+(TO DO What is <strong>Ctrl+D</strong> ?, duplicate the current line?)
+</p>
+
+<ul>
+  <li><strong>Edit -&gt; Convert Line Endings -&gt; </strong> - Convert line endings to Windows, Unix or Mac Classic style.</li>
+  <li><strong>Edit -&gt; Toggle Comment</strong> or <strong>Shit+Ctrl+C</strong></li>
+  <li><strong>Edit -&gt; Comment Selected Lines</strong> or <strong>Ctrl+M</strong></li>
+  <li><strong>Edit -&gt; Uncomment Selected Lines</strong> or <strong>Ctrl+Shift+M</strong></li>
+</ul>
+
+<h3>Case Changes</h3>
+<p>
+Change the case of the selected text or if there is no selection all the text in the current file.
+</p>
+<ul>
+  <li><strong>Edit -&gt; Upper/Lower Case -&gt; Upper All</strong> - Change all characters to upper case</li>
+  <li><strong>Edit -&gt; Upper/Lower Case -&gt; Lower All</strong> - Change all characters to lower case</li>
+</ul>
+<p>
+Change the first character of every word to upper/lower case leaving the rest as they were. (used to be in a plug-in?)
+</p>
+
+
+[% END %]
+[% END %]
+
+
