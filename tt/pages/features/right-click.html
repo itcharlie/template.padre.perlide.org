@@ -1,0 +1,78 @@
+[% DEFAULT
+   title="Right Click"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<h2>Context Sensitive Menu</h2>
+
+A context menu can be triggered from the editor main window using the common way of platform (one or multiple ways):
+<p>
+<ul>
+  <li>Clicking on the right button of the mouse (All)</li>
+  <li>Using the Menu key of the keyboard (at least Windows, Gnome)</li>
+  <li>Using Shift+F10 on the keyboard (at least Windows, Gnome)</li>
+</ul>
+<p>
+The pop-up presents a list of actions that can be executed.
+The exact list depends on the file type and the specific location of the mouse cursor, or if triggered by the keyboard the position of the caret.
+
+<p>
+As Padre also tries to be keyboard friendly the same pop-up can be triggerd by pressing <b>Alt-/</b>
+
+== Menu Items ==
+
+<b>Undo</b> and <b>Redo</b> are always listed but they might be grayed out. They are the same as in <b>Edit -> Undo and Redo</b>
+<p>
+
+<b>Open Selection</b> is show if there is a selection
+<p>
+
+<b>Open File in Browser</b> will open the File Explorer of Windows or Nautilus on Ubuntu at the directory where the current file can be found
+<p>
+
+<b>Find in Files</b>  will open that menu in <b>Search -> Find in Files...</b>
+<p>
+
+<b>Copy</b> and <b>Cut</b>, <b>Paste</b>, <b>Select All</b> the standard menu options
+<p>
+
+<b>Toggle Comment</b>, <b>Comment</b> and <b>Uncomment</b> can comment out one or more lines at a time
+<p>
+
+If the <b>Show Code Folding</b> is enabled and the mouse is over the folding margin on the left then
+you can see another two menu options to <b>Fold All</b> and <b>Unfold All</b>.
+<p>
+
+In addition each document type can add its own menu items by implementing the <b>event_on_context_menu</b> method.
+For example the Perl document class [http://padre.perlide.org/trac/browser/trunk/Padre/lib/Padre/Document/Perl.pm Padre::Document::Perl] adds
+<b>Find Variable</b>, <b>Rename Variable</b> and the whole <b>Change Variable stye</b> submenu if the mouse is over a variable name.
+<b>Find Method Declaration</b> if the mouse is over a subroutine or method name.
+If something is selected then it will also show <b>Introduce Temporary Variable</b> and <b>Edit with Regex Editor</b>.
+<p>
+
+Finally the plugins can also add extra menu options. (See on_context_menu of the Plugin Manager)
+
+<h2>Test</h2>
+
+<h2>Implementation</h2>
+
+<a href="/trac/browser/trunk/Padre/lib/Padre/Wx/Menu/RightClick.pm">Padre::Wx::Menu::RightClick</a>
+
+<h2>TODO</h2>
+
+<ul>
+  <li>Describe in detail</li>
+  <li>Allow plug-ins to add items</li>
+  <li>Allow the user to configure what's in the context menu</li>
+  <li>The Perl document should be able to recognize when the mouse is in a regex and show the <b>Edit with Regex Editor</b> only if it is and be able to paste the new regex back to the same location.</li>
+</ul>
+
+
+
+[% END %]
+[% END %]
