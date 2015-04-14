@@ -1,0 +1,46 @@
+[% DEFAULT
+   title="Open Resource"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+
+<h2>Test</h2>
+
+<ol>
+  <li>Open Padre</li>
+  <li>Open Padre.pm from the Padre source code</li>
+  <li>'''Search -> Open Resources...'''</li>
+  <li>You should see a window with a text box at the top</li>
+  <li>Type in the letter 'x'</li>
+  <li>You should see a list of files from the Padre project in the lower part of the window, all having letter 'x' in their name</li>
+  <li>add the letter 'y' after the x and all the names should disappear</li>
+  <li>remove the letter 'x'</li>
+  <li>It should now show only files with the letter 'y' in them (=> bug it now shows 01_compile.t)</li>
+  <li>click on the first filename in the list and then move to the other items using the Up/Down arrows.</li>
+  <li>Observe that the path to the actual file appears in the third field of the window.</li>
+  <li>Double click on one of the files</li>
+  <li>Observe that the file opens in Padre</li>
+</ol>
+
+<ol>
+  <li>Open the "Open Resource" window again using Shift+Ctrl+R</li>
+  <li>Type in 0 (zero)</li>
+  <li>See the files appearing</li>
+  <li>Using the 'Down' arrow move to the lower window</li>
+  <li>select a file</li>
+  <li>press ENTER to open the file in padre</li>
+</ol>
+
+<h2>TODO</h2>
+<p>
+I don't know how should this behave if there is no open file
+</p>
+
+[% END %]
+[% END %]
+
