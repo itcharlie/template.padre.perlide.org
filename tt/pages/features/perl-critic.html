@@ -1,0 +1,54 @@
+[% DEFAULT
+   title="Perl Critic"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<h2>Description</h2>
+
+<p>
+The CPAN module Perl::Critic provides a way to check perl code according to certain rules.
+The Padre::Plugin::Critic provides a simple interface to run these checks.
+</p>
+
+<h2>Test</h2>
+
+<ol>
+  <li>Create a new document</li>
+  <li>Type in the following code:
+    <pre>
+      $file = "abc";
+      open FH, $file;
+    </pre>
+  </li>
+  <li>Run <b>Tools/Perl Critic/Perl::Critic current document</b><li>
+  <li>The output window at the bottom of the screen should open and show the following:
+    <pre>
+      Perl::Critic running with default or user configuration
+      Code before strictures are enabled at line 1, column 1. See page 429 of PBP.
+      Bareword file handle opened at line 2, column 1. See pages 202,204 of PBP.
+      Two-argument "open" used at line 2, column 1. See page 207 of PBP.
+    </pre>
+  </li>
+</ol>
+
+<h2>TODO</h2>
+
+<ol>
+  <li>test in saved files</li>
+  <li>test on non-perl files</li>
+  <li>test what happens if no file is opened</li>
+</ol>
+
+<ol>
+  <li>Build a GUI to allow the user to see all the available rules and allow them to create a configuration file using this GUI</li>
+  <li>Allow the user to click on the report lines and jump to the actual code in the editor and/or to see the documentation of the specific issue</li>
+</ol>
+
+[% END %]
+[% END %]
+
