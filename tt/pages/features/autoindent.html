@@ -1,0 +1,32 @@
+[% DEFAULT
+   title="Autoindentation"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+
+<p>
+Padre tries to eliminate the frustration of people who need to work on a project which is using indentation in the incorrect way. Regardless of what the person thinks what is the incorrect way.
+</p>
+<p>
+Padre can try to guess the indentation style of the current file (and later of the current project) and use the indentation method that is the standard in trhe specific files.
+</p>
+This means when you hit the TAB key, Padre will insert a TAB or 4 spaces or 2 space or<li>Depending what the people who wrote the specific file thought should be the right choice. Padre can also recognize when there is no consistent indentation and warn you about it. The <strong>Tools -&gt; Preferences -&gt; Indentation</strong> is the place where you can configure the behavior of Padre.
+
+<ul>
+  <li>Possible values: no/same level/deep</li>
+  <li>There are at least two levels of auto-indentation:
+    <ol>
+       <li>when ENTER is pressed indent to exactly the same level as the previous line</li>
+       <li>if there is an opening brace { on the previous line, indent one level more/li>
+    </ol>
+  </li>
+</ul>
+
+
+[% END %]
+[% END %]
