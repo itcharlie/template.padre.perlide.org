@@ -1,0 +1,44 @@
+[% DEFAULT
+   title="Automatic Save or Backup"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<p>
+Padre does not have this feature but you can plan one...
+</p>
+
+<h2>Auto-save files (Planned)</h2>
+<p>
+Every N seconds all the files changed since the last auto-save are saved to a temporary place maybe in <strong>~/.padre/save</strong>.
+</p>
+<p>
+When the user closes the file, the auto-saved file is removed.
+</p>
+<p>
+Configurable options: on/off, frequency in seconds
+</p>
+
+<h2>Auto-backup</h2>
+
+<p>
+See <strong>Padre::Autosave</strong>
+</p>
+<p>
+When Padre opens a file it automatically creates a copy of the original in <strong>~/.padre/backup/PATH</strong>  where PATH is the same PATH as the full PATH of
+the file. On Windows the initial drive letter is converted to another subdirectory so <strong>c:\dir\file.txt</strong>  will be saved as
+<strong>~/padre/backup/c/dir/file.txt</strong>.
+</p>
+<p>
+When a new file is created no need for auto-backup.
+</p>
+<p>
+When a remote file is opened the backup will probably go to <strong>~/padre/backup_remote/</strong>
+</p>
+<p>
+Configurable options: on/off
+</p>

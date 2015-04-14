@@ -1,15 +1,14 @@
 [% DEFAULT
    title="Feature: Edit/Auto-Diff (draft)"
-   description="Feature: Edit/Auto-Diff (draft)"
+   description=""
 %]
 [% WRAPPER lib/xhtml_doc
 
 %]
 
 [% WRAPPER chrome/styled_panel %]
-<p>
+
 <h2>Margin Markers</h2>
-</p>
 <p>
 Revision 16300 marks a new milestone in Padre version control system (VCS) support. You can now type and Padre will automatically calculate differences and display them as margin markers.
 <ul>
@@ -22,10 +21,9 @@ You can click then on those margin markers to show what has actually been added,
 <p>
 <img src="/images/autodiff/padre_diffs.png" />
 </p>
-<hr />
-<p>
+
 <h2>Diff-Box</h2>
-</p>
+
 <p>
 Just wanted to say that I recently added a differences popup window to Padre's editor.
 <ul>
@@ -43,26 +41,27 @@ Note two Tabs -&gt; 8 Chr per Tab = 16 charters indent Ouch!
 <p>
 <img src="/images/autodiff/diff-box.png" />
 </p>
-<p>
 <ul>
   <li>suggest 1 Tab = 2 charters, will maximise the diff-box real-estate.</li>
 </ul>
-</p>
-<p>
+
 <h3>Previous Diff</h3>
+<p>
 <img src="/images/autodiff/go-up.png" /> Move to Previous Diff.
 </p>
-<p>
+
 <h3>Next Diff</h3>
+<p>
 <img src="/images/autodiff/go-down.png" /> Move to Next Diff.
 </p>
-<p>
+
 <h3>Revert</h3>
+<p>
 <img src="/images/autodiff/edit-undo.png" /> Revert current Diff.
 </p>
-<hr />
-<p>
+
 <h2>VCS</h2>
+<p>
 To Diff against VCS you need to enable **feature_vcs_support = TRUE** in Tool-&gt;Preferences-&gt;Advanced
 </p>
 <p>
@@ -73,55 +72,53 @@ Currently supported vcs.
 </ul>
 </p>
 <hr />
-<p>
+
 <h2>Miscellaneous</h2>
+<p>
 Q, I do not see any content in the Diff-Box for add, only changed and deleted.
 </p>
 <p>
 A, aha...
 </p>
-<blockquote>
-<p>
+
+<pre>
    that's the trick
    you get old text in your diff box
    so you can revert it
    if you add new lines, then nothing
    get it?
-</p>
-</blockquote>
+</pre>
 <p>
 Q, So the diff stuff is relying on the underlying VCS tools and not an internal Padre thing.
 </p>
 <p>
 A, svn =&gt; does a trick by reading .svn\file to diff in memory
 </p>
-<blockquote>
-<p>
+<pre>
    git =&gt; git show HEAD:$filename and then diff in memory
    diff in memory using Algorithm::Diff
    so they are not network bound
    and it is a background task...
    svn or git failed... fallback to editor buffer against saved document diff
    and the cool thing is that you can revert what's changed...
-</p>
-</blockquote>
+</pre>
+
 <p>
 Q, Until you save it?
 </p>
 <p>
 A, local =&gt; until you save
 </p>
-<blockquote>
-<p>
+<pre>
    svn project =&gt; svn diff
    git project =&gt; git diff
-</p>
-</blockquote>
+</pre>
+
 <ul>
   <li>MERCURIAL  =&gt; 'Mercurial',</li>
   <li>BAZAAR     =&gt; 'Bazaar',</li>
   <li>CVS        =&gt; 'CVS',</li>
 </ul>
-</p>
+
 [% END %]
 [% END %]
