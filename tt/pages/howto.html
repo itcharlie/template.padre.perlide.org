@@ -21,6 +21,7 @@
 [% BLOCK howto %]
 <div style="float: top;">
 [% WRAPPER chrome/styled_panel %]
+
 <h1>How to?</h1>
 <p>
 The following howto entries are meant to go through step-by-step various tasks
@@ -41,6 +42,7 @@ aid the learning process and later to turn some of them into screencasts.
 [% BLOCK setup_padre %]
 <div style="float: top;">
 [% WRAPPER chrome/styled_panel %]
+
 <h1>Getting Started with Padre on Windows</h1>
 <ol>
   <li>Download Padre 0.45 from <a href="/download.html">download</a> the name of the file to be saved on
@@ -81,6 +83,7 @@ aid the learning process and later to turn some of them into screencasts.
 [% BLOCK setup_strawberry_six %]
 <div style="float: top;">
 [% WRAPPER chrome/styled_panel %]
+
 <h1>Getting Started with Padre Standalone Plus Six on Windows</h1>
 <p>
 This is the previous package that is only recommended for people interested in Perl 6.
@@ -135,6 +138,7 @@ run "Start", "Run", type in <code>cmd</code> and press enter. In the black windo
 [% BLOCK upgrade_padre %]
 <div style="float: top;">
 [% WRAPPER chrome/styled_panel %]
+
 <h1>Upgrade Padre on Windows</h1>
 <p>
 Assuming you installed the Almost-Six package you can upgrade it with the following command:
@@ -157,6 +161,7 @@ and the phase of the Moon.
 [% BLOCK first_perl5_script %]
 <div style="float: top;">
 [% WRAPPER chrome/styled_panel %]
+
 <h1>First Perl 5 Script: Hello world</h1>
 
 <ol>
@@ -177,6 +182,7 @@ and the phase of the Moon.
 [% BLOCK using_help_in_padre %]
 <div style="float: top;">
 [% WRAPPER chrome/styled_panel %]
+
 <h1>Using Help</h1>
 <p>
 Padre really wants to help you, as such there is no single set of help documentation for now.
@@ -184,6 +190,7 @@ Padre really wants to help you, as such there is no single set of help documenta
 <p>
 Key bindings for F1 will bring up the DocBrowser, a means to search for and browse Perl documentation, F2 searches the core language documentation, such as built in functions ( split, join ), variables and core Modules.
 </p>
+
 <h2>Using the DocBrowser</h2>
 <p>
 Perl comes with a wealth of documentation, the <code>perldoc</code> command allows the programmer to access the documentation for a given module:
@@ -221,11 +228,12 @@ However having an open console to alt-tab to typing <code>perldoc <var>Module::N
 <p>
 You can do this in Padre itself.
 </p>
+
 <h3>Using F1 to access documentation for Installed Modules</h3>
 <p>
 The current key binding <b>F1</b> will bring up the "DocBrowser":
 <br />
-<img src="./static/howto/padre-f1-initial.png"/>
+<img src="/static/howto/padre-f1-initial.png"/>
 <br />
 Here you can see the initial Help opens and presents you with the documentation from Padre.pm.
 </p>
@@ -235,40 +243,41 @@ The DocBrowser is your way of searching for and browsing the documentation for a
 <p>
 Now it's time to search for information about the document we are currently interested in using.  In this case <code>Net::LDAP</code>.
 <br />
-<img src="./static/howto/padre-f1-search.png"/>
+<img src="/static/howto/padre-f1-search.png"/>
 <br />
 </p>
 <p>
 The DocBrowser will create links to documentation referenced and linked to within any documentation file.
 <br />
-<img src="./static/howto/padre-f1-links.png"/>
+<img src="/static/howto/padre-f1-links.png"/>
 <br />
 </p>
 <p>
 In this case <code>IO::Socket</code> is referenced and a link has been created, clicking on the link will open a new tab with the <code>IO::Socket</code> <acronym>POD</acronym>.
 <br />
-<img src="./static/howto/padre-f1-link-clicked.png"/>
+<img src="/static/howto/padre-f1-link-clicked.png"/>
 <br />
 </p>
+
 <h2>Using F2 for Perl documentation</h2>
 <p>
 To search for help on built in functions, such as split or join, global variables, such as $$ or $/,
 or any of the core Modules, the key binding for the Help Search dialog is <b>F2</b>.
 <br />
-<img src="./static/howto/padre-f2-initial.png"/>
+<img src="/static/howto/padre-f2-initial.png"/>
 <br />
 </p>
 <p>
 With the dialog box now open, you can type in terms to search for:
 <br />
-<img src="./static/howto/padre-f2-search.png"/>
+<img src="/static/howto/padre-f2-search.png"/>
 <br />
 </p>
 <p>
 This help search is better integrated into Padre, highlight a word or module name ( such as warnings ) and hit F2, Help will
 show you the documentation related to the item high lighted in the main Padre document window.
 <br />
-<img src="./static/howto/padre-f2-context.png"/>
+<img src="/static/howto/padre-f2-context.png"/>
 <br />
 </p>
 
@@ -280,6 +289,7 @@ show you the documentation related to the item high lighted in the main Padre do
 [% BLOCK vertically_align_selected %]
 <div style="float: top;">
 [% WRAPPER chrome/styled_panel %]
+
 <h1>Using Vertically Align</h1>
 <p>
 </p>
@@ -292,6 +302,7 @@ show you the documentation related to the item high lighted in the main Padre do
 [% BLOCK first_perl6_script %]
 <div style="float: top;">
 [% WRAPPER chrome/styled_panel %]
+
 <h1>First Perl 6 Script: Hello world</h1>
 <ol>
 <li>Click on "File" and the "New..." and "Perl 6 script"</li>
@@ -311,6 +322,7 @@ show you the documentation related to the item high lighted in the main Padre do
 [% BLOCK rename_a_variable %]
 <div style="float: top;">
 [% WRAPPER chrome/styled_panel %]
+
 <h1>How to rename a lexical variable?</h1>
 <p>
 There are times while writing code you come up with variable names that lack imagination and while at the time you
@@ -436,10 +448,11 @@ sum up:
 [% BLOCK get_involved_in_padre_development %]
 <div style="float: top;">
 [% WRAPPER chrome/styled_panel %]
+
 <h1>How to get involved in the development of Padre and its plug-ins?</h1>
 <p>
 Behind this item there are lots of issues. We maintain a separate set of
-<a href="http://padre.perlide.org/trac/wiki/Howto">Howto's</a> on the developers wiki.
+<a href="/trac/wiki/Howto">Howto's</a> on the developers wiki.
 </p>
 <div class="spacer" ></div>
 [% END %]

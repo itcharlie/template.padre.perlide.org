@@ -18,7 +18,7 @@ Building GUI for Padre can be done either manually as we did earlier or using th
      <li>For Ubuntu visit <a  href="https://launchpad.net/ubuntu/+source/wxformbuilder">https://launchpad.net/ubuntu/+source/wxformbuilder</a> or better yet <a  href="https://launchpad.net/~rjmyst3/+ppa-packages">https://launchpad.net/~rjmyst3/+ppa-packages</a></li>
    </ul>
  </li>
- <li>Use Padre::Plugin::<a  href="/wiki/FormBuilder">FormBuilder</a>. It is not released on CPAN so you need to install it from our repository.</li>
+ <li>Use Padre::Plugin::<a  href="/trac/wiki/FormBuilder">FormBuilder</a>. It is not released on CPAN so you need to install it from our repository.</li>
  <li>Please follow this discussion <a  href="http://irclog.perlgeek.de/padre/2010-12-10#i_3072846">http://irclog.perlgeek.de/padre/2010-12-10#i_3072846</a></li>
 </ol>
 
@@ -28,9 +28,9 @@ The actual process is
 
 <ol>
   <li>Using wxFormBuilder open the appropriate file in the project fbp directory.</li>
-  <li>Install <a  href="/wiki/FormBuilder">FormBuilder</a> plugin from SVN (it's not good enough to release)<br>
-       NOTE: you need to install the <a  href="/wiki/FormBuilder">FormBuilder</a> plugin (not just run it with 'dev -a') as it uses File::<a  href="/wiki/ShareDir">ShareDir</a>, which only seems to work fro installed files.</li>
-  <li>Use the <a  href="/wiki/FormBuilder">FormBuilder</a> plugin to generate the code for the dialog.</li>
+  <li>Install <a  href="/trac/wiki/FormBuilder">FormBuilder</a> plugin from SVN (it's not good enough to release)<br>
+       NOTE: you need to install the <a  href="/trac/wiki/FormBuilder">FormBuilder</a> plugin (not just run it with 'dev -a') as it uses File::<a  href="/trac/wiki/ShareDir">ShareDir</a>, which only seems to work fro installed files.</li>
+  <li>Use the <a  href="/trac/wiki/FormBuilder">FormBuilder</a> plugin to generate the code for the dialog.</li>
   <li>Save the code over the top of the existing .pm module in the Padre::Wx::FBP namespace with no modifications. The ::FBP:: namespace is designed specifically for this purpose, to hold unmodified generated files.</li>
   <li>Open the Padre::Wx::Dialog:: module, which inherits from the ::FBP:: module. Edit to apply any custom changes needed to match the generated code.</li>
 </ol>
