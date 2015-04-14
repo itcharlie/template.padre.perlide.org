@@ -1,0 +1,140 @@
+[% DEFAULT
+   title="Autocompletition of variables, functions and methods"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<h2>Description</h2>
+
+<p>
+Support for creating and running unit tests \\
+Please take the following snipetts form Perldoc into account whilst reading this page.
+</p>
+<ul>
+  <li>@INC</li>
+</ul>
+
+<p>
+The array @INC contains the list of places that the do EXPR , require, or use constructs look for their library files. It initially consists of the arguments to any -I command-line switches, followed by the default Perl library, probably /usr/local/lib/perl, followed by &quot;.&quot;, to represent the current directory. (&quot;.&quot; will not be appended if taint checks are enabled, either by -T or by -t .) If you need to modify this at runtime,
+</p>
+<ul>
+  <li>prove option switches</li>
+</ul>
+
+<pre>
+ -v   --verbose  Print all test lines.
+ -l   --lib      Add 'lib' to the path for your tests (-Ilib).
+ -b   --blib     Add 'blib/lib' and 'blib/arch' to the path for your tests
+</pre>
+[[Image(runtest.png)]] \\
+
+<h3>Run -&gt; Run Tests</h3>
+<p>
+This will process your Skeleton and your additional test files, located within /t directory structure
+</p>
+<table>
+<tr><td>Skeleton</td><td>Action</td></tr>
+<tr><td>Module::Build</td><td>./Build test</td></tr>
+<tr><td>Module::Install</td><td>make test</td></tr>
+<tr><td>ExtUtils::MakeMaker</td><td>make test</td></tr>
+</table>
+<p>
+
+<h3>Run -&gt; Run Build and Tests</h3>
+<p>
+This will Build/make depending on your Skeleton.
+</p>
+<table>
+<tr><td>Skeleton</td><td>Action</td></tr>
+<tr><td>Module::Build</td><td>./Build</td></tr>
+<tr><td>Module::Install</td><td>make</td></tr>
+<tr><td>ExtUtils::MakeMaker</td><td>make</td></tr>
+</table>
+<p>
+followed by Run Tests.
+</p>
+
+<h3>Run -&gt; Run This Test</h3>
+<p>
+This will process your Active test script in Padre editor, test script should have .t extension (otherwise option, will be greyed out)
+</p>
+<table>
+<tr><td>Skeleton</td><td>Action</td></tr>
+<tr><td>Any</td><td>prove -bv $filename</td></tr>
+</table>
+
+
+<h2>Test</h2>
+
+<h3>Setup</h3>
+
+<ul>
+  <li>Module::Build (MB)
+     <br><tt>module-starter --mb --module=Module::Build --author=&quot;Fred Bloggs&quot; --email=fb@bloggs.com --verbose</tt></li>
+  <li>ExtUtils::MakeMaker (EUMM)
+     <br><tt>module-starter --eumm --module=ExtUtils::MakeMaker --author=&quot;Fred Bloggs&quot; --email=fb@bloggs.com --verbose</tt></li>
+  <li>Module::Install (MI)
+     <br><tt>module-starter --mi --module=Module::Install --author=&quot;Fred Bloggs&quot; --email=fb@bloggs.com --verbose</tt></li>
+</ul>
+<p>
+or you could use, Padres Skeleton Builder <a href="/features/project-skeleton-generation.html">Project Skeleton Generation</a>
+</p>
+<hr />
+<p>
+All test run in order left -&gt; right
+</p>
+
+<h3>Test 1</h3>
+
+<p>
+run against a <a href="/trac/wiki/Features/Wiki/VanillaBuild">Vanilla build</a>.
+</p>
+<table>
+<tr><td></td><td>Run This Test</td><td>Run Test</td><td>Run Build and Test</td><td>Run Tests</td></tr>
+<tr><td>EUMM</td><td>Pass</td><td>Fail</td><td>Fail</td><td>Fail</td></tr>
+<tr><td>MB</td><td>Pass</td><td>Fail</td><td>Fail</td><td>Fail</td></tr>
+<tr><td>MI</td><td>Fail</td><td>Fail</td><td>Fail</td><td>Fail</td></tr>
+</table>
+<hr />
+
+<h3>Test 2</h3>
+<p>
+run against  a <a  href="/trac/wiki/Features/Wiki/VanillaBuild">vanilla build</a>, followed by:
+<ul>
+  <li>EUMM perl Makefile.PL</li>
+  <li>MB perl Build.PL</li>
+  <li>MI perl Makefile.PL</li>
+</ul>
+<table>
+<tr><td></td><td>Run This Test</td><td>Run Test</td><td>Run Build and Test</td><td>Run Tests</td><td> Run This Test</td></tr>
+<tr><td>EUMM</td><td>Pass</td><td>Fail</td><td>Pass</td><td>Pass</td><td>Pass</td></tr>
+<tr><td>MB</td><td>Pass</td><td>Fail</td><td>Pass</td><td>Pass</td><td>Pass</td></tr>
+<tr><td>MI</td><td>Fail</td><td>Fail</td><td>Pass</td><td>Pass</td><td>Pass</td></tr>
+</table>
+
+<h3>Test 3</h3>
+<p>
+run against a <a  href="/trac/wiki/Features/Wiki/VanillaBuild">vanilla build</a>.
+</p>
+<pre>
+Padre/lib/Padre/Wx/Main.pm \\
+sub on_run_this_test { \\
+line 2590 approx.
+
+$self-&gt;run_command(&quot;$prove -lv $filename&quot;);
+</pre>
+<table>
+<tr><td></td><td>Run This Test</td><td>Run Test</td><td>Run Build and Test</td><td>Run Tests</td></tr>
+<tr><td>EUMM</td><td>Pass</td><td>Fail</td><td>Fail</td><td>Fail</td></tr>
+<tr><td>MB</td><td>Pass</td><td>Fail</td><td>Fail</td><td>Fail</td></tr>
+<tr><td>MI</td><td>Pass</td><td>Fail</td><td>Fail</td><td>Fail</td></tr>
+</table>
+
+
+[% END %]
+[% END %]
+
