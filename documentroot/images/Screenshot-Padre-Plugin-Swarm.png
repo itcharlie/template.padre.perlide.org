@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+  
+
+  
+<!-- <script type="text/javascript" src="http://www.ohloh.net/p/25595/widgets/project_users.js?style=green"></script> -->
+
+
+  <head>
+    <title>
+      Screenshot-Padre-Plugin-Swarm.png on Features/CooperativeEditing – Attachment
+     – Padre
+    </title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!--[if IE]><script type="text/javascript">
+      if (/^#__msie303:/.test(window.location.hash))
+        window.location.replace(window.location.hash.replace(/^#__msie303:/, '#'));
+    </script><![endif]-->
+        <link rel="search" href="/trac/search" />
+        <link rel="help" href="/trac/wiki/TracGuide" />
+        <link rel="alternate" href="/trac/raw-attachment/wiki/Features/CooperativeEditing/Screenshot-Padre-Plugin-Swarm.png" type="image/png; charset=iso-8859-15" title="Original Format" />
+        <link rel="up" href="/trac/wiki/Features/CooperativeEditing" title="Features/CooperativeEditing" />
+        <link rel="start" href="/trac/wiki" />
+        <link rel="stylesheet" href="/trac/chrome/common/css/trac.css" type="text/css" /><link rel="stylesheet" href="/trac/chrome/common/css/code.css" type="text/css" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+      <link type="application/opensearchdescription+xml" rel="search" href="/trac/search/opensearch" title="Search Padre" />
+      <script type="text/javascript" charset="utf-8" src="/trac/chrome/common/js/jquery.js"></script>
+      <script type="text/javascript" charset="utf-8" src="/trac/chrome/common/js/babel.js"></script>
+      <script type="text/javascript" charset="utf-8" src="/trac/chrome/common/js/messages/en_US.js"></script>
+      <script type="text/javascript" charset="utf-8" src="/trac/chrome/common/js/trac.js"></script>
+      <script type="text/javascript" charset="utf-8" src="/trac/chrome/common/js/search.js"></script>
+      <script type="text/javascript" src="/trac/chrome/common/js/folding.js"></script>
+      <script type="text/javascript">
+        jQuery(document).ready(function($) {
+          $('#preview table.code').enableCollapsibleColumns($('#preview table.code thead th.content'));
+        });
+      </script>
+    <link rel="stylesheet" type="text/css" href="/trac/chrome/site/style.css" />
+  </head>
+  <body>
+    <div id="siteheader">
+		<h1>WIKI for Padre, The Perl IDE</h1>
+		<h3>Welcome, to the Well of all Padre knowledge, Please Register, Login and join in</h3>
+    </div>
+    <div id="banner">
+      <div id="header">
+        <a id="logo" href="/"><img src="/static/logo.png" alt="Padre, Perl Application Development and Refactoring Environment" height="64" width="64" /></a>
+      </div>
+      <form id="search" action="/trac/search" method="get">
+        <div>
+          <label for="proj-search">Search:</label>
+          <input type="text" id="proj-search" name="q" size="18" value="" />
+          <input type="submit" value="Search" />
+        </div>
+      </form>
+      <div id="metanav" class="nav">
+    <ul>
+      <li class="first"><a href="/trac/login">Login</a></li><li><a href="/trac/prefs">Preferences</a></li><li class="last"><a href="/trac/about">About Trac</a></li>
+    </ul>
+  </div>
+    </div>
+    <div id="mainnav" class="nav">
+    <ul>
+      <li class="first active"><a href="/trac/wiki">Home</a></li><li><a href="/trac/timeline">Timeline</a></li><li><a href="/trac/wiki/Roadmap">Roadmap</a></li><li><a href="/trac/browser">Browse Source</a></li><li><a href="/trac/report">View Tickets</a></li><li class="last"><a href="/trac/search">Search</a></li>
+    </ul>
+  </div>
+    <div id="main">
+      <div id="ctxtnav" class="nav">
+        <h2>Context Navigation</h2>
+        <ul>
+          <li class="last first"><a href="/trac/wiki/Features/CooperativeEditing">Back to Features/CooperativeEditing</a></li>
+        </ul>
+        <hr />
+      </div>
+    <div id="content" class="attachment">
+        <h1><a href="/trac/wiki/Features/CooperativeEditing">Features/CooperativeEditing</a>: Screenshot-Padre-Plugin-Swarm.png</h1>
+        <table id="info" summary="Description">
+          <tbody>
+            <tr>
+              <th scope="col">File Screenshot-Padre-Plugin-Swarm.png,
+                <span title="167360 bytes">163.4 KB</span>
+                (added by submersible_toaster, <a class="timeline" href="/trac/timeline?from=2011-09-20T13%3A51%3A46Z&amp;precision=second" title="See timeline at Sep 20, 2011, 1:51:46 PM">4 years ago</a>)</th>
+            </tr>
+            <tr>
+              <td class="message searchable">
+                <p>
+Padre running solarized dark theme with Swarm edits (ghost cursor in margin)
+</p>
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="preview" class="searchable">
+          
+  <div class="image-file"><img src="/trac/raw-attachment/wiki/Features/CooperativeEditing/Screenshot-Padre-Plugin-Swarm.png" alt="Screenshot-Padre-Plugin-Swarm.png" /></div>
+
+        </div>
+    </div>
+    <div id="altlinks">
+      <h3>Download in other formats:</h3>
+      <ul>
+        <li class="last first">
+          <a rel="nofollow" href="/trac/raw-attachment/wiki/Features/CooperativeEditing/Screenshot-Padre-Plugin-Swarm.png">Original Format</a>
+        </li>
+      </ul>
+    </div>
+    </div>
+    <div id="footer" lang="en" xml:lang="en"><hr />
+      <a id="tracpowered" href="http://trac.edgewall.org/"><img src="/trac/chrome/common/trac_logo_mini.png" height="30" width="107" alt="Trac Powered" /></a>
+      <p class="left">Powered by <a href="/trac/about"><strong>Trac 1.0.1</strong></a><br />
+        By <a href="http://www.edgewall.org/">Edgewall Software</a>.</p>
+      <p class="right">Visit the Trac open source project at<br /><a href="http://trac.edgewall.org/">http://trac.edgewall.org/</a></p>
+    </div>
+    <div id="sitefooter">
+    </div>
+  </body>
+</html>
