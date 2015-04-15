@@ -1,0 +1,123 @@
+[% DEFAULT
+   title="Syntax Highlighting"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<h2>Syntax highlighting or syntax coloring</h2>
+
+In 0.84 you could switch between styles in <b>View -> Styles -> </b>
+<p>
+
+Starting from 0.85 the option moved to <b>Tools -> Preferences -> Appearance -> Style -> </b>
+<p>
+
+You can also create your own style:
+<p>
+
+To set up a custom syntax highlighting scheme, you create a .yml file that defines
+a mapping from syntactic elements to colors. The easiest way to create your own scheme is
+probably to copy an existing style file (for instance, default.yml) from the <b>share/styles/</b> folder of Padre.
+Put it in styles subdirectory of your padre configuration directory, and then modify it. Padre checks this folder 
+on start-up and adds any styles in the YAML files there to the list of available styles.
+<p>
+
+You can find out where is the Padre configuration directory on your computer by looking at <b>Help -> About -> System Info -> Config</b>
+<p>
+
+=head2 Syntax highlighting
+<p>
+
+Padre is using L<Wx> (aka wxPerl), wxWidgets for GUI and Scintilla for the editor.
+Scintilla provides very good syntax highlighting for many languages but Padre is still
+bound by the version of Scintilla included.
+<p>
+
+The F<share/styles/default.yml> file is the mapping between the Scintilla defined
+constants for various syntactical elements of each language and the C<RGB> values
+of the color to be used to highlight them.
+<p>
+
+<h2>Adding new syntax highlighting</h2>
+
+TO DO does this stuff below really belong here?
+<p>
+
+Need to define constants in <b>Padre::Util</b> to be in the <b>Padre::Constant</b> namespace.
+<p>
+
+Need to add the color mapping to <b>share/styles/default.yml</b>
+<p>
+
+Need to implement the <b>Padre::Document::Language</b> class.
+<p>
+
+Need to define the MIME type mapping in <b>Padre::Document</b>
+<p>
+
+For examples see <b>Padre::Document::PASM</b>, <b>Padre::Document::PIR</b> and <b>Padre::Document::Perl</b>.
+<p>
+
+<a href="/features/syntax-highlighting-table.html">Syntax Highlighting Table</a> draft.
+
+<h2>Test</h2>
+
+<ol>
+  <li>In Tools/Preferences/Files and Colors 
+    <ol>
+      <li>Select File Type: Perl 5</li>
+      <li>Select Highlighter: Scintilla</li>
+    </ol>
+  <li>Using File/Open open the file t/files/no_strict.pl
+  <li>The status bar at the bottom should now show:
+    <ul>
+      <li>the name of the file | Scintilla | Perl 5 | (and some more)</li>
+    </ul>
+  </li>
+  <li>In Tools/Preferences/Files and Colors 
+    <ol>
+      <li>Select File Type: Perl 5</li>
+      <li>Select Highlighter: PPI Experimental</li>
+    </ol>
+  </li>
+  <li>Viewing the already open no_strict.pl file the status bar at the bottom should now show:
+    <ol>
+      <li>the name of the file | PPI Experimental | Perl 5 | (and some more)</li>
+      <li>The coloring of the code has changed.</li>
+    </ol>
+  </li>
+  <li>In Tools/Preferences/Files and Colors 
+    <ol>
+      <li>Select File Type: Perl 5</li>
+      <li>Select Highlighter: PPI Standard</li>
+    </ol>
+  </li>
+  <li>Viewing the already open no_strict.pl file the status bar at the bottom should now show:
+    <ol>
+      <li>the name of the file | PPI Standard | Perl 5 | (and some more)</li>
+    </ol>
+  </li>
+</ol>
+
+<h2>TODO</h2>
+
+<ul>
+  <li>add screenshots with default highlighting of the various syntax highlighers</li>
+  <li>other programming languages</li>
+  <li>syntax highlighting (coloring):
+    <ul>
+      <li>HTML export #112</li>
+      <li>customizable</li>
+      <li>for many languages</li>
+    </ul>
+  </li>
+<ul>
+
+
+[% END %]
+[% END %]
+
