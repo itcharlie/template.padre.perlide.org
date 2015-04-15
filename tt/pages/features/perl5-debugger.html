@@ -1,0 +1,464 @@
+[% DEFAULT
+   title="Perl 5 Debugger"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<h2>Debug2</h2>
+
+<p>
+Assumption Debug2 Panels expect to be working against saved Perl files
+</p>
+<ul>
+  <li>tool-tips used extensively throughout so read them.</li>
+  <li>Assumption you are aware of this: <a  href="http://perldoc.perl.org/perldebug.html">http://perldoc.perl.org/perldebug.html</a></li>
+  <li>see Pro Perl Debugging <a  href="http://www.apress.com/9781590594544">http://www.apress.com/9781590594544</a> It's a nice text,
+      <br>try working your way through Ch-04 in Padre for example</li>
+</ul>
+
+<p>
+critiques welcome
+</p>
+<p>
+
+<h2>Debug::Client</h2>
+Please note version compatibility, it's important, you can check what version is installed in Padre by looking in Help -&gt; About -&gt; Information
+</p>
+<pre>
+Debug::Client 0.29   Padre 1.01
+Debug::Client 0.29   Padre 1.00
+Debug::Client 0.25   Padre 0.98
+Debug::Client 0.20   Padre 0.96
+Debug::Client 0.16   Padre 0.94
+</pre>
+
+<h3>Tips</h3>
+
+<b>Warning</b> if your script requires user input you should have &quot;use external window for execution&quot; checked.
+<p>
+
+<ul>
+  <li>Make sure you can **Run** your script in Padre first, before you try to Debug it.
+      <br>for start up parameters look at Tools -&gt; Preferences -&gt; language-Perl5: Perl-Arguments
+  </li>
+  <li>Turn on $OUTPUT_AUTOFLUSH</li>
+  <li>Try setting a breakpoint against 1; at end of your .pl files or equivalent, if you want to poke about with &quot;p|x&quot; before return or end</li>
+  <li>Be patient;
+    <ul>
+      <li>let Padre finish background tasks before launching debug
+      <li>let each action complete, before launching next
+      <li>remember it's using socket communications, hence ip time out :(
+      <li>$DB::single = 1; </tt> may be of use, go read :)
+    </ul>
+  </li>
+  <li>If you use **Raw** it's all up to you, but the feedback will be interesting :)</li>
+</ul>
+
+<hr>
+<h2>Menu</h2>
+<ul>
+  <li>The first three items relate to the Panels below.</li>
+  <li>Launch (L), Breakpoints (b) and Quit (q) as per tool-bar</li>
+  <li>Visit Debug Wiki, is here.</li>
+</ul>
+
+<img src="/images/features/debug_menu.png">
+<hr />
+
+<h2>Tool-Bar</h2>
+<p>
+<img src="/images/features/tool-bar_icons.png">
+</p>
+<p>
+we only need 3 buttons on the tool bar, ( 3 on right )
+<ul>
+  <li>launch debugger ( launches Breakpoints &amp; Debugger, enables tool-bar quit and then runs debug against current file )</li>
+  <li>breakpoint toggle adds blue dotdotdot margin marker. (works with or without Breakpoints panel visible, so you can add BP's as you go)</li>
+  <li>quit debugger ( initially greyed out )</li>
+</ul>
+
+<p>
+NB. If you do not see the new icons, you will need to do the following, Tools-&gt;Preferences-&gt;Advanced-&gt;main_tool-bar_items Reset, for the three new tool-bar icons to appear 
+</p>
+<p>
+PS. icons will be greyed-out if Current file is not a Perl(mime-type) file.
+</p>
+<hr />
+
+<h2>Breakpoints</h2>
+<p>
+New in 0.97 when you click on a breakpoint point as in path/line, it now switches editor focus to file and line
+<p>
+if you do this whilst debugging, use the **dot** button in Debugger panel to show next line to debug. 
+<p>
+<img src="/images/features/breakpoints.png">
+</p>
+<p>
+
+<h3>Top icons</h3>
+<ul>
+  <li>gray cross ( Delete MARKER_NOT_BREAKABLE Current File Only )</li>
+  <li>refresh Ctrl-List</li>
+  <li>Breakpoints ( Toggle ) also updates Ctrl-List and Margin Markers ( the blue dotdotdot co exist with diff markers )</li>
+</ul>
+
+<h3>Middle</h3>
+<ul>
+  <li>Current File (BLUE)</li>
+  <li>MARKER_NOT_BREAKABLE (GRAY) ( dotdotdot margin markers are also gray )</li>
+  <li>Project files (GREEN)</li>
+</ul>
+
+
+<h3>Bottom<?h3>
+<ul>
+  <li>check Project show all files in current project with breakpoints</li>
+  <li>if check projects, show delete all breakpoints in this project enabled.</li>
+  <li>delete all breakpoints for when you need to delete all breakpoints in current project (project as in perl project)</li>
+</ul>
+
+<p>
+<b>NB</b>
+<ul>
+  <li>Breakpoints are stored as absolute paths (debug will open files based on absolutes paths)</li>
+  <li>Margin Marker Breakpoints piggy back on feature Syntax.</li>
+</ul>
+
+<h2>DebugBreakpoints</h2>
+
+If you want to Peek inside the DB use Cookbook Recipe 04
+<p>
+<img src="/images/features/debugbreakpoints.png">
+</p>
+<hr />
+
+<h2>Debugger</h2>
+<p>
+When you &quot;run debug&quot; :)
+</p>
+<ul>
+  <li>quit(q) is always visible, ( toolbar quit should now be enabled ) </li>
+  <li>the debugger will load breakpoints against the current file and it's project files, when it is load by the perl debug program, if you get it wrong,
+      just adjust breakpoints as you go with b|B or quit and adjust breakpoints with panel and then re-run.</li>
+  <li>new icons will only be visible when debug is running<br>
+      step-in(s), step-out(n), step-over(r), run-till(c), glasses(p)<br>
+      glasses, as per previous version, shown in black text ( if you select $_ remember DWISNWIM ) this is a persistent p :)
+  </li>
+  <li>when perl debug is running the Debugger Output panel will be opened, initially with the perl debug help screen.</li>
+  <li>note the green SMALLRECT in margin, showing debug position, as previously<br>
+      Tip if you want to delay closing of debugger output, breakpoint the <tt>1;</tt> at end of your file :)
+  </li>
+  <li>As of Padre 0.95 you can now click on Variables and show values in Debugger Output in there corresponding colour</li>
+</ul>
+
+<p>
+Why blue, I here you ask?, well others use yellow and red, but we have a wonderful blue Morpho butterfly :) hence blue
+</p>
+<p>
+<img src="/images/features/debugger1.png"><img src="/images/features/debugger3.png">
+</p>
+
+
+<h2>Show</h2>
+
+<ul>
+  <li>Show Local Variables(BLUE) is fixed to (y 0) local, as I don't know how to work out what level the debugger is at and how many levels there are, silly me
+      <br>see Bugs &amp; Limitations below.
+  </li>
+  <li>Show Global Variables(GRAY) is doing X !(INC|ENV|SIG) against a current file which is also part of a perl project.
+    <ul>
+      <li>I have been getting perl debug errors, see POD below, so you might notice it is automaticly disabled when I think it is unsafe, then re-enable.</li>
+      <li>If you want to see @ISA|@INC|%ENV|%SIG use the p|x button.</li>
+    </ul>
+  </li>
+</ul>
+
+New in 0.97 when you click on either of above, display is now updated accordingly.
+
+<h3>Debugger-Output Options</h3>
+
+<p>
+My premises is that we are just wrapping the command line debugger, in a nice way, hence we will use the existing perl debug command language thus subliminally teaching the perl debug CLI instructions.
+</p>
+<p>
+These options all display in the Debug-Output panel. some my consider these advanced, they do get more intense as you go down and to the right :)
+</p>
+
+
+<h3>Code Listing</h3>
+<ul>
+  <li>trace is a toggle against next action</li>
+  <li>. =&gt; (dot) return editor to the next line to be executed</li>
+  <li>v =&gt; view around line</li>
+  <li>L =&gt; List (default all) actions, breakpoints and watch expressions</li>
+</ul>
+
+<h3>Default action only</h3>
+
+<ul>
+  <li>b|B =&gt; running Breakpoints, sets or unsets breakpoint (current line) against running debug as well as the normal Breakpoint actions above.<br>
+      it finishes with a 'L b' if you want to see more use '.vL' to see for your self,
+  </li>
+  <li>M =&gt; display loaded modules</li>
+  <li>T =&gt; stack back-trace</li>
+  <li>E =&gt; display thread id's (this seams a bit experimental at the moment, but here for completeness)</li>
+  <li>o =&gt; Display all options</li>
+</ul>
+
+<h3>With value</h3>
+
+<ul>
+  <li>p|x =&gt; evaluate expression
+    <ul>
+      <li>output shows 'expression = result'<br>
+          tip turn Trace off
+      </li>
+      <li>works with $ @ % also 2 + 3</li>
+      <li>if empty returns $_ if exists or error :)</li>
+    </ul>
+  </li>
+  <li>S =&gt; <tt><a  href="/wiki/RegEx">RegEx</a></tt><br>
+     <tt><a  href="/wiki/RegEx">RegEx</a> = !(IO::Socket|Carp)</tt> will hide Modules used by Debug::Client
+  </li>
+  <li>w|W =&gt; watches
+    <ul>
+      <li>add a watch (w exp)</li>
+      <li>delete an existing watch (W exp)</li>
+      <li>* delete all watches (W *)</li>
+      <li>blank display watches (L w)</li>
+    </ul>
+  </li>
+  <li>Raw =&gt; pass expression directly to debug prompt (with out passing GO!) the side effects are not fully tested, we await your critiques
+      <br>any thing you like:
+    <ul>
+      <li>x Object-&gt;new</li>
+      <li>m Object</li>
+      <li>if you use &quot;o frame=nn&quot; (nn&lt;=30) this will cause y-0 to display garbage, you have been warned, so reset to &quot;o frame=0&quot; asap</li>
+      <li>actions</li>
+      <li>H if you want to see session History</li>
+      <li>... Oops yada-yada :)</li>
+      <li>help last but not least, you can now enter 'h' or 'h h' and even 'h alpha' try the others first, it just makes sense to use h via Raw.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>
+Musings: -,l ignored as we are in an IDE
+</p>
+<hr />
+
+<h2>Debugger Output</h2>
+<p>
+The output window is only shown when debug is running
+<p>
+<ul>
+  <li>See below ( only displays current output )</li>
+  <li>red text, I wonder what the inspiration was for this!</li>
+  <li>Suggest you uncheck ( Padre -&gt; View -&gt; Unlock User Interface ) so you can enlarge view. the square is a toggle.</li>
+</ul>
+<hr />
+
+<h2>Screen Shots</h2>
+<h3>Debug2</h3>
+<p>
+There is a lot going on in these slides, please notice the Debug-Output panel. In all cases the debugger has stopped after **c** continue(run-till).
+</p>
+
+<h4>slide 1</h4>
+<p>
+The use of p|x = %HoH
+</p>
+<p>
+<img src="/images/features/debug4.png">
+</p>
+
+<h4>slide 2</h4>
+<p>
+The use of w|W = $_
+</p>
+<p>
+<img src="/images/features/debug3.png">
+</p>
+<ul>
+  <li>NB look at the wasted screen real-estate in the bottom right hand corner, I suggest that we should extend the right hand panel down into this space?</li>
+  <li>The example files used here are in attachments if you want to play.</li>
+</ul>
+<hr />
+
+<h2>Bugs &amp; Limitations</h2>
+<p>
+Using Show Variables my cause the following, found Watch not to be displayed in Debug-Output, even though Debug2 has stopped at the correct place.
+<pre>
+&quot;Watchpoint 0:	@fonts changed:
+    old value:	''
+    new value:	'ARRAY(0x9060508)', 'ARRAY(0x9060498)'
+main::CODE(0x95ba6d8)(/home/kevin/src/Padre/Padre-Plugin-Debug/scripts/test_1415.pl:63):
+63:			say @fonts;
+</pre>
+
+<p>
+Using a Watch inside an ANON sub with Show Variables enabled may cause Padre to hang when clicking on Values in </tt><a  href="/wiki/CtrlList">CtrlList</a><tt>, suggest you delete watch first.
+Suggest you don't enable Show Variables against an embedded watch in an ANON sub.
+<p>
+
+**NB fixed in trunk 0.97 with D-C 0.21_07 (see code snipet in <a  href="/ticket/1415">#1415</a>)**
+</p>
+<hr />
+
+<h2>TODO</h2>
+<ul>
+  <li>Colours from themes, thanks subT</li>
+  <li>Conditional Breakpoints next overhaul or you could just use &lt;Raw&gt;</li>
+  <li>Actions use **Raw**</li>
+</ul>
+
+<h3>POD from Main.pm</h3>
+<p>
+waiting until this Plug-in is working before migrating into Padre ( =&gt; 0.93 ) 
+don't want to muck trunk.
+</p>
+<p>
+To view Padre::DB::DebugBreakpoints use P-P-Cookbook::Recipie04 in trunk
+</p>
+<p>
+We can now add and delete breakpoints via icon in debug simulation and Breakpoint panel.
+</p>
+<p>
+Load breakpoints for current file, on load of Breakpoint panel.
+</p>
+<p>
+Get breakpoint panel to only show current file and current project bp's only, 
+inspired by vcs options
+</p>
+<p>
+the debugger loads breakpoints from DB when started, for all files in current project. 
+when debugger loads a new file ( current ) the current files BP's are add to the debugger, 
+use L to see this.
+</p>
+<p>
+changed breakpoint margin marker to ... so as to co-exist with diff margin markers,
+and avoid information contamination due to colour washout of previous SMALLRECT.
+Add Gray for not active with switched by debugger, also added new home made icons for step_....
+</p>
+<p>
+add functionality from trunk so all icons mimic current debug implementation
+</p>
+<p>
+look at displaying variables yes, but in a nice table (y 0) working
+</p>
+<p>
+debug-output only viable when debugger running, on start of new debug first displays debugger help
+</p>
+<p>
+Added buttons with colour letters to correspond to debuggers actions.
+</p>
+<p>
+=head1 Feed Back
+</p>
+<p>
+what options should be in Debugger Panel / Debug-Output Options
+</p>
+<p>
+room for 3 more using coloured letters
+</p>
+<p>
+=head1 BUGS AND LIMITATIONS 
+</p>
+<p>
+=head2 debug options X &amp; V sometimes produce the following
+</p>
+<pre>
+	You can't FIRSTKEY with the %~ hash at /home/kevin/perl5/perlbrew/perls/perl-5.14.1/lib/5.14.1/dumpvar.pl line 380
+		...propagated at /home/kevin/perl5/perlbrew/perls/perl-5.14.1/lib/5.14.1/perl5db.pl line 2438.
+	 at /home/kevin/perl5/perlbrew/perls/perl-5.14.1/lib/5.14.1/perl5db.pl line 2438
+		DB::DB called at sandbox 06 line 29
+	Debugged program terminated.  Use q to quit or R to restart,
+	  use o inhibit_exit to avoid stopping after program termination,
+	  h q, h R or h o to get additional info.
+</pre>
+
+
+<hr />
+<p>
+<h2>Debug1</h2>
+
+<tt>Debug::Client</tt>
+Padre up to and including 0.92 requires Debug::Client 0.12
+
+<pre>
+Debug::Client 0.12  Padre &lt;= 0.92
+</pre>
+
+<h2>Description</h2>
+<p>
+Run your code under a debugger with real-time display of results
+</p>
+<p>
+TBD: Debugger supports Stepping, Breakpoints, Watches, Variable evaluation, Stack module <a  href="/ticket/11">#11</a>
+</p>
+<p>
+Planning for a new version of the debugger:
+</p>
+<ul>
+  <li>The debugger can be launched by any of the following: Run / Step In / Step Over / Step Out / Run till breakpoint
+    <ul>
+      <li>Run would stop at the first statement and it will be greyed out once the debugger is running</li>
+      <li>Once the debugger is running the saved breakpoints of all the files belonging to this thing will be sent over. 
+        <ul>
+          <li>The question what does 'this thing' mean? Which files belong to the current run?</li>
+          <li>Files that are currently open in the editor? File that belong to the current session? File in the current project?</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Movement: Step In / Step Over / Step Out / Run till breakpoint
+    <ul>
+      <li>They do the corresponding action of the built in debugger</li>
+    </ul>
+  </li>
+  <li>Jump to current execution line ???</li>
+  <li>Set a breakpoint (this should save the breakpoint in a config file and if the debugger is currently running then set the breakpoint in the debugger as well)
+    <ul>
+      <li>How should a breakpoint remembered? Filename and line number? Filename and sub name?</li>
+    </ul>
+  <li>Remove breakpoint</li>
+  <li>List all breakpoints ???</li>
+  <li>Show trace - shows the current trace - it should open a window (maybe in the right-side window of the debugger) and constantly update the trace until the user turns it off.</li>
+  <li>Display value - the selected variable, or the one that is under the cursor will be added to the right side where its value will be show every time the debugger pauses the execution</li>
+  <li>Show Value now - show the value of the currently selected variable</li>
+  <li>Evaluate Expression...  opens a window where you can type in arbitrary perl expression for example:
+    <ul>
+      <li><tt> print 2 + 3 </tt></li>
+      <li><tt> $z = 42 </tt></li>
+      <li><tt> print $z </tt></li>
+    </ul>
+  </li>
+  <li>Quit debugger ???</li>
+  <li>Set watch - The user should be able to type in an arbitrary expression (if there was something selected then this will be the default)
+      When that expression changes value the debugger will stop
+      The expression should be saved belonging to the main script that is being executed. When the debugger is launched again these 
+      watch-points need to be set again (later we could display them to the user and ask the user if she wants to set them or not)
+  </li>
+  <li>Remove watch - remove an expression from the watch list (and from the saved watches)</li>
+</ul>
+<p>
+Remember in database:
+</p>
+<ul>
+  <li>filename - breakpoint - line number - condition</li>
+  <li>main-file - expression to display (e.g. a variable name or a more complex expression)</li>
+  <li>main-file - show stack trace on/off</li>
+</ul>
+<ul>
+  <li>main-file - a history of expressions evaluated?</li>
+  <li>main-file - a set of watches (conditional, non-location breakpoints)</li>
+</ul>
+
+
+[% END %]
+[% END %]
+
