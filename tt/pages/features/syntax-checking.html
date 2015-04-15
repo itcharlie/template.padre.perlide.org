@@ -1,0 +1,53 @@
+[% DEFAULT
+   title="Syntax checking"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+
+<p>
+Depending on a corresponding support in the respective <b>Padre::Document::Language</b> class, Padre supports real time syntax checking capabilities.
+<p>
+
+Syntax errors or warnings are displayed in a side bar (usually at the bottom of the Padre window). By double-clicking a list entry you can navigate to the position in the file.
+<p>
+
+Additionally, there is a symbol column on the left side of the editor where colored symbols mark the code lines with problems.
+<p>
+
+<h2>WARNING NOTE</h2>
+
+Syntax checking for Perl5 documents comes bundled with Padre. It is implemented using <b>perl -c</b>.
+This means that parts of the code actually get executed (e.g. <b>BEGIN</b> blocks). Malicious software might use this fact to damage your system 
+
+<pre>
+BEGIN { 
+   system('rm -rf ~')
+}
+</pre>
+<p>
+or suck up your resources 
+</p>
+<pre>
+BEGIN { 
+   while(1) { } 
+}
+</pre>
+<p>
+Syntax checking is currently disabled by default and has to be enabled manually after every start of Padre. This somewhat increases security when doing <b>padre some_unknown_file.pl</b>.
+However, it does not protect you when you open a file from within Padre while syntax checking is turned on.
+The most secure solution would require a really fast non-executing syntax checker which unfortunately is currently not available.
+
+<ul>
+  <li>Syntax checking for Perl 5 and Perl 6</li>
+  <li>See example in <a href="http://ahmadzawawi.blogspot.com/2009/09/whats-new-in-padre-046.html">this blog</a></li>
+</ul>
+
+
+[% END %]
+[% END %]
+
