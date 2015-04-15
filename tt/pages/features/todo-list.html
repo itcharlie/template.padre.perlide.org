@@ -1,0 +1,61 @@
+[% DEFAULT
+   title="TODO List"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<h2>Description</h2>
+
+<p>
+Programmers tend to add comments to their code to remind themselves for things they will need to do later.
+They usually mark them with some specific word or string so they can easily search for that string later. 
+Many times this string is '''TODO'''  or '''TO DO''' or '''XXX'''.
+<p>
+
+The TODO List Feature of Padre makes it easier to see all such items in the current file.
+When enabled via '''View/Show To-do list''' Padre will open a window on the right side listing all
+the lines that match a pre-defined regex. 
+This regex is configurable via '''Preferences/Behavior/RegExp for TODO panel'''
+
+<h2>Test</h2>
+
+<ol>
+  <li>Open a perl 5 file (check in the status bar if the mime-type is Perl 5)</li>
+  <li>Open the TODO list window using ''View -> To-Do List''.</li>
+  <li>Check if the window opened on the right-hand side</li>
+  <li>In the file type in the following:
+      <pre>
+      # TODO hello
+      </pre>
+  </li>
+  <li>See that the text '''hello''' appears in the TODO window</li>
+  <li>(due to a bug currently it only shows up after saving the file)</li>
+</ol>
+
+<h2>TODO</h2>
+
+<ul>
+  <li>add more items to the test case to cover the other features and bugs as well.</li>
+  <li>simple text files</li>
+  <li>other files (with other kinds of commenting mechanism)</li>
+  <li>new file that has never been saved</li>
+  <li>change the regex to an incorrect one, see that padre does not let you save the incorrect regex
+    <pre>
+       )regex(
+    </pre>
+  </li>
+  <li>change the regex to some other correct value and see if that works
+    <pre>
+       XYZ
+    </pre>
+  </li>
+</ul>
+
+
+[% END %]
+[% END %]
+
