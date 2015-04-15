@@ -1,0 +1,41 @@
+[% DEFAULT
+   title="Title and Statusbar Personalization"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<h2>Description</h2>
+
+Padre allows the configuration of the window title and provides placeholders for various values.
+The actual template can be set in <b>Tools/Preferences/Apperance/Window title</b>
+The available placeholders are:
+
+<ul>
+  <li>%p - Project name</li>
+  <li>%v - Padre version</li>
+  <li>%f - Current filename</li>
+  <li>%d - Current file's dirname</li>
+  <li>%b - Current file's basename</li>
+  <li>%F - Current filename relative to project</li>
+</ul>
+
+strings that look like placeholder but are not supported yet will appear verbatim.
+
+<h2>Test</h2>
+
+<ol>
+  <li>In Tools/Preferences/Apperance Set the <b>Window title</b> to {{{  %b - %f - %p - %d - %F - %v - %x - %% }}}</li>
+  <li>Open a file in the Padre project (e.g. lib/Padre.pm)</li>
+  <li>Check if the title displays the correct information: Padre.pm - path/to/lib/Padre.pm - ??? - lib - lib/Padre.pm - ??? - %x - %%</li>
+  <li>Create a new file (File/New)</li>
+  <li>Check if the title displays the correct information</li>
+</ol>
+
+
+[% END %]
+[% END %]
+
