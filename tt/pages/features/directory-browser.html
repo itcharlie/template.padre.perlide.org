@@ -1,0 +1,116 @@
+[% DEFAULT
+   title="Directory Browser"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<h2>Design</h2>
+
+<ul>
+  <li>A collection of thoughts.</li>
+  <li>Consider this to be free brainstorming</li>
+</ul>
+
+<h2>Navigation Behaviour</h2>
+
+How do we get something that works for everyone?
+
+<h2>1. The current situation</h2>
+
+In preferences, the default opening folder is specified.<br>
+In the top we have the UP("..") folder, which opens the parent on double-click.<br>
+Below we have all the children.<br>
+When double-clicking a folder among the children, that folder is set to root/base.<br>
+When double-clicking a file among the children, that parent folder of that file is set to root/base.<br>
+If behaviour in preferences, is set to open files = last, then the directory state as it were will be restored.<br>
+If multi files are open, and tabs are shifted, the last known state of the active file will be shown.<br>
+If multiple files are open in tabs, and all tabs are closed, which state will be shown in the end? = dunno yet, testing, haven't found the pattern.<br>
+..is this always the case, or is there data somewhere that specifies a directory<br>
+is a project? and if a folder is not a project, then it will not set to root/base?<br>
+
+<h2>2. Different Alternatives</h2>
+
+<h3>A. Explorer/Directory Browser</h3>
+
+<ul>
+  <li>In preferences, the default opening folder is specified.</li>
+  <li>When starting padre and behaviour "open files" = "new" or "none" is set, the default opening folder is displayed. If "open files" = "last", the last state is restored.</li>
+  <li>First in the top we have the UP("..") folder, which opens the parent on double-click.</li>
+  <li>Second we have the name of the current folder.</li>
+  <li>Third we have all the children, folders and files.</li>
+  <li>When double-clicking a folder among the children, that folder is unfolded, but nothing else happens to the rest of the tree, state preserved.</li>
+  <li>When double-clicking a file among the children, that file is opened in a tab in editor, but nothing else happens to the rest of the tree, state preserved.</li>
+  <li>If multiple files are open, and a user switch tab, then the state is preserved.</li>
+  <li>If multiple files are open, and a tab is closed, then the state is preserved.</li>
+  <li>If multiple files are open, and all tabs are closed, then the state is preserved.</li>
+  <li>If preferences behaviour "spatial" = true, then double clicking a folder will set that folder to root/base, otherwise, the state is preserved.</li>
+</ul>
+
+<p>
+
+<h3>B1. Project Browser</h3>
+
+<ul>
+  <li>In preferences, the default opening folder is specified.</li>
+  <li>When starting padre and behaviour "open files" = "new" or "none" is set, the default opening folder is displayed. If "open files" = "last", the last state is restored.</li>
+  <li>First in the top we have the UP("..") folder, which opens the parent on double-click.</li>
+  <li>Second we have the name of the current folder.</li>
+  <li>Below we have all the children.</li>
+  <li>When double-clicking a folder among the children, that folder is unfolded, but nothing else happens to the rest of the tree, state preserved. (Unless that folder is recognized as a Project folder, and then the the new base with that folder as base is forced).</li>
+  <li>When double-clicking a file among the children, that file is opened in a tab in editor, but nothing else happens to the rest of the tree, state preserved.</li>
+  <li>If multiple files are open, and a user switch tab, then the state is preserved.</li>
+  <li>If multiple files are open, and a tab is closed, then the state is preserved.</li>
+  <li>If multiple files are open, and all tabs are closed, then the state is preserved.</li>
+  <li>If preferences behaviour "spatial" = true, then double clicking a folder will set that folder to root/base, otherwise, the state is preserved.</li>
+</ul>
+
+<h3>B2. Project Browser</h3>
+
+<ul>
+  <li>Same as B1</li>
+  <li>Except, when Project Folder, "Up" is not displayed.</li>
+</ul>
+
+<h3>C. Explorer/Directory mix Project Browser</h3>
+<ul>
+  <li>In preferences, the default opening folder is specified.</li>
+  <li>When starting padre and behaviour "open files" = "new" or "none" is set, the default opening folder is displayed. If "open files" = "last", the last state is restored.</li>
+  <li>In the top we have the UP("..") folder, which opens the parent on double-click.</li>
+  <li>Next we have the name of the current folder.</li>
+  <li>Below we have all the children.</li>
+  <li>When double-clicking a folder among the children, that folder is unfolded, but nothing else happens to the rest of the tree, state preserved.</li>
+  <li>When double-clicking a file among the children, that file is opened in a tab in editor, but nothing else happens to the rest of the tree, state preserved.</li>
+  <li>If multiple files are open, and a user switch tab, then the state is preserved.</li>
+  <li>If multiple files are open, and a tab is closed, then the state is preserved.</li>
+  <li>If multiple files are open, and all tabs are closed, then the state is preserved.</li>
+  <li>If preferences behaviour "spatial" = true, then double clicking a folder will set that folder to root/base, otherwise, the state is preserved.</li>
+  <li>Right-click option of folder = "set as base". With or without "UP" folder.</li>
+</ul>
+
+<h2>Notes</h2>
+
+A project folder have an icon for recognition.
+
+<h2>Evaluation</h2>
+
+We are hitting the doeverythingatthesametime problem.
+One idea from Alias was to have a "mode" where the user select between behaviour states 1) Explorer/Director and 2) Project.<br>
+Another idea is to have two different browsers. 1) Explorer/Directory and 2) Project.<br>
+
+<h2>IS THERE AN OBVIOUS CHOICE?</h2>
+
+If not, lets do what ever gets implemented,<br>
+and let them be optional in preferences.<br>
+
+
+<h2>Additional Notes (unsorted)</h2>
+
+Current directory browser will ignore what IT thinks are hidden files or folders, or if it's a Perl distribution, temporary directories like inc. Also blib, Makefile, pm_to_blib, _build and other things. Stuff you shouldn't have to care about. There's a toggle in the search dropdown menu. - this is again filebrowser/project browser mix which need to be investigated further, for most appropriate behaviour and implementation.
+
+[% END %]
+[% END %]
+
