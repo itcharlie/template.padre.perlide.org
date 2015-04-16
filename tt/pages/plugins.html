@@ -1,0 +1,632 @@
+[% DEFAULT
+   title="Padre Plugins"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<h2>API 2.x</h2>
+<p>
+Sometimes abbreviated to P-P or pp in this and other pages.
+</p>
+<p>
+<h2>Key</h2>
+
+<pre>
+  Attribute    | Comment
+------------------------------------------------------------------------
+  Icon         | dose plugin have a valid icon (should be in share/icons)
+  Name         | Plugin Name from trunk
+  ver          | Plugin version from trunk
+  Author       | IRC or CPAN nick name
+  Status       | Padre Plugin Manager: loadable, incompatible, error
+  M::I         | Run Build &amp; Test: Pass or Fail
+  wiki         | As in Padre trac only
+  blog         | Any article, any where
+  About        | dose Plugin have an About Dialog
+  POD          | Plugin POD:  Fail, poor, min, acceptable &amp; good
+  Download     | Where can you find the code: trunk only or cpan &amp; trunk
+  Against      | Padre version the cpan was built against
+  Rating       | see below
+  Comments     | text
+</pre>
+
+
+<h2>Loadable from CPAN/metacpan</h2>
+<p>
+Tested Against Padre::Plugin API v2.2
+<p>
+Last updated 21st December 2013, against Padre v1.01 (perl dev -a).
+</p>
+<table>
+<tr>
+  <th>Icon</th>
+  <th>Name</th>
+  <th>ver</th>
+  <th>Author</th>
+  <th>Status</th>
+  <th>M::I</th>
+  <th>wiki</th>
+  <th>blog</th>
+  <th>About</th>
+  <th>POD</th>
+  <th>Download</th>
+  <th>Against</th>
+  <th>Rating</th>
+  <th>Comments</th>
+</tr>
+<tr>
+  <td>yes</td>
+  <td><a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-Autodia/">Padre::Plugin::Autodia</a>=</td>
+  <td>0.03</td>
+  <td>azawawi, bowtie</td>
+  <td>loadable</td>
+  <td>Pass</td>
+  <td>n/a</td>
+  <td>n/a</td>
+  <td>Yes</td>
+  <td>poor</td>
+  <td><a  href="https://metacpan.org/module/Padre::Plugin::Autodia">metacpan</a></td>
+  <td>0.97</td>
+  <td>xxooo</td>
+  <td>works underdevelopment feedback welcome</td>
+</tr>
+<tr>
+  <td>yes</td>
+  <td><a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-Cookbook/">Padre::Plugin::Cookbook</a></td>
+  <td>0.23</td>
+  <td>bowtie</td>
+  <td>loadable</td>
+  <td>Pass</td>
+  <td><a  href="http://padre.perlide.org/trac/wiki/PadrePluginDialog">Cookbook</a></td>
+  <td>n/a</td>
+  <td>Yes</td>
+  <td>good</td>
+  <td><a  href="https://metacpan.org/module/Padre::Plugin::Cookbook">metacpan</a></td>
+  <td>0.96</td>
+  <td>xxxxo</td>
+  <td>use recipe-04 to look inside your DB</td>
+</tr>
+<tr>
+  <td>n/a</td>
+  <td><a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-Experimento/">Padre::Plugin::Experimento</a></td>
+  <td>0.01</td>
+  <td>azawawi</td>
+  <td>loadable</td>
+  <td>Pass</td>
+  <td><a  href="http://padre.perlide.org/trac/wiki/PadrePluginExperimento">wiki</a></td>
+  <td>n/a</td>
+  <td>No</td>
+  <td>acceptable</td>
+  <td><a  href="https://metacpan.org/module/Padre::Plugin::Experimento">metacpan</a></td>
+  <td>0.94</td>
+  <td>xxooo</td>
+  <td></td>
+</tr>
+<tr>
+  <td>yes</td>
+  <td><a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-FormBuilder/">Padre::Plugin::FormBuilder</a></td>
+  <td>0.05</td>
+  <td>adamk</td>
+  <td>loadable</td>
+  <td>Pass</td>
+  <td>n/a</td>
+  <td><a  href="http://blogs.perl.org/users/adam_kennedy/2011/07/padre-form-builder---a-cross-platform-gui-design-solution-for-perl.html">July 19 2011</a></td>
+  <td>No</td>
+  <td>min</td>
+  <td><a  href="https://metacpan.org/module/Padre::Plugin::FormBuilder">metacpan</a></td>
+  <td>0.94</td>
+  <td>xxooo</td>
+  <td></td>
+</tr>
+<tr>
+  <td>yes</td>
+  <td><a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-Git/">Padre::Plugin::Git</a></td>
+  <td>0.12</td>
+  <td>bowtie</td>
+  <td>loadable</td>
+  <td>Pass</td>
+  <td><a  href="http://padre.perlide.org/trac/wiki/PadrePluginGit">wiki</a></td>
+  <td>n/a</td>
+  <td>Yes</td>
+  <td>acceptable</td>
+  <td><a  href="https://metacpan.org/module/Padre::Plugin::Git/">metacpan</a></td>
+  <td>0.97</td>
+  <td>xxxoo</td>
+  <td>works against Padre 0.97 in trunk, calls command line git</td>
+</tr>
+<tr>
+  <td>yes</td>
+  <td><a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-LaTeX/">Padre::Plugin::LaTeX</a></td>
+  <td>0.14</td>
+  <td>zenog</td>
+  <td>loadable</td>
+  <td>n/a</td>
+  <td>n/a</td>
+  <td><a  href="http://zenoga.tumblr.com/post/3748629330/latex-plugin-for-padre/">March 9 2011</a></td>
+  <td>Yes</td>
+  <td>acceptable</td>
+  <td><a  href="http://search.cpan.org/dist/Padre-Plugin-LaTeX/">cpan v0.13</a></td>
+  <td>0.94</td>
+  <td>xxooo</td>
+  <td><a  href="/ticket/1278">#1278</a> works but limited; LaTeX support </td>
+</tr>
+<tr>
+  <td>yes</td>
+  <td><a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-Moose/">Padre::Plugin::Moose</a></td>
+  <td>0.17</td>
+  <td>azawawi</td>
+  <td>loadable</td>
+  <td>Pass</td>
+  <td><a  href="http://padre.perlide.org/trac/wiki/PadrePluginMoose">wiki</a></td>
+  <td><a  href="http://ahmadzawawi.blogspot.com/2012/02/padre-and-moose.html">February 21 2012</a></td>
+  <td>Yes</td>
+  <td>acceptable</td>
+  <td><a  href="https://metacpan.org/release/Padre-Plugin-Moose">metacpan</a></td>
+  <td>0.94</td>
+  <td>xxxoo</td>
+  <td> </td>
+</tr>
+<tr>
+  <td>yes</td>
+  <td><a href="http://svn.perlide.org/padre/trunk/Padre-Plugin-Nopaste/">Padre::Plugin::Nopaste</a></td>
+  <td>0.06</td>
+  <td>bowtie</td>
+  <td>loadable</td>
+  <td>Pass</td>
+  <td><a  href="http://padre.perlide.org/trac/wiki/PadrePluginNopaste">wiki</a></td>
+  <td>n/a</td>
+  <td>No</td>
+  <td>acceptable</td>
+  <td><a  href="https://metacpan.org/module/Padre::Plugin::Nopaste/">metacpan</a></td>
+  <td>0.96</td>
+  <td>xxxoo</td>
+  <td>new see wiki </td>
+</tr>
+<tr>
+  <td>n/a</td>
+  <td><a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-PAR/">Padre::Plugin::PAR</a></td>
+  <td>0.06</td>
+  <td>chorny</td>
+  <td>loadable</td>
+  <td>Pass</td>
+  <td>n/a</td>
+  <td>n/a</td>
+  <td>Yes</td>
+  <td>acceptable</td>
+  <td><a  href="http://search.cpan.org/dist/Padre-Plugin-PAR/">cpan v0.06</a></td>
+  <td>0.94</td>
+  <td>ooooo</td>
+  <td>**Loads but dose not work**</td>
+</tr>
+<tr>
+  <td>n/a</td>
+  <td><a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-PDL/">Padre::Plugin::PDL</a></td>
+  <td>0.05</td>
+  <td>azawawi</td>
+  <td>loadable</td>
+  <td>Pass</td>
+  <td><a  href="http://padre.perlide.org/trac/wiki/PadrePluginPDL">wiki</a></td>
+  <td>n/a</td>
+  <td>No</td>
+  <td>acceptable</td>
+  <td><a  href="https://metacpan.org/module/Padre::Plugin::PDL">metacpan</a></td>
+  <td>0.94</td>
+  <td>xxooo</td>
+  <td>new see wiki </td>
+</tr>
+<tr>
+  <td>n/a</td>
+  <td><a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-ParserTool/">Padre::Plugin::ParserTool</a></td>
+  <td>0.01</td>
+  <td>adamk</td>
+  <td>loadable</td>
+  <td>Pass</td>
+  <td><a  href="http://padre.perlide.org/trac/wiki/PadrePluginParserTool">wiki</a></td>
+  <td>n/a</td>
+  <td>n/a</td>
+  <td>acceptable</td>
+  <td><a  href="https://metacpan.org/module/Padre::Plugin::ParserTool">metacpan</a></td>
+  <td>0.94</td>
+  <td>xxxoo</td>
+  <td>new see wiki </td>
+</tr>
+<tr>
+  <td>n/a</td>
+  <td><a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-PerlCritic/">Padre::Plugin::PerlCritic</a></td>
+  <td>0.13</td>
+  <td>azawawi</td>
+  <td>loadable</td>
+  <td>Pass</td>
+  <td>n/a</td>
+  <td>n/a</td>
+  <td>No</td>
+  <td>poor</td>
+  <td><a  href="http://search.cpan.org/dist/Padre-Plugin-PerlCritic/">cpan v0.13</a></td>
+  <td>0.94</td>
+  <td>xxxoo</td>
+  <td>to load from trunk see <a  href="/ticket/1266">#1266</a></td>
+</tr>
+<tr>
+  <td>n/a</td>
+  <td><a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-PerlTidy/">Padre::Plugin::PerlTidy</a></td>
+  <td>0.22</td>
+  <td>azawawi</td>
+  <td>loadable</td>
+  <td>Pass</td>
+  <td>n/a</td>
+  <td>n/a</td>
+  <td>No</td>
+  <td>acceptable</td>
+  <td><a  href="http://search.cpan.org/dist/Padre-Plugin-PerlTidy/">cpan v0.22</a></td>
+  <td>0.94</td>
+  <td>xxxoo</td>
+  <td></td>
+</tr>
+<tr>
+  <td>n/a</td>
+  <td><a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-SVN/">Padre::Plugin::SVN</a></td>
+  <td>0.06</td>
+  <td>waxhead</td>
+  <td>loadable</td>
+  <td>Fail</td>
+  <td>n/a</td>
+  <td>n/a</td>
+  <td>Yes</td>
+  <td>acceptable</td>
+  <td><a  href"http://search.cpan.org/dist/Padre-Plugin-SVN/">cpan v0.05</a></td>
+  <td>0.94</td>
+  <td>xxooo</td>
+  <td>works but limited; calls command line Subversion client</td>
+</tr>
+<tr>
+  <td>yes</td>
+  <td><a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-Snippet/">Padre::Plugin::Snippet</a></td>
+  <td>0.01</td>
+  <td>azawawi</td>
+  <td>loadable</td>
+  <td>Pass</td>
+  <td><a  href="http://padre.perlide.org/trac/wiki/PadrePluginSnippet">wiki</a></td>
+  <td>n/a</td>
+  <td>No</td>
+  <td>acceptable</td>
+  <td><a  href="https://metacpan.org/module/Padre::Plugin::Snippet">metacpan</a></td>
+  <td>0.94</td>
+  <td>xxxoo</td>
+  <td></td>
+</tr>
+<tr>
+  <td>yes</td>
+  <td><a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-SpellCheck/">Padre::Plugin::SpellCheck</a></td>
+  <td>1.29</td>
+  <td>bowtie</td>
+  <td>loadable</td>
+  <td>Pass<td>
+  <td><a href="http://padre.perlide.org/trac/wiki/PadrePluginSpellCheck">wiki</a></td>
+  <td>n/a</td>
+  <td>No</td>
+  <td>acceptable</td>
+  <td><a href="https://metacpan.org/module/Padre::Plugin::SpellCheck">metacpan</a></td>
+  <td>0.96</td>
+  <td>xxxoo</td>
+  <td># requires Text::[Hun|A]spell to be install; use 1.31_03 with 0.97+</td>
+</tr>
+<tr>
+  <td>yes</td>
+  <td><a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-Swarm/">Padre::Plugin::Swarm</a></td>
+  <td>0.20</td>
+  <td>bramble</td>
+  <td>loadable</td>
+  <td>Pass</td>
+  <td><a  href="http://padre.perlide.org/trac/wiki/PadreSwarm">wiki</a></td>
+  <td>n/a</td>
+  <td>Yes</td>
+  <td>acceptable</td>
+  <td><a  href="http://search.cpan.org/dist/Padre-Plugin-Swarm/">cpan v0.20</a></td>
+  <td>0.94</td>
+  <td>xxxoo</td>
+  <td><del><a  href="/ticket/1264">#1264</a></del> local chat works :)</td>
+</tr>
+<tr>
+  <td>n/a</td>
+  <td><a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-Vi/">Padre::Plugin::Vi</a></td>
+  <td>0.23</td>
+  <td>szabgab</td>
+  <td><del>loadable</del></td>
+  <td>Fail</td>
+  <td>n/a</td>
+  <td>n/a</td>
+  <td>Yes</td>
+  <td>poor</td>
+  <td><a  href="http://search.cpan.org/dist/Padre-Plugin-Vi/">cpan v0.23</a></td>
+  <td>0.94</td>
+  <td>ooooo</td>
+  <td>Experimental; Vi modes and key binding; **it does not work**||
+</tr>
+<tr>
+  <td>yes</td>
+  <td><a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-WxWidgets/">Padre::Plugin::WxWidgets</a></td>
+  <td>0.05</td>
+  <td>azawawi</td>
+  <td>loadable</td>
+  <td>Pass</td>
+  <td><a  href="http://padre.perlide.org/trac/wiki/PadrePluginWxWidgets">wiki</a></td>
+  <td><a  href="http://mail.perlide.org/pipermail/padre-dev/2010-November/002135.html">November 7th 2010</a></td>
+  <td>Yes</td>
+  <td>acceptable</td>
+  <td><a  href="https://metacpan.org/release/Padre-Plugin-WxWidgets">metacpan</a></td>
+  <td>0.94</td>
+  <td>xxxoo</td>
+  <td>
+</tr>
+<tr>
+  <td>n/a</td>
+  <td><a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-YAML/">Padre::Plugin::YAML</a></td>
+  <td>0.07</td>
+  <td>zenog bowtie</td>
+  <td>loadable</td>
+  <td>Pass</td>
+  <td><a  href="http://padre.perlide.org/trac/wiki/PadrePluginYAML">wiki</a></td>
+  <td>n/a</td>
+  <td>Yes</td>
+  <td>acceptable</td>
+  <td><a  href="https://metacpan.org/release/Padre-Plugin-YAML">metacpan</a></td>
+  <td>0.96</td>
+  <td>xxxoo</td>
+  <td>new see wiki </td>
+  <td>
+</tr>
+<tr>
+  <td>n/a</td>
+  <td><a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-XS/">Padre::Plugin::XS</a></td>
+  <td>0.12</td>
+  <td>smueller azawawi bowtie</td>
+  <td>loadable</td>
+  <td>Pass</td>
+  <td><a  href="http://padre.perlide.org/trac/wiki/PadrePluginXS">wiki</a></td>
+  <td>n/a</td>
+  <td>Yes</td>
+  <td>acceptable</td>
+  <td><a  href="https://metacpan.org/release/Padre-Plugin-XS">metacpan</a></td>
+  <td>1.00</td>
+  <td>xxxoo</td>
+  <td>new see wiki
+</tr>
+</table>
+
+<h2>Loadable from trunk</h2>
+
+<table>
+<tr><td>=**Icon**=</td><td>=**Name**=</td><td>=**ver**=</td><td>=**Author**=</td><td>=**Status**=</td><td>=**M::I**=</td><td>=**wiki**=</td><td>=**blog**=</td><td>=**About**=</td><td>=**POD**=</td><td>=**Download**=</td><td>=**Against**=</td><td>=**Rating**=</td><td>=**Comments**=</td></tr>
+<tr><td>=n/a=</td><td><a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-Autoformat/">Padre::Plugin::Autoformat</a>=</td><td>=1.24=</td><td>=jquelin, azawawi=</td><td>=loadable=</td><td>=n/a=</td><td>=<a  href="http://padre.perlide.org/trac/wiki/PadrePluginAutoformat">wiki</a>=</td><td>=n/a=</td><td>=Yes=</td><td>=poor=</td><td>=n/a=</td><td>=0.95=</td><td>=xxooo=</td><td>=Updated 22/01/12 against 0.95=</td></tr>
+<tr><td>=n/a=</td><td><a  href="http://svn.perlide.org/padre/Padre-Plugin-ExperimentalPerlFilter/">Padre::Plugin::ExperimentalPerlFilter</a>=</td><td>=0.01=</td><td>=n/a=</td><td>=loadable=</td><td>=n/a=</td><td>=n/a=</td><td>=n/a=</td><td>=n/a=</td><td>=min=</td><td>=n/a=</td><td>=0.00=</td><td>=ooooo=</td><td>==</td></tr>
+<tr><td>=n/a=</td><td><a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-SDL/">Padre::Plugin::SDL</a>=</td><td>=0.01=</td><td>=n/a=</td><td>=loadable=</td><td>=n/a=</td><td>=n/a=</td><td>=n/a=</td><td>=n/a=</td><td>=min=</td><td>=n/a=</td><td>=0.00=</td><td>=ooooo=</td><td>==</td></tr>
+<tr><td>=n/a=</td><td><a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-SQL/">Padre::Plugin::SQL</a>=</td><td>=0.01=</td><td>=waxhead =</td><td>=loadable=</td><td>=n/a=</td><td>=n/a=</td><td>=n/a=</td><td>=n/a=</td><td>=acceptable=</td><td>=n/a=</td><td>=0.00=</td><td>=ooooo=</td><td>=experimental=</td></tr>
+<tr><td>=n/a=</td><td><a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-XML/">Padre::Plugin::XML</a>=</td><td>=0.11=</td><td>=Chorny zenog =</td><td>=loadable=</td><td>=n/a=</td><td>=n/a=</td><td>=n/a=</td><td>=n/a=</td><td>=acceptable=</td><td>=n/a=</td><td>=0.00=</td><td>=ooooo=</td><td>=XML tidy+syntax checks=</td></tr>
+</table>
+<p>
+
+<h2>Not In Trunk</h2>
+</p>
+<table>
+<tr><td>=**Icon**=</td><td>=**Name**=</td><td>=**ver**=</td><td>=**Author**=</td><td>=**Status**=</td><td>=**M::I**=</td><td>=**wiki**=</td><td>=**blog**=</td><td>=**About**=</td><td>=**POD**=</td><td>=**Download**=</td><td>=**Against**=</td><td>=**Rating**=</td><td>=**Comments**=</td></tr>
+<tr><td>=n/a=</td><td><tt>Padre::Plugin::CSSComb</tt>=</td><td>=0.001=</td><td>=abraxxa=</td><td>=loadable=</td><td>=n/a=</td><td>=n/a=</td><td>=n/a=</td><td>=n/a=</td><td>=n/a=</td><td>=<a  href="https://metacpan.org/module/Padre::Plugin::CSSComb">metacpan</a>=</td><td>=0.96=</td><td>=xoooo=</td><td>=Plugin for using external CSSComb =</td></tr>
+<tr><td>=n/a=</td><td><tt>Padre::Plugin::HG</tt>=</td><td>=0.16=</td><td>=code4pay=</td><td>=n/a=</td><td>=n/a=</td><td>=<a  href="http://bitbucket.org/code4pay/padre-plugin-hg/wiki/Home">wiki</a>=</td><td>=n/a=</td><td>=n/a=</td><td>=acceptable=</td><td>=<a  href="https://metacpan.org/module/Padre::Plugin::HG">metacpan</a>=</td><td>=0.00=</td><td>=ooooo=</td><td>=Plugin for using Mercurial =</td></tr>
+<tr><td>=no=</td><td><tt>Padre::Plugin::<a  href="/wiki/ReDevel">ReDevel</a></tt>=</td><td>=0.05=</td><td>=mj41=</td><td>=loadable=</td><td>=Pass=</td><td>=<a  href="http://padre.perlide.org/trac/wiki/PadrePluginReDevel">wiki</a>=</td><td>=n/a=</td><td>=Yes=</td><td>=poor=</td><td>=<a  href="https://github.com/PadreIDE/Padre-Plugin-ReDevel">GitHub</a>=</td><td>=0.95=</td><td>=ooooo=</td><td>= <a  href="/ticket/1414">#1414</a> Remote development through SSH=</td></tr>
+</table>
+<hr />
+<p>
+
+<h2>Debian</h2>
+If you would like to see the current Padre Plug-ins packaged for <a  href="http://packages.debian.org/search?keywords=libpadre-plugin&searchon=names&suite=sid&section=all">Debian</a>, with thanks to dod++, for all the effort.
+</p>
+<hr />
+
+<h2>Others</h2>
+
+<h3>Need to be re-reviewed</h3>
+
+||=n/a=||=<tt><a  href="/wiki/ClassSniff">ClassSniff</a></tt>=||=undef=||=error=||=n/a=||=n/a=||=n/a=||=n/a=||=ooooo=||=21/07/11=||
+||=n/a=||=<tt>CSS</tt>=||=undef=||=error=||=n/a=||=n/a=||=n/a=||=n/a=||=ooooo=||=21/07/11=||
+||=n/a=||=<tt><a  href="/wiki/DataWalker">DataWalker</a></tt>=||=undef=||=error=||=n/a=||=n/a=||=n/a=||=n/a=||=ooooo=||=21/07/11=||
+||=n/a=||=<tt>Ecliptic</tt>=||=undef=||=error=||=n/a=||=n/a=||=n/a=||=n/a=||=ooooo=||=21/07/11=||
+||=n/a=||=<tt>HTML</tt>=||=undef=||=error=||=n/a=||=n/a=||=n/a=||=n/a=||=ooooo=||=21/07/11=||
+||=n/a=||=<tt>HTMLExport</tt>=||=undef=||=error=||=n/a=||=n/a=||=n/a=||=n/a=||=ooooo=||=21/07/11=||
+||=n/a=||=<tt><a  href="/wiki/JavaScript">JavaScript</a></tt>=||=undef=||=error=||=n/a=||=n/a=||=poor=||=n/a=||=ooooo=||=21/07/11=||
+||=n/a=||=<tt>Mojolicious</tt>=||=undef=||=error=||=n/a=||=n/a=||=poor=||=n/a=||=ooooo=||=21/07/11=||
+||=n/a=||=<tt>GUITest</tt>=||=0.01=||=incompatible=||=n/a=||=n/a=||=n/a=||=n/a=||=ooooo=||=21/07/11=||
+||=n/a=||=<tt>InstallPARDist</tt>=||=0.01=||=incompatible=||=n/a=||=n/a=||=n/a=||=n/a=||=ooooo=||=21/07/11=||
+||=n/a=||=<tt><a  href="/wiki/LineFilter">LineFilter</a></tt>=||=0.19=||=incompatible=||=n/a=||=n/a=||=acceptable=||=n/a=||=ooooo=||=21/07/11=||
+||=n/a=||=<tt>Media</tt>=||=0.25=||=incompatible=||=n/a=||=n/a=||=Fail=||=n/a=||=ooooo=||=21/07/11=||
+||=n/a=||=<tt>PHP</tt>=||=0.05=||=incompatible=||=n/a=||=n/a=||=min=||=n/a=||=ooooo=||=21/07/11=||
+||=n/a=||=<tt>PSI</tt>=||=0.01=||=incompatible=||=n/a=||=n/a=||=min=||=n/a=||=ooooo=||=21/07/11=||
+||=n/a=||=<tt>REPL</tt>=||=0.01=||=incompatible=||=n/a=||=n/a=||=min=||=n/a=||=ooooo=||=21/07/11=||
+||=n/a=||=<tt>SSH</tt>=||=0.01=||=incompatible=||=n/a=||=n/a=||=min=||=n/a=||=ooooo=||=21/07/11=||
+||=n/a=||=<tt>SVK</tt>=||=0.02=||=incompatible=||=n/a=||=n/a=||=min=||=n/a=||=ooooo=||=21/07/11=||
+||=n/a=||=<tt>Tasks</tt>=||=0.01=||=incompatible=||=n/a=||=n/a=||=acceptable=||=n/a=||=ooooo=||=21/07/11=||
+||=n/a=||=<tt><a  href="/wiki/ViewInBrowser">ViewInBrowser</a></tt>=||=0.07=||=incompatible=||=n/a=||=n/a=||=acceptable=||=n/a=||=ooooo=||=21/07/11=||
+
+<h3>Incompatible</h3>
+Padre::Plugin::<a  href="/wiki/CommandLine">CommandLine</a>      	Padre::Plugin::<a  href="/wiki/CommandLine">CommandLine</a>      	incompatible	0
+Padre::Plugin::Perl6            	Padre::Plugin::Perl6            	incompatible	0
+Padre::Plugin::Plack            	Padre::Plugin::Plack            	incompatible	0
+Padre::Plugin::<a  href="/wiki/ShellScript">ShellScript</a>      	Padre::Plugin::<a  href="/wiki/ShellScript">ShellScript</a>      	incompatible	0
+Padre::Plugin::WebGUI           	Padre::Plugin::WebGUI           	incompatible	0
+
+
+||=**Icon**=||=**Plugin Name**=||=**Version**=||=**Status v0.95**=||=**wiki**=||=**blog**=||=**POD**=||=**Download**=||=**Rating**=||=**<tt><a  href="/wiki/UpDate">UpDate</a></tt>**=||
+||=n/a=||<tt><a  href="/wiki/CommandLine">CommandLine</a></tt>=||=0.02=||=incompatible=||=n/a=||=n/a=||=n/a=||=n/a=||=ooooo=||=06/03/12=||
+||=n/a=||<tt>Perl6</tt>=||=undef=||=incompatible=||=n/a=||=n/a=||=n/a=||=n/a=||=ooooo=||=06/03/12=||
+||=n/a=||<tt>Plack</tt>=||=undef=||=incompatible=||=n/a=||=<a  href="http://blog.patspam.com/2009/padrepluginplack">plack</a>=||=Fail=||=n/a=||=ooooo=||=06/03/12=||
+||=n/a=||<tt><a  href="/wiki/ShellScript">ShellScript</a></tt>=||=undef=||=incompatible=||=n/a=||=n/a=||=n/a=||=n/a=||=ooooo=||=06/03/12=||
+||=n/a=||<tt>WebGUI</tt>=||=undef=||=incompatible=||=n/a=||=<a  href="http://blog.patspam.com/2009/padrepluginwebgui">webgui</a>=||=n/a=||=n/a=||=ooooo=||=06/03/12=||
+<hr />
+
+<h3>Error</h3>
+<tt>#!text
+Catalyst                        	Padre::Plugin::Catalyst         	error   	1
+Dancer                          	Padre::Plugin::Dancer           	error   	1
+Emacs Mode for Padre            	Padre::Plugin::Emacs            	error   	1
+NYTProf - Perl Profiler         	Padre::Plugin::NYTProf          	error   	1
+Padre::Plugin::Alarm            	Padre::Plugin::Alarm            	error   	1
+Padre::Plugin::Encrypt          	Padre::Plugin::Encrypt          	error   	1
+Padre::Plugin::<a  href="/wiki/IntelliPerl">IntelliPerl</a>      	Padre::Plugin::<a  href="/wiki/IntelliPerl">IntelliPerl</a>      	error   	1
+Padre::Plugin::Kate             	Padre::Plugin::Kate             	error   	1
+Padre::Plugin::REPL             	Padre::Plugin::REPL             	error   	1
+Parrot                          	Padre::Plugin::Parrot           	error   	1
+</tt>
+||=**Icon**=||=**Plugin Name**=||=**Version**=||=**Status v0.95**=||=**wiki**=||=**blog**=||=**POD**=||=**Download**=||=**Rating**=||=**<tt><a  href="/wiki/UpDate">UpDate</a></tt>**=||
+||=yes=||<tt>Catalyst</tt>=||=undef=||=error=||=n/a=||=n/a=||=n/a=||=n/a=||=ooooo=||=06/03/12=||
+||=n/a=||<tt>Dancer</tt>=||=undef=||=error=||=n/a=||=n/a=||=n/a=||=n/a=||=ooooo=||=06/03/12=||
+||=n/a=||<tt>Emacs</tt>=||=0.02=||=error=||=n/a=||=n/a=||=n/a=||=n/a=||=ooooo=||=06/03/12=||
+||=n/a=||<tt>NYTProf</tt>=||=undef=||=error=||=n/a=||=n/a=||=n/a=||=n/a=||=ooooo=||=06/03/12=||
+||=n/a=||<tt>Alarm</tt>=||=undef=||=error=||=n/a=||=n/a=||=n/a=||=n/a=||=ooooo=||=06/03/12=||
+||=n/a=||<tt>Encrypt</tt>=||=undef=||=error=||=n/a=||=n/a=||=n/a=||=n/a=||=ooooo=||=06/03/12=||
+||=n/a=||<tt><a  href="/wiki/IntelliPerl">IntelliPerl</a></tt>=||=0.01=||=error=||=n/a=||=n/a=||=n/a=||=n/a=||=ooooo=||=06/03/12=||
+||=n/a=||<tt>Kate</tt>=||=undef=||=error=||=n/a=||=n/a=||=poor=||=n/a=||=ooooo=||=06/03/12=||
+||=n/a=||<tt>REPL</tt>=||=0.01=||=error=||=n/a=||=n/a=||=min=||=n/a=||=ooooo=||=06/03/12=||
+||=n/a=||<tt>Parrot</tt>=||=undef=||=error=||=n/a=||=n/a=||=n/a=||=n/a=||=ooooo=||=06/03/12=||
+</p>
+<hr />
+
+<h2>Test Code</h2>
+* put it in My Plugin, and run against perl dev -a
+<tt>#!perl
+sub plugin_status {
+</p>
+<pre>
+	my $self = shift;
+	foreach my $handle ( $self-&gt;ide-&gt;plugin_manager-&gt;handles ) {
+		# if ( $handle-&gt;status eq 'incompatible'){
+		printf &quot;%-32s\t%-32s\t%-8s\t%g\n&quot;, $handle-&gt;plugin_name, $handle-&gt;class, $handle-&gt;status, $handle-&gt;error;
+	# }
+	}
+	return;
+</pre>
+}
+</p>
+
+<hr />
+<h2>Compliance</h2>
+Initial thoughts, of what a <tt>Padre::Plugin</tt> should provide, critiques welcome.
+</p>
+<p>
+* Plugin Loads
+ * Plugin Manager can load plugin
+  * For compliance you will need to have a version in your Padre::Plugin::Name.pm.
+ * Plugin builds so it can be install in local repository
+  * We recommend using <tt>Module::Include</tt>, 
+ * Plugin can be loaded and unloaded repeatedly
+</p>
+<p>
+* POD
+ * Fail: Padre POD viewer displays an error
+ * Poor: Fail &lt; Poor &lt; Min
+ * Min, contains: NAME, AUTHOR, LICENCE
+ * acceptable: Min &lt; acceptable &lt; Good
+ * Good, contains: VERSION, BUGS AND LIMITATIONS, DEPENDENCIES. Passes xt/pod.t and xt/podcoverage.t for all Plugin files.
+</p>
+<p>
+* Additional documentation
+ * trac wiki
+ * blogg
+</p>
+<p>
+* CPAN
+ * public repository
+ * about dialog
+ * plugin has icon
+</p>
+<p>
+* Language Support <a  href="http://perlide.org/translations/">translations update</a>
+ * English
+ * etc..
+</p>
+<p>
+* OS Support
+ * Linux
+  * 64 bit
+  * i386/i686
+ * Microsoft
+  * Vista
+  * XP
+ * Apple
+  * Lion
+  * Snow Leopard
+  * Leopard
+</p>
+<p>
+The above is as a result of analysing Plugins for this page.
+</p>
+<hr />
+<p>
+
+<h2>API 1.x</h2>
+<h3>Table of existing plugins</h3>
+</p>
+<p>
+The final columns indicate whether the CPAN version of the plugin was verified to work with the corresponding versions of Padre.
+</p>
+<table>
+<tr><td> <strong>Field</strong> </td><td> <strong>Plugin Name</strong> </td><td> <strong>Main developer</strong> </td><td> <strong>Version</strong> </td><td> <strong>Status</strong> </td><td> <strong>Description</strong> </td><td> <strong>0.86</strong> </td></tr>
+<tr><td> Version Control </td><td> <a  href="http://bitbucket.org/code4pay/padre-plugin-hg/wiki/Home">HG</a> </td><td> code4pay </td><td> <a  href="http://search.cpan.org/dist/Padre-Plugin-HG/">0.16</a> </td><td> works </td><td> Plugin for using Mercurial </td></tr>
+<tr><td>  </td><td> <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-SVN/">SVN</a> </td><td> waxhead </td><td> <a  href="http://search.cpan.org/dist/Padre-Plugin-SVN/">0.05</a> </td><td> works but limited </td><td> calls command line Subversion client </td></tr>
+<tr><td>  </td><td> <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-SVK/">SVK</a> </td><td> szagab </td><td> <a  href="http://search.cpan.org/dist/Padre-Plugin-SVK/">0.02</a> </td><td> works but limited </td><td> calls command line SVK client </td></tr>
+<tr><td>  </td><td> <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-Git/">Git</a> </td><td> kaare </td><td> <a  href="http://search.cpan.org/dist/Padre-Plugin-Git/">0.03</a> </td><td> works but limited </td><td> calls command line git </td></tr>
+<tr><td> Web </td><td> <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-WebGUI/">WebGUI</a> </td><td> patspam </td><td> <a  href="http://search.cpan.org/dist/Padre-Plugin-WebGUI/">1.001</a> </td><td> ??? </td><td> tools for WebGUI </td></tr>
+<tr><td>  </td><td> <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-Mojolicious/">Mojolicious</a> </td><td> garu, azawawi </td><td> <a  href="http://search.cpan.org/dist/Padre-Plugin-Mojolicious/">0.05</a> </td><td> ??? </td><td> tools for Mojolicious </td></tr>
+<tr><td>  </td><td> <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-Catalyst/">Catalyst</a> </td><td> garu, azawawi </td><td> <a  href="http://search.cpan.org/dist/Padre-Plugin-Catalyst/">0.13</a> </td><td> ??? </td><td> tools for Catalyst </td></tr>
+<tr><td> Testing </td><td> <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-GUITest/">GUITest</a> </td><td> szabgab </td><td> ??? </td><td> experimental, not yet on CPAN </td><td> Record/Replay/Analyse desktop applications on MS Windows </td></tr>
+<tr><td> Editor </td><td> <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-Ecliptic/">Ecliptic</a> </td><td> azawawi </td><td> <a  href="http://search.cpan.org/dist/Padre-Plugin-Ecliptic/">0.23</a> </td><td> ??? </td><td> ??? </td></tr>
+<tr><td>  </td><td> <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-Emacs/">Emacs</a> </td><td> teejay </td><td> ??? </td><td> experimental, not yet on CPAN; not up to date </td><td> Emacs keybindings and stuff </td></tr>
+<tr><td>  </td><td> <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-Vi/">Vi</a> </td><td> szabgab </td><td> <a  href="http://search.cpan.org/dist/Padre-Plugin-Vi/">0.23</a> </td><td> experimental </td><td> Vi modes and key binding </td></tr>
+<tr><td> Languages </td><td> <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-CSS/">CSS</a> </td><td> azawawi, fayland </td><td> <a  href="http://search.cpan.org/dist/Padre-Plugin-CSS/">0.14</a> </td><td> ??? </td><td> ??? </td></tr>
+<tr><td>  </td><td> <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-HTML/">HTML</a> </td><td> azawawi, fayland </td><td> <a  href="http://search.cpan.org/dist/Padre-Plugin-HTML/">0.15</a> ??? </td><td> ??? </td><td> ??? </td><td> OK </td></tr>
+<tr><td>  </td><td> <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-JavaScript/">JavaScript</a> </td><td> azawawi </td><td> <a  href="http://search.cpan.org/dist/Padre-Plugin-JavaScript/">0.29</a> </td><td> ??? </td><td> ??? </td></tr>
+<tr><td>  </td><td> <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-LaTeX/">LaTeX</a> </td><td> zenog, azawawi </td><td> <a  href="http://search.cpan.org/dist/Padre-Plugin-LaTeX/">0.11</a> </td><td> works but limited </td><td> LaTeX support </td><td> OK </td></tr>
+<tr><td>  </td><td> <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-Perl6/">Perl 6</a> </td><td> azawawi </td><td> <a  href="http://search.cpan.org/dist/Padre-Plugin-Perl6/">0.71</a> </td><td> ??? </td><td> Perl 6 support </td></tr>
+<tr><td>  </td><td> <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-PHP/">PHP</a> </td><td> chorny, szabgab </td><td> <a  href="http://search.cpan.org/dist/Padre-Plugin-PHP/">0.05</a> </td><td> works </td><td> PHP support </td></tr>
+<tr><td>  </td><td> <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-ShellScript/">ShellScript</a> </td><td> zenog </td><td> 0.02 </td><td> works </td><td> Unix shell script support </td><td> OK </td></tr>
+<tr><td>  </td><td> <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-SQL/">SQL</a> </td><td> waxhead </td><td> ??? </td><td> experimental, not yet on CPAN </td><td> ??? </td></tr>
+<tr><td>  </td><td> <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-XML/">XML</a> </td><td> (currently) chorny, zenog </td><td> <a  href="http://search.cpan.org/dist/Padre-Plugin/">0.11</a> </td><td> works but limited (Unix only) </td><td> XML tidy+syntax checks </td><td> OK </td></tr>
+<tr><td>  </td><td> <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-YAML/">YAML</a> </td><td> zenog </td><td> 0.01 </td><td> works but limited </td><td> YAML support </td><td> OK </td></tr>
+<tr><td> Perl </td><td> <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-ClassSniff/">ClassSniff</a> </td><td> smueller,azawawi </td><td> <a  href="http://search.cpan.org/dist/Padre-Plugin-ClassSniff/">0.30</a> </td><td> *really* experimental </td><td> <a  href="http://search.cpan.org/dist/Class-Sniff/">look for class composition smells</a> </td></tr>
+<tr><td>  </td><td> <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-DataWalker/">DataWalker</a> </td><td> azawawi </td><td> <a  href="http://search.cpan.org/dist/Padre-Plugin-DataWalker/">0.04</a> </td><td> ??? </td><td> ??? </td></tr>
+<tr><td>  </td><td> <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-InstallPARDist/">InstallPARDist</a> </td><td> ??? </td><td> <a  href="http://search.cpan.org/dist/Padre-Plugin-InstallPARDist/">0.01</a> </td><td> ??? </td><td> ??? </td></tr>
+<tr><td>  </td><td> <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-IntelliPerl/">IntelliPerl</a> </td><td> ??? </td><td> ??? </td><td> experimental, not yet on CPAN </td><td> ??? </td></tr>
+<tr><td>  </td><td> <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-NYTProf/">NYTProf</a> </td><td> azawawi </td><td> <a  href="http://search.cpan.org/dist/Padre-Plugin-NYTProf/">0.04</a> ??? </td><td> ??? </td></tr>
+<tr><td>  </td><td> <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-PAR/">PAR</a> </td><td> chorny </td><td> <a  href="http://search.cpan.org/dist/Padre-Plugin-PAR/">0.06</a> </td><td> ??? </td><td> ??? </td></tr>
+<tr><td>  </td><td> <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-PerlCritic/">PerlCritic</a> </td><td> azawawi </td><td> <a  href="http://search.cpan.org/dist/Padre-Plugin-PerlCritic/">0.12</a> </td><td> ??? </td><td> ??? </td></tr>
+<tr><td>  </td><td> <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-PerlTidy/">PerlTidy</a> </td><td> azawawi </td><td> <a  href="http://search.cpan.org/dist/Padre-Plugin-PerlTidy/">0.16</a> </td><td> ??? </td><td> ??? </td></tr>
+</table>
+<p>
+||  || <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-WxWidgets/">WxWidgets</a> || azawawi || <a  href="http://search.cpan.org/dist/Padre-Plugin-WxWidgets/">0.03</a> || ??? || <a  href="/wiki/WxWidgets">WxWidgets</a> support for Padre
+||  || <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-XS/">XS</a> || azawawi || <a  href="http://search.cpan.org/dist/Padre-Plugin-XS">0.09</a> || ??? || Support for <a  href="http://perldoc.perl.org/perlxs.html">Perl XS</a>
+|| <strong>Field</strong> || <strong>Plugin Name</strong>  || <strong>Main developer</strong> || <strong>Version</strong> || <strong>Status</strong> || <strong>Description</strong> ||
+|| Other || <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-Alarm/">Alarm</a> || fayland, azawawi || <a  href="http://search.cpan.org/dist/Padre-Plugin-Alarm/">0.14</a> || works but not on Ubuntu, limited UI || Alarm clock ||
+||  || <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-Autodia/">Autodia</a> || teejay, azawawi || <a  href="http://search.cpan.org/dist/Padre-Plugin-Autodia/">0.01</a> || prototype/proof of concept || create a UML Diagram from your code ||
+||  || <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-Autoformat/">Autoformat</a> || jquelin, azawawi || <a  href="http://search.cpan.org/dist/Padre-Plugin-Autoformat/">1.22</a> || works || reformat your paragraphs with ctrl+shift+j ||
+||  || <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-CommandLine/">CommandLine</a> || szabgab || <a  href="http://search.cpan.org/dist/Padre-Plugin-CommandLine/">0.03</a> || experimental || ??? ||
+||  || <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-Encrypt/">Encrypt</a> || azawawi || <a  href="http://search.cpan.org/dist/Padre-Plugin-Encrypt/">0.12</a> || ??? || ??? ||
+||  || <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-HTMLExport/">HTMLExport</a> || azawawi || <a  href="http://search.cpan.org/dist/Padre-Plugin-HTMLExport/">0.09</a> || ??? || ??? ||
+||  || <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-Kate/">Kate</a> || szabgab, chorny || <a  href="http://search.cpan.org/~chorny/Padre-Plugin-Kate/">0.06</a> || Perl 5, PHP, BibTeX, Java, C# || Regex based syntax highlighting for several languages ||
+||  || <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-LineFilter/">LineFilter</a> || ??? || ??? || not yet on CPAN || ??? ||
+||  || <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-Media/">Media</a> || Alias || 0.01 || proof-of-concept, not on CPAN || Test plugin to demonstrate the use of Wx::Media. Show the About box for the plugin, for a musical treat ||
+||  || <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-Nopaste/">Nopaste</a> || chorny || <a  href="http://search.cpan.org/dist/Padre-Plugin-Nopaste/">v0.3.1</a> || ??? || ??? ||
+||  || <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-REPL/">REPL</a> || ryan52 || <a  href="http://search.cpan.org/dist/Padre-Plugin-REPL/">0.01</a> || ??? || ??? ||
+||  || <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-SDL/">SDL</a> || ??? || ??? || not yet on CPAN || ??? ||
+||  || <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-SpellCheck/">SpellCheck</a> || jquelin, azawawi || <a  href="http://search.cpan.org/dist/Padre-Plugin-SpellCheck/">1.21</a> || works but limited || spell check your document with F7 ||
+||  || <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-Swarm/">Swarm</a> || bramble || <a  href="http://search.cpan.org/dist/Padre-Plugin-Swarm/">0.1</a> || ??? || ??? ||
+||  || <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-Tasks/">Tasks</a> || ??? || ??? || not yet on CPAN || ??? ||
+||  || <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-ViewInBrowser/">ViewInBrowser</a> || fayland || <a  href="http://search.cpan.org/dist/Padre-Plugin-ViewInBrowser/">0.07</a> || obsolete, Padre now has this functionality || launch a web browser from Padre ||
+||  || <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-VimishLexer/">VimishLexer</a> || ??? || ??? || not yet on CPAN || ??? ||
+|| In Other Languages || <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-PSI/">PSI</a> || szabgab || ??? || experimental, not yet on CPAN || Sample plugin written in Perl 6 ||
+||  || <a  href="http://svn.perlide.org/padre/trunk/Padre-Plugin-Parrot/">Parrot</a> || szabgab, azawawi || <a  href="http://search.cpan.org/dist/Padre-Plugin-Parrot/">0.31</a> || experimental+ || Writing Plugins in Parrot languages, syntax highlighting for PASM and PIR files ||
+</p>
+
+
+[% END %]
+[% END %]
