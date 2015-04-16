@@ -1,0 +1,130 @@
+[% DEFAULT
+   title="Visual Editor Effects"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<h2>Description</h2>
+
+Under this title we have sever features.
+
+<ul>
+  <li>Line Numbers
+    <ul>
+      <li>On the left margin you can see the line numbers</li>
+    </ul>
+  </li>
+  <li>Code Folding
+    <ul>
+      <li>On the left margin, after the line number you can see squares with a - sign and vertical lines connecting some of the squares</li>
+      <li>Clicking on the square will fold (hide) the code beneath it and change the sign to be a + sign. Clicking on the + sign will expand the folded code.</li>
+      <li>When the Code Folding is enabled we see the folding marks on the left margin. If the mouse is over that margin and we right-click on the mouse we get two new menu options:
+        <ul>
+          <li><b>Fold All</b>
+          <li><b>Unfold All</b>
+        </ul>
+      </li>
+      <li>They will fold and unfold everything respectively.</li>
+    </ul>
+  <li>Current Line
+    <ul>
+      <li>This is the yellow highlighting on row number 24, currently at the top of the window. It's color can be configured.</li>
+    </ul>
+  </li>
+  <li>Right Margin
+    <ul>
+      <li>This is a visual indicator to make it easier to keep the code limited to a certain width. This is the gray column on the right side of the editor.</li>
+    </ul>
+  </li>
+  <li>Newlines
+    <ul>
+      <li>There are the black LF marks at the end of each row. As this screen-shot was taken of UNIX-ish file the newlines are actually LF (line feed) characters.</li>
+      <li>If the file had Windows style newlines we would see two marks: CR (carriage return) and the LF (line feed).</li>
+    </ul>
+  </li>
+  <li>Whitespaces
+    <ul>
+      <li>TABs are show as arrow (e.g. before the word original_cwd)</li>
+      <li>Spaces are shown as little dots (e.g. after the work original_cwd)</li>
+    </ul>
+  </li>
+  <li>Indentation Guide
+    <ul>
+      <li>This is the blue vertical line under the letter <b>g</b> of <b>getters</b></li>
+    </ul>
+  </li>
+</ul>
+
+<img src="/images/padre_visual_editor_effects.png">
+
+<h2>Test</h2>
+
+<ol>
+  <li>Open a Perl file</li>
+  <li>Turn on/off each one of the features and observe if the visual effects are as you are expecting then go on the configuration of these elements
+    <ul>
+      <li><b>View -> Show Line Numbers</b></li>
+      <li><b>View -> Show Code Folding</b></li>
+      <li><b>View -> Show Current Line</b></li>
+      <li><b>View -> Show Newlines</b></li>
+      <li><b>View -> Show Right Margin</b></li>
+      <li><b>View -> Show Whitespaces</b></li>
+      <li><b>View -> Show Indentation Guide</b></li>
+    </ul>
+  </li>
+</ol>
+
+<h3>Right Margin</h3>
+
+<ol>
+  <li>Enable Right Margin <b>View -> Show Right Margin</b>.</li>
+  <li>Go to the Advanced Preferences editor via 'Tools/Preferences/Advanced'.</li>
+  <li>In the 'Filter' type "right_margin_column" and click on the item 'editor_right_margin_column'</li>
+  <li>At the bottom of the screen you will see the details of this option</li>
+  <li>The default is "80" change the value to "150" than press "Set" and than press "Save". you will see that the right margin mark has moved to the right.</li>
+  <li>Now go back to the Advanced Preferences Editor select the editor_right_margin_column again and press "Reset" and than press "Save".</li>
+  <li>Now it should go back to default (value = 80), middle of the screen.</li>
+</ol>
+
+<h3>Current Line</h3>
+
+<h4>First Option</h4>
+
+<ol>
+  <li>Start padre.</li>
+  <li>Write a script or open perl module.</li>
+  <li>Enable Current Line <b>View -> Show Current Line</b>.</li>
+  <li>Go to <b>Tools -> Preferences</b>.</li>
+  <li>On the left side you'll have a list of options, go to "Appearance".</li>
+  <li>There you'll have "Editor Current Line Background Colour" and on the right you can pick the new colour you want, pick a colour(yellow is the default) than Press the "Ok" button and than Press the "Save" button.</li>
+</ol>
+
+<h4>Second Option</h4>
+
+<ol>
+  <li>Start padre.</li>
+  <li>Write a script or open perl module.</li>
+  <li>Enable Right Margin <b>View -> Show Current Line</b>.</li>
+  <li>Go to <b>Tools -> Preferences</b>.</li>
+  <li>There are 3 buttons at the bottom "Save", "Advanced" and "Cancel". Press the "Advanced" button.</li>
+  <li>Write down on the filter's search box "editor_currentline_colour" and press it.</li>
+  <li>than you can change the value(= colour of the "Current Line) to "#FF0000" (Red).</li>
+  <li>than Press the button "Set" and after that Press the Button "Save" on the bottom.</li>
+</ol>
+
+<h2>TODO</h2>
+
+<ul>
+  <li>In order to make working with the keyboard faster we might want to enable the Fold All/Unfold All options on the right-click regardless of the mouse position.</li>
+  <li>For the same reason we could also add a fold/unfold current line to the right-click menu.</li>
+  <li>In addition IMHO all the folding related actions should have menu options.</li>
+</ul>
+
+
+[% END %]
+[% END %]
+
