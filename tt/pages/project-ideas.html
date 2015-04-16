@@ -1,0 +1,243 @@
+[% DEFAULT
+   title="Project Ideas"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<h2>Project ideas for people who want to get involved in Padre.</h2>
+
+
+<h2>TODO</h2>
+<ul>
+  <li>connect them to tickets</li>
+  <li>list potential mentors</li>
+  <li>list required background</li>
+</ul>
+
+Initial list created for <a href="http://www.google-melange.com/">Google Summer of code 2011</a> ( http://epo.means.no/gsoc2011/ideas )
+
+<h2>Full Perl 5 Debugger Integration with Padre</h2>
+<p>
+Padre already has a debugger but it has lots of short comings as it is a first-generation implementation.
+It is connecting to the built-in debugger of perl itself via the Debug::Client module.
+<p>
+
+In this project one will need to improve the Debug::Client making sure it works well on all 
+major operating systems and on all version of perl from 5.6 till 5.14 (to be released soon).
+There are several tickets opened with a number of feature requests.
+<p>
+
+The debugger should be fully integrated into the IDE (e.g. Java debugger in Netbeans), where you can inspect values by hovering variables, set breakpoints, etc all from the GUI without a deeper knowledge of the perl debugger (for simple tasks at least).
+<p>
+
+Related #928, #929, #930, #931, #1005, #1036, #1083, #1085, #1086
+<p>
+
+Possible mentor: Gabor Szabo (original developer of the Debug::Client and the current debugger integration)
+
+<h2>Enlarging automated test suite using Win32::GuiTest</h2>
+
+Padre has a number of internal unit-tests but as it is a GUI project most of the testing should be done
+on the GUI itself. We have a very limited - I'd say experimental - set of test using the 
+Win32::GuiTest module from CPAN. These test can be found in the t/win32 in the Padre source code.
+<p>
+
+In the meantime we have started to write test-cases for manual testing.
+<p>
+
+The task is to implement about 30 test-cases covering most of the central features of Padre
+with automated test.
+<p>
+
+Possible mentor: Gabor Szabo (original developer of Padre, once maintainer of Win32::GuiTest)
+<p>
+
+<h2>Enlarging test suite using the actions system</h2>
+
+Instead of adding events directly to menu items Padre has a separate Action system.
+Each action then can be added to the menu or the toolbar or to the right-click pop-up window
+or probably elsewhere. Padre also has a way to automatically execute a set of actions
+that were given to it on the command line. This enables us to write certain 
+automated test. An example for such test can be found in the xt/actions.t file in 
+the Padre source code.
+<p>
+
+The task is to add about 30 test cases to provide a good coverage of Padre via the actions system.
+As this has never been tested full probably the action system itself will need further extension
+to be able to use arguments for actions and test various important features of Padre.
+<p>
+
+Possible mentor: Sebastian Willing (developer of Padre, wrote the initial action system of Padre)
+
+<h2>Implementing automated tests using Dogtail</h2>
+
+As a companion to the test running on windows that are using the Win32::GuiTest perl module 
+we would like to have automated tests on Linux systems as well. 
+Dogtail is a GUI test tool and automation framework written in Python.
+http://en.wikipedia.org/wiki/Dogtail
+<p>
+
+The task in this project is to implement a good coverage of automated test for Padre using Dogtail.
+
+
+<h2>Implementing Code::Explain</h2>
+
+Code::Explain is a module that will implement all the capabilities of
+the context sensitive help of Padre. It will have an API to be used within Padre.
+It will also have a command line interface to make it usable by any editor that 
+is capable of calling external commands such as vim.
+It will also have a web interface and will be usable as part of an IRC chatbot.
+<p>
+
+There is a prototype of all this on CPAN but there is a lot of work to be done.
+<p>
+
+The project is to factor out and greatly enhance the code analysis capabilities
+that Padre already has.
+<p>
+
+Source code: https://github.com/szabgab/Code-Explain
+<p>
+
+Possible mentor: Gabor Szabo (original developer of Padre, developer of Code::Explain)
+
+<h2>Perl 6 regex editor</h2>
+
+Padre already has a regex editor (Tools / Regex Editor) 
+that is quite good but lacks certain features and it only supports Perl 5.
+<p>
+
+The regexes in Perl 6 are substantially different from those in Perl 5.
+<p>
+
+This project is divided into two major tasks
+<p>
+
+The first task is to enhance the Perl 5 regex editor by adding features showing
+the matches of capturing parentheses and regex related variables. It is
+also required to provide an English explanation of the regex being edited.
+<p>
+
+The second task is to add Perl 6 support to the regex editor of Padre. 
+This requires understanding the regex dialect of Perl 6.
+<p>
+
+We started to write a description for the <a href="/features/regex-editor.html">Regex Editor</a>.
+
+<h2>GUI CPAN installer for Padre</h2>
+
+Padre has a prototype of CPAN installer that is mostly broken.
+<p>
+
+The following tasks are in this project:
+
+ * Fix and enhance the CPAN installer of Padre. 
+ * Integrate it with the plugin manager. 
+ * Make it work with external perls as well (and not only with the one Padre is running on).
+<p>
+
+The results of an earlier GSOC project called wxcpan ( http://code.google.com/p/wxcpan/
+or CPANPLUS::Shell::Wx on CPAN) can be reused.
+<p>
+
+Related #501, #1031, #1044, #1045
+<p>
+
+See also <a href="/features/cpan-module-installer.html">CPAN Module Installer</a>
+<p>
+
+Possible mentor: Sebastian Willing (developer of Padre)
+
+<h2>MacOSX Support</h2>
+
+Padre is written in Perl and uses Wx-Widgets (OS independent). Nevertheless, there is considerable work needed to bring Padre on MacOSX on the same level as MS Windows and GNU/Linux.
+
+
+<h2>Enhanced VCS integration</h2>
+
+SVN, Git and maybe others
+<p>
+
+The SVN Plugin of Padre supports all basic SVN functions and some extended. The following tasks still need to be done:
+
+ * Update the GIT plugin (any maybe others) to support all basic functions like the SVN plugin does
+<p>
+
+The following tasks could be added:
+<p>
+
+ * Add Padre::File::SVN, maybe Padre::File::GIT and maybe others to allow Padre to access files directly on the VCS server.
+   * Read/Open file would be checkout/update
+   * Save would be commit
+ * Add a file rename capability to Padre (changing the filename of an open tab) and let the version control plugins also process the change.
+
+See also <a href="/features/integrated-version-control.html">Integrated Version Control</a>.
+
+<h2>Social plugins</h2>
+
+Various plug-ins such as Social plugins (GUI for Twitter, Identi.ca, Buzz, etc)
+
+<h2>Keyword driven testing</h2>
+
+GUI for keyword driven testing (wrapping WWW::Mechanize and similar modules)
+
+<h2>GUI for the Perltidy</h2>
+
+<a href="/features/perl-tidy.html">Perl Tidy</a>
+
+Configure PerlTidy using the Padre::Plugin::PerlTidy and save the values in a perltidy.rc in the project root dir
+
+<h2>GUI for the Perl Critic</h2>
+
+<a href="/features/perl-critic.html">Perl Critic</a>
+
+<h2>Configure projects</h2>
+
+Most configuration settings may also appear in a project-specific padre.yml config file in the project root dir. An example is found in the Padre source project dir in trunk.
+<p>
+
+Tasks:
+ * Add flags to the config option definitons to reflect which option could be project-specific
+ * Re-use the existing configuration dialog ("Preferences 2.0") showing only project specific settings and save them to the project config file
+ * Write tests that check if the project preferences are used only for files of this project (as far as possible)
+   * Example: Open a file from a project and one without a project. Use the actionqueue to push a "tab" into each of them and save them. The test script could check if the project-specific and global tab width has been respected.
+
+<h2>Padre::File open dialog</h2>
+
+Padre::File is an abstraction layer for file access in Padre, even if it isn't used everywhere inside Padre. It provides a protocol-independent internal API (featuring read, write, mtime, size and others).
+<p>
+
+Using this power currently is a pain: The user has to type the whole URL to the file which should be opened.
+<p>
+
+Some tickets are listed in <a href="/features/remote-editing.html">Remote Editing</a>.
+<p>
+
+Remote files should be open'able like local files. The default open dialog should be copied for remote files:
+<p>
+<ul>
+  <li>Select a protocol</li>
+  <li>Fill in protocol-specific options (like servername, username, password, path)</li>
+  <li>Let the user browse the directories and files using the Padre::File API</li>
+  <li>Non-blocking autocomplete (type "lib/Pad" and get "Padre" and "Padre.pm" suggested)</li>
+  <li>Pass the selected URLs to the "Open" -> "Open URL..."  process for opening in Padre</li>
+  <li>Instead of selecting a protocol, the user should be able to type in a (partial) URL (typing "ftp://padre.perl-ide.org/trunk/" + ENTER should be the same like selecting FTP and typing "padre.perl-ide.org" in the servername field and "/trunk" in the path inputfield</li>
+  <li>Plugins should be able to easily extend the dialog, for example by setting a list of options</li>
+</ul>
+<p>
+
+VLC's open dialog is a good sample for handling different protocols (for VLC: media sources) in one dialog.
+<p>
+
+Possible mentor: Sebastian Willing (developer of Padre and Padre::File)
+<p>
+
+
+[% END %]
+[% END %]
+
+
