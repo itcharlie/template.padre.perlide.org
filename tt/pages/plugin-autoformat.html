@@ -1,0 +1,47 @@
+[% DEFAULT
+   title="Padre::Plugin::Autoformat"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<a href="/plugins.html">Plugins</a>
+
+This plugin allows one to reformat text automatically with Ctrl+Shift+J.
+It is using <a href="https://metacpan.org/module/Text::Autoformat">Text::Autoformat</a> underneath, so please check this module's documentation for more information.
+
+<h2>TODO</h2>
+
+<pre>
+- Create a gui for the following options:
+  - left=>8, right=>70   # Margins
+  - justify => 'left|right|full|centre
+  - fill ?
+  - squeeze whitespace
+  - tabspace
+  - case conversions: 
+    - lower
+    - sentence
+    - title
+    - highlight
+  - Break wrap: 
+     - Turn off all hyphenation
+     - Default hyphenation
+     - Use TeX::Hyphen module's hyphenation
+  - Respect padre's right margin or override
+
+  - ignore regex
+</pre>
+
+<h2>SEE ALSO</h2>
+
+<a href="https://metacpan.org/module/Text::Autoformat">Text::Autoformat</a>
+
+
+[% END %]
+[% END %]
+
+
