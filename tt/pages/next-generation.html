@@ -1,0 +1,92 @@
+[% DEFAULT
+   title="Padre, the Next Generation IDE"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+I (Ahmad Zawawi) wanted to share my thoughts about how we can drive Padre in 2012. I know that we have been adding feature after feature to Padre core lately and bloat seems inevitable. You will notice how Adam cleverly added the features tab in preferences to keep the Padre startup and runtime memory cost at a minimum. However as Padre matures, we need to move into a more plugin-based architecture. Each Padre release has been growing bigger and bigger. For example:
+
+<ul>
+  <li>Padre 0.94 => 1.78 MB (~ 2 months ago)</li>
+  <li>Padre 0.92 => 1.74 MB</li>
+  <li>Padre 0.90 => 1.61 MB</li>
+  <li>...</li>
+  <li>Padre 0.84 => 1.53 MB (~ a year ago)</li>
+</ul>
+
+
+<h2>WARNING: FULL OF COMPLAINTS</h2>
+
+Lately when I joined back padre development after a full gaming season full of headshots, I wanted to relax a little and use what we have built in Padre as a platform to build upon. I wanted to learn Moose so much along with its friends Mouse and MooseX::Declare and lately PDL. I noticed after developing Moose and the initial PDL support that we lack a proper event manager. We currently rely on the wxWidgets API or what Padre::Wx::Editor currently fires back through the document subclass for keyboard, focus and mouse events. However, they are not complete in their approach. To be able to work *as a plugin* on a padre document with the Perl mimetype (i.e. application/x-perl), you need to provide registered_documents in your Padre::Plugin subclass. Cool, but what about when i have two or more plugins that need to work on the same Perl document with different syntactic sugar and keyword highlighting and event management. Padre should provide a way to choose which one to activate on the current content via a list like "View / Perl 5| Perl 6|HTML|...etc".
+<p>
+So again,
+
+<h2>Document events</h2>
+
+<ul>
+  <li>on_create, on_destroy</li>
+  <li>on_focus, on_unfocus</li>
+  <li>on_key_up</li>
+  <li>on_key_down</li>
+  <li>on_char</li>
+  <li>on_left_up/on_left_down</li>
+  <li>on_right_up/on_right_down</li>
+  <li>...</li>
+</ul>
+
+<h2>Padre Menu API</h2>
+
+<ul>
+  <li>add</li>
+  <li>replace</li>
+  <li>delete</li>
+  <li>on_menu_click</li>
+  <li>before_on_menu_click</li>
+  <li>after_on_menu_click</li>
+</ul>
+
+hmmm, Method modifiers
+
+<pre>
+$self->$main->$event_manager->register_event('.*x-perl', 'event_name');
+</pre>
+
+<h2>TODO</h2>
+
+<ul>
+  <li>Remove the concept of user levels (i.e. beginner mode)</li>
+</ul>
+
+<h2>Why Padre needs Moose or something like it</h2>
+
+<a href="/trac/wiki/WhyPadreNeedsMoose">Why Padre Needs Moose</a>
+
+<h2>Usability propositions (Highest priority first)</h2>
+
+<ul>
+  <li><b>Follow common guidelines.</b> Read and memorize your favorite platform's user interface guidelines, and follow them as closely as possible in your application. Worst case scenario, they'll prevent "spurious" bug reports from "annoying" users. Best case scenario, your app will actually benefit of tried and true ideas, embodied in your platform's UI, and embedded in your users' brains. And you'll learn a new thing or two about usability.</li>
+  <li><b>Autoconfig.</b> Make your application deduce configuration, instead of relying on the user to provide that information for you. Go the extra mile and write the "detection" code to enable this.</li>
+  <li><b>Simplify.</b> Dump unnecessary configuration options.</li>
+  <li><b>Copy ideas.</b> Steal ideas used in other popular — and similar — applications. Pay attention to the details. Often, the small details embedded in a user interface teature (very consisten behavior, pixel-perfect accuracy) win unsung praise from their users, and keep them loyal.</li>
+  <li><b>Refactor.</b> Run a quick survey on your user inteface among your closest friends, and ask them if they understand, and if they don't, what don't they understand. Then propose new UI layouts.</li>
+  <li><b>Divide and conquer.</b> If your application does too much in a single user interface, split your UI in more manageable parts. Whether you do two apps that meet via named pipes or databases on disk, or you do a single app with two windows, it's up to you. Just be consistent and stick to your strategy.</li>
+  <li><b>Make your app work using "contexts" or "activity centers"</b>. That way, you can show and keep tightly related options, functionality and UI controls together.</li>
+</ul>
+
+<h2>Conclusion</h2>
+
+How about we fix Padre to be <b>minimal</b> and move some of the functionality or unused features outside of Padre core. We should start working on well-thought-out <b>plugin API</b> that truly allows plugins to <b>modify</b> Padre behavior in <b>every way possible</b>.
+
+<h2>References</h2>
+
+<a href="http://rudd-o.com/linux-and-free-software/faq-why-user-levels-are-bad-usability">Why User Levels are Bad Usability</a>
+
+
+[% END %]
+[% END %]
+
+
