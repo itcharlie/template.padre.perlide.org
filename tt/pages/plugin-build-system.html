@@ -1,0 +1,79 @@
+[% DEFAULT
+   title="Padre Plugin Build System"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+[[PageOutline(2-4)]]
+[wiki:Plugins <-plug-ins]
+
+Padre::Plugin::Moose ??
+
+A modern Perl TDD-based build system for Padre
+
+<h2>TODO</h2>
+
+<pre>
+- Release version 0.01
+- Figure out what is the current project using or better allow the user to select one
+- The menu should contain:
+  - Customize Build sequence:
+    - Clean (checkbox)
+    - Configure (checkbox)
+    - Build (checkbox)
+    - Test (checkbox
+    - Test under RELEASE_TESTING or AUTOMATED_TESTING?
+    - Bi (checkbox)
+    - Build dist (checkbox)
+    - Build release (checkbox)
+  - Build
+  - Execute standalone build step
+</pre>
+
+<p>
+
+For {{{Module::Build}}}, {{{Build.PL}}} should be present:
+
+<pre>
+./Build realclean
+perl Build.PL
+./Build
+./Build test
+./Build install # if required
+</pre>
+
+<p>
+
+- For {{{Module::Install}}}, {{{Makefile.PL}}} should be present:
+
+<pre>
+make realclean
+perl Makefile.PL
+make
+make test
+rm MANIFEST && make manifest && make dist
+make install # if required
+</pre>
+
+<p>
+
+- For {{{Dist::Zilla}}}, {{{dist.ini}}} should be present:
+
+<pre>
+dzil clean
+dzil build
+dzil test
+dzil install
+dzil release
+</pre>
+
+
+
+
+[% END %]
+[% END %]
+
