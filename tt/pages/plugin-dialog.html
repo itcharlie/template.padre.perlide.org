@@ -1,0 +1,83 @@
+[% DEFAULT
+   title="Padre Plugin Dialog"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+Padre::Plugin::Cookbook
+
+<h2>Description</h2>
+
+You start off doing one thing, look at something else, then ALIAS releases Padre::Plugin::wxFormBuilder, you stumble around in the dark, bang your head against the wall, read the Padre::Plugin API, and Padre::Plugin::My. Not forgetting <a href="/building-gui-with-wxformbuilder.html">wxFormBuilder</a>,
+( a bit like Glade but not :( ). You get short tempered on IRC , then you pester Alias with your blatherings. 
+<p>
+Which only makes you feel you are a child with a shape sorter, wooden toy with slots, shapes and a hammer :)
+<p>
+So to speed up the process for developers, contributors and others, I created these Cookbooks. I have assumed that you have probably already looked at My-Plugin and it's accompanying screen cast. As you will have noted of late, all of Padres internal Dialogues are now being created using {{{Padre::Plugin::FormBuilder}}}, so it only makes sense that the Plug-ins follow suite.
+<p>
+Recipes 01, 02 & 03 each have a zip file you can download, and play along with. They are now quite static, probably contain some mistakes or mistaken ideas, which have been rectified in the latter Recipes. The emphasis is on the boiler plate for {{{Wx::Dialogs}}} relating to Padre rather than on Perl itself. Havering said that Recipe-02 shows how to retrieve your Padre configuration data stored in config.yml.
+<p>
+Recipe 04 and its siblings, you will now find in Padres SVN, located in {{{Padre::Plugin::Cookbook}}} surprisingly, ConfigDB is a view of your local catalogue, which you may find interesting from the point of a future Plug-in developer.
+<p>
+Recipe 05, As this code is changing periodicity to keep up with Padre and my understanding of what is expected of a {{{Padre::Plugin}}}. Due to this, several references are now to other Plug-ins, which better show or require these features in working code.
+<p>
+
+<hr>
+<h3>Recipe-01</h3>
+
+<a href="/plugin-cookbook-01.html">Cookbook 01: Hello World</a> what else could it be.
+
+<h3>Recipe-02</h3>
+
+<a href="/plugin-cookbook-02.html">Cookbook 02: Fun with widgets and a Dialog</a> (method modifiers and event handlers)
+
+<h3>Recipe-03</h3>
+
+Every Plug-in needs an <a href="/plugin-cookbook-03.html">Cookbook 03: About Dialogue</a> or Multiple Dialogues.
+
+<h3>Recipe-04</h3>
+
+<a href="/plugin-cookbook-04.html">ListCtrl or ConfigDB</a> that is the question.
+
+<h3>Recipe-05</h3>
+
+<a href="/plugin-cookbook-05.html">Icons DEBUG and Translations</a> or Conformance and all the bit's I have missed so far.
+
+<h2>Screen-Casts</h2>
+
+<ul>
+  <li>My-Plugin <a href="http://www.youtube.com/watch?v=RDjWFKnuhhc&feature=player_profilepage">Creating a plugin for Padre, the Perl IDE v0.84</a> ( June 13, 2011 )</li>
+</ul>
+
+<h2>Blogs</h2>
+
+<ul>
+  <li>Padre::Plugin::FormBuilder <a href="http://blogs.perl.org/users/adam_kennedy/2011/07/padre-form-builder---a-cross-platform-gui-design-solution-for-perl.html">A cross platform gui design solution for perl</a> ( July 19, 2011 )</li>
+  <li>Padre::Plugin::YAML <a href="http://zenoga.tumblr.com/post/6900208989/creating-a-padre-plugin-and-uploading-it-to-cpan-in-7">Creating a Padre plugin and uploading it to CPAN in 7 simple steps</a> ( June 25, 2011 )</li>
+</ul>
+
+<h2>Links</h2>
+
+<ul>
+  <li>Padre 0.96</li>
+  <li><a href="https://metacpan.org/pod/Padre::Plugin">Padre::Plugin</a></li>
+  <li><a href="https://metacpan.org/pod/Padre::Wx::Role::Main">Padre::Wx::Role::Main</a></li>
+  <li><a href="https://metacpan.org/pod/Padre::Wx::Main">Padre::Wx::Main</a></li>
+</ul>
+
+
+<ul>
+  <li><a href="http://www.perl.com/pub/2001/09/12/wxtutorial1.html">wxPerl: Another GUI for Perl</a></li>
+  <li><a href="http://wiki.wxperl.info/w/index.php/Main_Page">wxPerl</a></li>
+  <li><a href="http://docs.wxwidgets.org/stable/wx_classref.html">wxAlphabetical class reference</a></li>
+  <li><a href="http://zetcode.com/wxpython/layout/">Layout management in wxPython</a></li>
+  <li><a href="http://learnperl.scratchcomputing.com/tutorials/wxperl/">How GUI Toolkits Work</a></li>
+</ul>
+
+[% END %]
+[% END %]
+
