@@ -1,0 +1,325 @@
+[% DEFAULT
+   title="Short introductory guide to translating (localizing) Padre"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+To see the current status visit this page http://perlide.org/translations/
+
+<p>
+There are several thing that can and should be translated. They will be described on this page
+<p>
+
+<ul>
+  <li>The GUI of Padre</li>
+  <li>Plug-ins</li>
+  <li>Perl 5 diagnostics</li>
+  <li>Perl 5 documentation (perldoc in general)</li>
+  <li>Perl 5 call-tips</li>
+  <li>Similar things for other languages</li>
+</ul>
+
+<h2>Translating the GUI of Padre</h2>
+
+The following is intended for people who work on unix-ish operating systems and have no fear for the command line.
+<p>
+
+But even If you do not belong to that group you have no excuse for not contributing a translation since you may use <b><a href="http://www.poedit.net/">Poedit</a></b>. 
+Poedit is a graphical tool that supports extraction and translation of messages and runs on a variety of platforms including MS Windows (see lower).
+<p>
+If you chose to work on the command line the following is a short intro which describes the steps I took. It does not cover all features of the tools used - please refer to the fine manuals of the respective program.
+<p>
+Before you begin, please make sure that you have the GNU gettext utilities installed and svn as well (if not using TortoiseSVN e.g.)
+On Ubuntu - install like this:
+
+<pre>
+sudo aptitude install gettext
+sudo aptitude install subversion
+</pre>
+
+<h3>Translations during a release branch</h3>
+
+
+If you are doing the translation during the release freeze then will need to check out the relevant release branch and work only in that branch! 
+<p>
+To switch between trunk and the release branch:
+<p>
+
+<pre>
+svn switch http://svn.perlide.org/padre/branches/Padre-x.xx
+</pre>
+
+<p>
+Where x.xx follows the Padre versioning, for the current release x.xx would be 0.88.
+<p>
+
+Once you have committed your updates to switch back to trunk:
+<p>
+
+<pre>
+svn switch http://svn.perlide.org/padre/trunk/Padre
+</pre>
+
+<p>
+For further details see <a href="/trac/wiki/Release">Release</a>
+
+<h3>Translating Padre from trunk</h3>
+
+You can translate Padre any time you like, often it's simplest from trunk.
+
+<ol>
+  <li>Check out the current sources of Padre from the subversion repository: http://svn.perlide.org/padre/trunk/ <b>svn co http://svn.perlide.org/padre/trunk/ padre</b></li>
+  <li>You do <b>NOT</b> need to update the messages.pot file any more as it is being done regularly via cron-job.</li>
+  <li>Change into the directory 'Padre/share/locale'
+    <ul>
+      <li>In case of updating an already existing language execute <b>msgmerge -o lng.po.new lng.po messages.pot</b>
+          <br>
+       This will merge the already existing translations and the new template file, resulting in a new file that you now need to edit.
+       Be careful to check the already existing translations: The merging might produce wrong results.</li>
+      <li>In case of creating a totally new translation execute <b>msginit -i messages.pot -o <lng>.po -l lng_CC</b>
+       Where <b>lng_CC</b> is the locale id with language and country ids. Eg.: <b>de_DE</b> or <b>en_US</b>.</li>
+    </ul>
+   </li>
+  <li>Add new files to the repository or - if you don't have write access - either send the updated "messages.pot" and the .po file to the padre development mailing list or open a new ticket and attach the files to it. <b>perl ../tools/po_stats.pl</b></li>
+</ol>
+
+Will create a textual report on the status of all the existing translation files. Remember to run this under the 'Padre' subdirectory.
+
+<h2>MS Windows</h2>
+
+For MS Windows Download the ''Complete package, except sources''
+from http://gnuwin32.sourceforge.net/packages/gettext.htm
+and install it to c:/Program Files/GnuWin32/
+(currently we hard coded that path into dev but it can be fixed of course)
+
+
+<h3>Adding a translation</h3>
+
+<ol>
+  <li>Check out the list of existing translations: http://svn.perlide.org/padre/trunk/Padre/share/locale/</li>
+  <li>Create the {{{.po}}} file and add it to SVN (note: only the {{{.po}}} file, not the {{{.mo}}} one).</li>
+  <li>Change {{{lib/Padre/Locale.pm}}} (the %SHORTNAME hash and the 'menu_view_languages' subroutine )</li>
+  <li>Update the {{{Changes}}} file to brag about this new translation! :-)</li>
+</ol>
+
+
+<h2>Poedit</h2>
+
+The command line instructions do still apply. Poedit, as a graphical editor for the po-files, aims to provide a more convenient approach to editing catalogs than launching vi and editing the file by hand.
+<p>
+
+First you need to install the package. On Gnu/Linux, poedit is probably already included in your distribution (e.g. on Debian/Ubuntu, do "sudo apt-get install poedit"). For other Operating Systems (including MS Windows and Apple OS X) you'll find binaties at the <b><a href="http://www.poedit.net/download.php">Poedit download page</a></b>. Follow the instructions to edit translations:
+<p>
+
+1. Open poedit.
+
+<img src="http://padre.perlide.org/trac/attachment/wiki/TranslationIntro/poedit1.png">
+
+2. Go to File-Open and select the desired translation (.po file). On *n*x systems the po files for Padre itself (not the plugins) can be found at trunk/Padre/share/locale.
+
+<img src="http://padre.perlide.org/trac/attachment/wiki/TranslationIntro/poedit2.png">
+
+3. Go to Catalogue-Update from POT file. Choose the file messages.pot on the same location as above (generated by the command line instructions).
+
+<img src="http://padre.perlide.org/trac/attachment/wiki/TranslationIntro/poedit3.png">
+
+4. Click OK.
+
+<img src="http://padre.perlide.org/trac/attachment/wiki/TranslationIntro/poedit4.png">
+
+5. The missing, fuzzy and correct translation will be showed in different colours.
+
+<img src="http://padre.perlide.org/trac/attachment/wiki/TranslationIntro/poedit5.png">
+
+6. Check in the .po file you edited (go to the .po files directory and do svn ci <language code>.po -m "Update to <language> translation").
+
+
+<h2>Plug-ins</h2>
+
+Since Padre 0.34, the plugin API has been updated to allow plugin translation.
+<p>
+There is indeed a new method ''plugin_locale_directory()'' that your plugin can implement. It should return a directory where Padre can find the {{{*.mo}}} files for your plugin. This directory will then be added to the locale search path.
+<p>
+
+Note that you are not forced to implement ''plugin_locale_directory()'', since it defaults to ''$sharedir/locale'' (with ''$sharedir'' as defined by {{{File::ShareDir}}}), and thus should work as is for your plugin if you're using the ''install_share'' command of {{{ Module::Install }}}.
+<p>
+
+Once this is done, you need to extract the strings to be translated (see above) to a ''messages.pot'' file in your plugin locale directory (yes, the same directory you're advertising with the ''plugin_locale_directory()'' method).
+
+<p>
+Then, it's translation business as usual, with one minor change: the ''*.po'' (and thus the ''*.mo'' too) files should be named {{{$plugin-$locale.po}}} instead of just {{{$locale.po}}}. That is, the german translation of {{{Padre::Plugin::Vi}}} should be named ''Vi-de.po''.
+
+<p>
+Don't forget to generate the ''*.mo'' files before the release, and to include them in the dist tarball. For the plugins using {{{Module::Build}}}, replacing {{{my $builder = Module::Builder->new}}} with the following is quite handy:
+
+<p>
+<pre>
+my $class = Module::Build->subclass(
+    class => "Module::Build::Custom",
+    code => <<'SUBCLASS' );
+
+sub ACTION_build {
+    my $self = shift;
+
+    my $msgfmt = $^O =~ /(linux|bsd)/
+        ? `which msgfmt`
+        : "c:/Program Files/GnuWin32/bin/msgfmt.exe";
+    chomp $msgfmt;
+    if ( $msgfmt && -e $msgfmt ) {
+        my @pofiles = glob "lib/Padre/Plugin/SpellCheck/share/locale/*.po";
+        foreach my $pof ( @pofiles ) {
+                my $mof = $pof;
+                $mof =~ s/\.po$/.mo/;
+                $self->do_system( "$msgfmt -o $mof $pof" );
+        }
+    }
+    $self->SUPER::ACTION_build;
+}
+
+SUBCLASS
+
+
+my $builder = $class->new(
+</pre>
+
+It will generate the ''*.mo'' files from the ''*.po'' files when issuing the {{{./Build}}} command.
+
+<p>
+
+So, to summarize:
+
+<ol>
+  <li>implement ''plugin_locale_directory()'' (or not if the default suits your needs)</li>
+  <li>create the locale directory (if necessary) {{{share/locale}}}</li>
+  <li>use Wx::gettext() everywhere instead of plain text</li>
+  <li>extract those messages in a ''messages.pot'' file by running {{{../tools/update_pot_file.pl}}</li>
+  <li>create a ''$plugin-$locale.po'' file in your plugin locale directory and translate it - or ask the translators to do it</li>
+  <li>upon releasing, create the ''*.mo'' files and ship them with your plugin</li>
+  <li>tada! your plugin is now translated...</li>
+</ol>
+
+
+<h2>Perl 5 diagnostics</h2>
+
+We have an integration with translated versions of the perldiag.pod that comes with perl.
+( http://perldoc.perl.org/perldiag.html )
+Currently we only found French translation on POD2::FR (http://search.cpan.org/dist/POD2-FR).
+
+<p>
+
+If someone wants to have translation to any language, the right way is to start translating
+the perldiag.pod file of perl 5.10 and releasing it as POD2::XY Where XY is the language code.
+
+<p>
+
+Actually even the English version of perldiag.pod could get some improvement. The problem with 
+it as it is with a large part of the Perl 5 documentation is that in many places it assumes 
+prior knowledge of C or UNIX. Also in many cases it "correct but not too helpful for beginners".
+
+<p>
+
+e.g.
+
+<pre>
+Global symbol "%s" requires explicit package name
+
+(F) You’ve said "use strict" or "use strict vars", which indicates that all variables
+must either be lexically scoped (using "my" or "state"), declared
+beforehand using "our", or explicitly qualified to say which package 
+the global variable is in (using "::").
+</pre>
+
+A beginner probably needs something like this:
+
+<pre>
+You have forgotten to declare the variable using "my" or it was declared in
+another scope or it has a typo.
+</pre>
+
+<p>
+So the "translations" don't necessarily have to be exact translations of the
+English version but should be good explanations for people with 
+not much background in Perl.
+
+<p>
+
+As the content of perldiag is huge it is better to start with the most
+common warnings and errors. For now see the list here:
+http://www.perlmonks.org/?node_id=733201
+(TODO: and later maybe copy that list here)
+(TODO: provide examples scripts generating each one of the important errors/warnings) 
+
+<p>
+
+http://mail.perlide.org/pipermail/padre-dev/2008-December/000368.html 
+
+
+<h2>Checking Translation Files</h2>
+
+<b>msgfmt -c -o /dev/null PO_FILE</b>
+
+<h2>Perl 5 documentation (perldoc in general)</h2>
+
+Could be translated and uploaded to CPAN as POD2::XY. 
+We have not implemented it but we should provide and indexed 
+access to the selected translated version of the documentation.
+
+<p>
+
+There are several modules on CPAN in the POD2:: name space and
+there is the 
+<p>
+
+See also <a href="http://perldoc2.sourceforge.net/">perldoc2</a>
+
+<h2>Perl 5 call-tips</h2>
+
+The source of the call-tips is in http://svn.perlide.org/padre/trunk/Padre/share/languages/perl5/perl5.yml
+We have not thought of a way how to translate these. (and even the English version needs improvement)
+
+<h2>Similar things for other languages</h2>
+
+We have not thought about this yet.
+
+<h2>Credits</h2>
+
+We would like to make sure the translators get their special credit in both the 
+Padre source code and on the Padre web site both
+<a href="http://padre.perlide.org/developers.html">in English</a> and
+<a href="http://padre.perlide.org/translators.html">in their own languages</a>.
+
+So if you are are translator
+
+<ol>
+  <li>Add yourself to {{{ lib/Padre.pm }}} that will appear on http://search.cpan.org/dist/Padre/lib/Padre.pm#Translators</li>
+  <li>Add yourself to {{{ lib/Padre/Wx/About.pm }}} that will be visible when pressing Help/About/Translators</li>
+  <li>Check out the source of the web site {{{ svn co http://svn.perlide.org/padre/trunk/template.padre.perlide.org/ }}}</li>
+  <li>For the <a href="http://padre.perlide.org/developers.html">English</a> text on the developers page 
+    <ol>
+      <li>Create a file with your nickname in the data/developers/ directory.
+          There are already several files there so you can look at their content to understand waht to write there.</li>
+      <li>In addition edit the data/stash.yml file and add your nick to the <b>developers:</b> section at the bottom of the file.</li>
+    </ol>
+  </li> 
+  <li>For the <a href="http://padre.perlide.org/translators.html">special translators</a> page 
+    <ol>
+      <li>Create a file in the data/translators/ directory</li>
+      <li>Add your nick to the data/stash.yml file in the <b>translators</b> section at the bottom of the file</li>
+    </ol>
+  </li>
+</ol>
+
+A few seconds after you commit the files the new content should appear on the Padre web site.
+
+<p>
+
+If you need help with any of these, please ask on our IRC channel or on the padre-dev mailing list.
+
+
+[% END %]
+[% END %]
+
