@@ -1,0 +1,63 @@
+[% DEFAULT
+   title="Roadmap"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+In general everyone works on his/her favorite area.
+
+<p>
+
+We encourage developers to open tickets for the ideas but often people just implement features.
+
+<p>
+
+We release about once a week when we feel the project is stable enough.
+
+<p>
+
+Based on the mail thread [http://mail.perlide.org/pipermail/padre-dev/2009-August/001184.html]
+
+<ul>
+  <li>Integrating features from Ecliptic to core (azawawi++)</li>
+  <li>Move F2 from Perl 6 to core, provide context sensitive help for Perl 5 keywords, variables and constructs (azawawi++)</li>
+  <li>CPAN GUI client - beginning are in the 'Perl 5 plugin' (see yumex ?)</li>
+  <li>SVN/Git integration improvement (maybe also CVS and RCS ?)
+     <ul>
+        <li>Run on Windows</li>
+        <li>Integrate into directory browser</li>
+        <li>Other improvements</li>
+     </ul>
+  </li>
+  <li>Separate out the Wx::Perl::Dialog and Wx::Perl::Dialog::Simple package (after making Alias happy) or maybe only Wx::Perl::Dialog::Simple ? so I can start using it in simple examples for scripts.</li>
+  <li>Debugger integration (with the visual elements)</li>
+  <li>Packaging for Linux and Mac OSX (to make it easy to just download, unzip and run it)</li>
+  <li></li>
+  <li>Emacs keybinding (Teejay)</li>
+  <li>Versioned saves, See Padre::Autosave</li>
+  <li>"Install from CPAN" when right-clicking on a red line marking the attempt to "use" an unknown module - Andreas Lund</li>
+</ul>
+
+<h2>Plans</h2>
+
+An outline of where Padre is heading
+
+<ul>
+  <li>Make Padre a good replacement for <a href="https://notepad-plus-plus.org/">Notepad++</a> by making it stable and having all the feature that are really useful in Notepad++</li>
+  <li>Make Padre a good replacement of <a href="http://www.multiedit.com/">Multi-Edit</a> and <a href="http://www.ultraedit.com/">Ultra-Edit</a></li>
+  <li>Cover the planned <a href="/features/">Features</a></li>
+  <li>Provide integration with version control systems - at least SVN, SVK and Git.</li>
+  <li>Provide integration with Bug tracking system - at least Bugzilla and Trac.</li>
+  <li>Cooperative editing (at minimum we would like to let one person edit and the others watch)</li>
+  <li>Provide a platform for application development (along with Strawberry Perl)</li>
+</ul>
+
+
+[% END %]
+[% END %]
+
+
