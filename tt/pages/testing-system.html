@@ -1,0 +1,60 @@
+[% DEFAULT
+   title="Testing System"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+Based on Padre I would like to add all kinds of tools that will make 
+it easy to generate test scripts without knowing any programming.
+
+<p>
+
+Some kind of GUI to record/replay test cases that can later be extended
+using perl.
+
+<h2>Areas to cover</h2>
+
+Perl has tons of modules on CPAN that can be used to access various external system and thus to test them.
+As a start we would like to provide GUI elements to make the startup of this testing easy.
+
+<ul>
+   <li>Net::Telnet - record/replay a telnet session, generate telnet script?</li>
+   <li>SSH - record/replay ssh session</li>
+   <li>WWW::Mechanize, Selenium - web automation</li>
+   <li>Win32::GuiTest - Windows GUI automation</li>
+</ul>
+
+
+<h2>Existing Padre plugins</h2>
+
+They are all in very early development stage
+
+<ul>
+   <li><a href="https://github.com/PadreIDE/Padre-Plugin-GUITest">Padre::Pluging::GUITest</a></li>
+   <li>Padre::Plugin::HTTPRecordReplay ??</li>
+</ul>
+
+<h2>Materials to read</h2>
+
+<ul>
+  <li><a href="http://en.wikipedia.org/wiki/Keyword-driven_testing">Keyword Driven Testing</a></li>
+</ul>
+
+<h2>Proprietary Competition</h2>
+
+<ul>
+  <li><a href="http://www-01.ibm.com/software/awdtools/tester/robot/index.html">IBM Rational Robot</a></li>
+  <li>HP (Mercury) <a href="http://en.wikipedia.org/wiki/HP_WinRunner">WinRunner or QTP (Quick Test Professiona)</a></li>
+  <li><a href="http://www.qualisystems.com/">TestShell</a></li>
+  <li><a href="http://www.autoitscript.com/autoit3/">AutoIT</a></li>
+  <li>??</li>
+</ul>
+
+
+[% END %]
+[% END %]
+
