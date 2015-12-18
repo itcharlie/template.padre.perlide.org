@@ -1,0 +1,132 @@
+[% DEFAULT
+   title="Building the Portable Padre on Portable Strawberry Perl"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+(This is mostly important for the Padre development team and not the end user)
+
+How to include Padre into Portable Strawberry and how to release it
+
+<ol>
+  <li>Download Portable Strawberry http://strawberryperl.com/</li>
+  <li>http://strawberryperl.com/download/strawberry-perl-5.10.0.3-portable-beta-1.zip</li>
+  <li>unzip it to c:\portable</li>
+  <li>Theoretically we should not need this but both portable is a bit buggy and some
+    <ul>
+      <li>modules just call out to system("perl") that requires perl to be in PATH. So</li>
+      <li>set the PATH to include both c:\portable\c\bin and c:\portable\perl\bin</li>
+    </ul>
+    </li>
+  <li>Install Padre using</li> <b>cpan&gt;install Padre</b></li>
+  <li>Install Plugins</li>
+  <li>.padre is currently in C:\ shall we set the PADRE_HOME to a directory in the portable distribution? (if so we can configure the plug-ins and ship them but we have to make sure the configuration files don't include personal history..</li>
+  <li></li>
+  <li>remove the cpan_sqlite_log.... files from c:\portable\cpan</li>
+  <li>remove C:\portable\cpan\build and C:\portable\cpan\sources C:\portable\cpan\Bundle</li>
+  <li>remove C:\portable\perl\bin\lex  which the temporary directory of STD.pm (~ 80 Mb)</li>
+  <li>( the whole portable directory is now 202 Mb including a bare bones parrot and rakudo installation )</li>
+  <li></li>
+  <li>copy portablepadre.bat and padrewrap.pl from the SVN of padre\tools\portable_strawberry to portable\perl\bin</li>
+  <li>run padre/trunk/tools/include_parrot.pl</li>
+  <li>
+  <li>create a zip file and drag all the content of c:\portable\ in it (TODO isn't there a command line tool in portable to create the zip file ?)</li>
+  <li>The resulting zip file for Padre 0.25 on Portable Strawberry beta 1 was 60 Mb</li>
+</ol>
+
+<h2>Parrot and Rakudo</h2>
+
+Download git for windows and install it
+
+http://code.google.com/p/msysgit/
+
+http://msysgit.googlecode.com/files/Git-1.6.3.2-preview20090608.exe
+
+Answers I selected:
+
+<ul>
+  <li>Use Git Bash only</li>
+  <li>Use OpenSSH                 (though not really needed)</li>
+  <li>Use Windows style line endings</li>
+</ul>
+
+Download command line SVN for windows and install it
+
+http://www.collab.net/downloads/subversion/
+
+Download CollabNet Subversion Command-Line Client 
+
+<pre>
+set PATH=%PATH%;C:\Program Files\Git\bin
+</pre>
+
+Actual building instructions:
+
+<pre>
+mkdir c:\tools
+cd c:\tools
+git clone git://github.com/rakudo/rakudo.git six
+
+cd six
+</pre>
+
+Optionally switch to a rakudo release tag. e.g. ThousandOaks
+For a list of planned rakudo release, please see:
+http://github.com/rakudo/rakudo/raw/master/docs/release_guide.pod
+
+<pre>
+git checkout ThousandOaks
+</pre>
+
+<pre>
+  2009-11-19   Rakudo #23                      (masak)
+  2009-12-17   Rakudo #24                      (chromatic)
+  2010-01-21   Rakudo #25                      (smash)
+  2010-02-18   Rakudo #26                      (Su-Shee)
+</pre>
+
+<pre>
+perl Configure.pl --gen-parrot --gen-parrot-prefix=c:\strawberry\six
+mingw32-make
+mingw32-make test
+mingw32-make install
+</pre>
+
+Copy credits and licenses
+
+<pre>
+copy CREDITS c:\strawberry\six\rakudo_credits.txt
+copy LICENSE c:\strawberry\six\rakudo_license.txt
+copy parrot\LICENSE c:\strawberry\six\parrot_license.txt
+copy parrot\CREDITS c:\strawberry\six\parrot_credits.txt
+</pre>
+
+Remove unneeded files
+
+<pre>
+del c:\strawberry\six\lib\libparrot.a
+del c:\strawberry\six\lib\parrot\1.7.0-devel\parrot_config.o
+
+size: 34 MB
+zipped size: 7 Mb.
+</pre>
+
+In the Padre repo there is a tools\include_parrot.pl that could be refurbished
+and used to list the files that are needed by rakudo instead of deleting the others.
+
+See also http://rakudo.org/how-to-get-rakudo
+
+
+Switch back to master
+
+<pre>
+git checkout master
+</pre>
+
+[% END %]
+[% END %]
+
