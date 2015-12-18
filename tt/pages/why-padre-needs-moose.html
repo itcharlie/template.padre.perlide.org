@@ -1,0 +1,92 @@
+[% DEFAULT
+   title="Wiki"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<pre>
+use v5.10;
+
+package Padre::Document;
+use Moose;
+sub event_key_up { say "event_key_up fired"; }
+no Moose;
+1;
+
+package NeedsKeyUpEvent;
+use Moose::Role;
+requires 'event_key_up';
+before 'event_key_up' => sub { say q{before event_key_up}; };
+after 'event_key_up'  => sub { say q{after event_key_up}; };
+no Moose::Role;
+1;
+
+package main;
+my $p = Padre::Document->new;
+NeedsKeyUpEvent->meta->apply($p);
+$p->event_key_up;
+say "-----";
+Padre::Document->new->event_key_up;
+</pre>
+
+
+<pre>
+before event_key_up
+event_key_up fired
+after event_key_up
+-----
+event_key_up fired
+</pre>
+
+Using Moo will also do the trick:
+
+<pre>
+use v5.10;
+
+package Padre::Document;
+
+sub new {
+  my $class = shift;
+  $class = ref $class if ref $class;
+  my $self = bless {}, $class;
+  $self;
+}
+
+1;
+
+sub event_key_up { say "event_key_up fired"; }
+
+1;
+
+package NeedsKeyUpEvent;
+use Role::Tiny;
+requires 'event_key_up';
+before 'event_key_up' => sub { say q{before event_key_up}; };
+after 'event_key_up'  => sub { say q{after event_key_up}; };
+1;
+
+package main;
+my $p = Padre::Document->new;
+Role::Tiny->apply_roles_to_object($p, qw(NeedsKeyUpEvent));
+$p->event_key_up;
+say "-----";
+Padre::Document->new->event_key_up;
+</pre>
+
+Remarks (claudio):
+My rule of thumb for the choice of a OO-framework is as such:
+
+<ul>
+  <li>Do I need a really fast startup time for a short running program (e.g. command line script)? I use Mouse (preferably with the XS backend).</li>
+  <li>Does the previous not apply? I use Moose.</li>
+  <li>Additionally, do I want to do metaprogramming (e.g. for code reduction by automatic creation of repetitive methods)? I use Moose.</li>
+  <li>I don't use Moo because I want to keep the road open if I decide to move a program from Mouse to Moose for whatever reason.</li>
+</ul>
+
+[% END %]
+[% END %]
+
