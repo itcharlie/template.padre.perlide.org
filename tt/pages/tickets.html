@@ -1,0 +1,101 @@
+[% DEFAULT
+   title="Tickets"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+Before you submit a <a href="https://github.com/PadreIDE/Padre">bug report</a> please make sure 
+
+<ul>
+  <li>You are using the latest released version of Padre</li>
+  <li>Check if there is already a ticket with the same issue, maybe even fixed on master.</li>
+  <li>You might want to ask around on our <a href="http://mail.perlide.org/mailman/listinfo/padre-dev">mailing list</a> 
+      or on <a href="irc://irc.perl.org/#padre">#padre</a> on irc.perl.org</li>
+  <li>In the report please provide the details of your Operating system, Perl version number, version of Wx and wxWidgtes</li>
+  <li>From Padre 0.92 you can get system information from Padre Help->About->Information just copy and past it in your ticket. (sample below)</li>
+  <li>In addition please describe how did you install Padre?
+    <ul>
+      <li>from CPAN?
+      <li>downloaded binary executable from our web site?
+      <li>ppm?
+      <li>rpm or deb of your operating system vendor?
+    </ul>
+  </li>
+ <li>Please try to describe clearly how we can reproduce the bug</li>
+ <li>A very good read is <a href="http://www.chiark.greenend.org.uk/~sgtatham/bugs.html">How to Report Bugs Effectively</a></li>
+</ul>
+
+You may find the following helpful:
+
+on Linux:
+
+<pre>
+$ perl -v
+$ perl -MWx -e'printf(qq(Wx Version=($Wx::VERSION) %s unicode=(%s)\n), Wx::wxVERSION_STRING(), Wx::wxUNICODE())'
+</pre>
+
+on Windows:
+
+<pre>
+c> perl -v
+c> perl -MWx -e"printf(qq(Wx Version=($Wx::VERSION) %s unicode=(%s)\n), Wx::wxVERSION_STRING(), Wx::wxUNICODE())"
+</pre>
+
+on Mac:
+
+<pre>
+$ perl -v
+$ wxPerl -MWx -e'printf(qq(Wx Version=($Wx::VERSION) %s unicode=(%s)\n), Wx::wxVERSION_STRING(), Wx::wxUNICODE())'
+</pre>
+
+<ul>
+  <li>Please also provide a description how to reproduce the bug</li>
+</ul>
+
+Before you submit a feature request, please check
+
+<ul>
+  <li>That there is no such request yet</li>
+  <li>It might be easier to find a ticket as they are mostly categorized according to the <a href="/features/">feature</a> they are related to.</li>
+  <li>Please describe a use case for the feature</li>
+  <li>If you have examples of other IDEs or editors providing a similar feature, please let us know and explain the details</li>
+</ul>
+
+You are always welcome to attach a patch implementing the feature or fixing the bug.
+
+When opening a ticket please try to pick the correct <b>Component</b>. Most of the components are related to the <a href="/features/">Features</a> of Padre.
+
+<b>sample output from Help->About->Information</b>
+
+<pre>
+                   Padre 0.94
+Core...
+                  osname linux
+                archname i686-linux-thread-multi
+            Distribution Ubuntu 11.04 
+                  Kernel 2.6.38-13-generic
+                    Perl 5.14.2
+                 Threads 3
+                     RAM 175.2MB
+Wx...
+                      Wx 0.9903
+               WxWidgets 2.8.11
+                 unicode 1
+        Alien::wxWidgets 0.54
+ Wx::Perl::ProcessStream 0.30
+           Wx::Scintilla 0.36
+Other...
+                     PPI 1.215
+           Debug::Client 0.16
+                  Config /home/kevin/.local/share/.padre
+</pre>
+
+
+[% END %]
+[% END %]
+
+
