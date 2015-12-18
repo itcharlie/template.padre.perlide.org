@@ -1,0 +1,63 @@
+[% DEFAULT
+   title="Padre Plugin API"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+See <a href="https://metacpan.org/pod/Padre::Plugin">Padre::Plugin</a>
+
+<h2>Overview</h2>
+
+Padre could be extended by many <a href="http://padre.perlide.org/trac/wiki/Plugins">Plugins</a>
+
+<h2>Methods</h2>
+
+Each plugin may define some methods which are called by Padre internals:
+
+<h3>disable</h3>
+
+Arguments: none
+
+Return value: ignored
+
+The disable method is called when the plugin is disabled:
+<ul>
+  <li>At Padre exit if it has been enabled before</li>
+  <li>Using the PluginManager (manually by the user)</li>
+<ul>
+
+<h3>enable</h3>
+
+Arguments: none
+
+Return value: ignored
+
+The enable method is called when the plugin is enabled:
+
+<ul>
+  <li>At Padre startup if it's enabled in config</li>
+  <li>Using the PluginManager (manually by the user)</li>
+</ul>
+
+<h3>padre_hooks</h3>
+
+Arguments: none
+
+Return value: hash reference
+
+Plugins could add hooks to Padre core functions. The "before_save" hook is called just before any open file is flushed to disk.
+
+All valid hooks are listed in [wiki:PluginAPI/Padre_Hooks the list of Padre hooks].
+
+<h2>TODO</h2>
+
+Add the plugin API documentation here and keep it up to date.
+
+
+[% END %]
+[% END %]
+
