@@ -1,0 +1,102 @@
+[% DEFAULT
+   title="Packaging and Distribution of Padre, the Perl IDE"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+
+( see this <a href="http://mail.perlide.org/pipermail/padre-dev/2009-August/001189.html">thread</a> )
+
+This page shows the current status of various packaging attempts for Padre. Successful/current packages for various distributions are listed on the
+<a href="/download/">download page</a>.
+
+The primary distribution channel of Padre and the plugins is CPAN. 
+Hence for every release first we create a CPAN distribution of Padre 
+or the plugin and upload it to CPAN. (See the <a href="/trac/wiki/release">Release</a> page for details).
+
+Here you will find descriptions (and plans) of distributions based on those CPAN packages:
+
+<h2>Linux/Unix/BSD</h2>
+
+<h2>Downstream distributions</h2>
+
+Based on the CPAN package the downstream distributors (Debian, Fedora, Mandriva, FreeBSD etc.) 
+create their .deb, .rpm etc. files. 
+The following pages contains information about the people who maintain those packages in those distribution and their status.
+
+<ul>
+  <li><a href="/trac/wiki/PackagingDebian">PackagingDebian Debian</a></li>
+  <li><a href="/trac/wiki/PackagingFedora">PackagingFedora Fedora</a></li>
+  <li><a href="/trac/wiki/PackagingNetBSD">PackagingNetBSD NetBSD</a></li>
+  <li><a href="/trac/wiki/PackagingUbuntu">PackagingUbuntu Ubuntu</a></li>
+</ul>
+
+<h2>Downstream distributions - backporting</h2>
+
+I don't think we have any backporting going on.
+
+<h2>Downloadable executable - full perl with Padre inside</h2>
+
+<p>
+This is for people who might not want to touch their system or 
+production perl (e.g. they don't use threaded perl) and people who 
+don't want to spend 1-2 hours (or sometimes more) installing Padre from CPAN.
+</p>
+
+<p>
+There is a plan to create a module called [source:trunk/Perl-Dist-XL/lib/Perl/Dist/XL.pm Perl::Dist::XL] which would create
+a full version of perl with Padre (and possibly other things) installed and zipped.
+Users will be able to download it, unzip it and run padre from that perl. 
+They will be able to use either the perl that came with Padre
+or any other perl as their 'production perl'.
+Primarily we try to make this work for Linux but this should probably work on BSD and
+Mac OSX as well. If you are interested in participating please talk to us on <a href="/irc.html">IRC</a>.
+</p>
+
+<p>
+There is a Padre standalone package available on the <a href="/download.html">download page</a>. 
+</p>
+
+
+<h2>Downloadable executable - based on PAR</h2>
+
+PAR based executable: We have tried to make a PAR based executable 
+but there is a complex issue that currently stops us 
+(ORLite::Migrate and PAR not working well together) See #294 and #399
+For now we have stopped the research in this direction but if you have
+the tuits we'll be happy to see a solution. Talk to us, especially tsee and Alias,
+on <a href="/irc.html">IRC</a>.
+
+<h2>Based on !ActivePerl</h2>
+
+Padre requires Wx which doesn't build on ActivePerl.
+
+<h2>Windows</h2>
+
+See PackagingWindows.
+
+
+<h2>Mac</h2>
+
+No idea. Maybe the above [source:trunk/Perl-Dist-XL/lib/Perl/Dist/XL.pm Perl::Dist::XL] will work there too.
+See #513 and see #508 for !ActivePerl
+
+
+<h2>Plugins</h2>
+
+Some of the plugins will be distributed by the downstream distributors 
+and/or will be packaged in the [source:trunk/Perl-Dist-Padre/lib/Perl/Dist/Padre.pm Perl::Dist::Padre] and [source:trunk/Perl-Dist-XL/lib/Perl/Dist/XL.pm Perl::Dist::XL] distributions. 
+
+<h2>Plugins with PAR</h2>
+
+Plugins will be able to be distributed either from CPAN or will be packaged as PAR packages.
+
+
+[% END %]
+[% END %]
+
+
