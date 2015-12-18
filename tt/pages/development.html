@@ -84,7 +84,7 @@ You would be very highly regarded if you improved the test coverage of Padre!!
 See separate page about <a href="/trac/wiki/Release">Release</a>
 
 
-= Development in a branch =
+<h2>Development in a branch</h2>
 
 Most of our development is done on the trunk but occasionally we prefer to make our private corner for experimental changes
 or changes that might not be stable for some time.
@@ -94,16 +94,16 @@ Create a branch and work on it:
 
 Assuming you have already checked out http://svn.perlide.org/padre/trunk/ to /path/to/padre
 
-{{{
+<pre>
 $ svn cp http://svn.perlide.org/padre/trunk/Padre http://svn.perlide.org/padre/branches/My-branch -m'some messages'
 $ cd /path/to/padre/Padre
 $ svn switch http://svn.perlide.org/padre/branches/My-branch .
-}}}
+</pre>
 
 If you run 
-{{{
+<pre>
 svn st ..
-}}}
+</pre>
 
 You will see a letter S infront to the Padre directory as that one is switched.
 
@@ -114,24 +114,26 @@ When done and you would like to merge your changes
 
 1. Make sure everything is committed
 
-{{{
+<pre>
 $ cd /path/to/padre/Padre
 $ svn switch http://svn.perlide.org/padre/trunk/Padre
 $ svn log --stop-on-copy http://svn.perlide.org/padre/branches/My-branch
-}}}
+</pre>
 
 This will show you the changes you made on the branch. Take the FIRST and LAST revision numbers in this log and
 use the following command to see the full change you made:
-{{{
+
+<pre>
 svn diff -rFIRST:LAST http://svn.perlide.org/padre/branches/My-branch
-}}}
+</pre>
 
 use the following to merge it back to trunk
-{{{
+
+<pre>
 svn merge -rFIRST:LAST http://svn.perlide.org/padre/branches/My-branch .
 svn commit -m'merged  -rFIRST:LAST http://svn.perlide.org/padre/branches/My-branch '
 svn rm http://svn.perlide.org/padre/branches/My-branch -m'My-branch is not needed any more'
-}}}
+</pre>
 
 If you decided it was a dead-end you can just switch back to trunk and remove the branch.
 
