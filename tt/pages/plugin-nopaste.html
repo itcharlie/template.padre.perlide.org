@@ -1,0 +1,65 @@
+[% DEFAULT
+   title="Padre Plugin Nopaste"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<a href="/plugins.html">Plugins</a>
+
+To Enable {{{Padre::Plugin::Nopaste}}} in Padre, go to Tools->Plug-in Manager, select Nopaste in left area, then click preferences to open dialog and save your chosen service and #channel. Or just let it default to Shadowcat and #padre.
+
+<p>
+
+Please note version compatibility, it's important, you can check what version is installed for {{{Nopaste}}} use Plug-in Manager for Padre look in Help -> About -> Information
+
+<p>
+
+Padre::Plugin::Nopaste v0.06 on Padre 0.96
+
+<h2>Padre Plug-in Manager</h2>
+
+<img src="http://padre.perlide.org/trac/raw-attachment/wiki/PadrePluginNopaste/Nopaste_prefs.png">
+
+You can gain access to the Prefs dialog via context menu (right mouse)
+
+<h2>Usage Ctrl+Shift+V</h2>
+
+* works against whole file or selected text.
+
+<h2>supported Nopaste services</h2>
+
+/whois server
+
+<ul>
+  <li>Codepeek</li>
+  <li>Debian</li>
+  <li>Gist</li>
+  <li>PastebinCom</li>
+  <li>Pastie</li>
+  <li>Shadowcat (Channel: #distzilla #perl-help +#london.pm #padre #soap-lite #angerwhale #rt +#perlde +#p5p #tt #iusethis #reaction #handel +#moose #poe #cometd #pita #dbix-class #catalyst)</li>
+  <li>Snitch</li>
+  <li>Ubuntu</li>
+  <li>ssh</li>
+</ul>
+
+Please add additions for above below
+
+and they will be added to plugin for all on next release
+
+<h2>Limitations</h2>
+
+<b>You must have a nickname set</b>
+
+<ul>
+   <li>look in Tools -> Preferences -> Advance</li>
+   <li>you might like to set your name and e-mail while you are there :) why you might ask, well this is a plugin and nickname is in Padre core, just being respectful to core :)</li>
+</ul>
+
+
+[% END %]
+[% END %]
+
