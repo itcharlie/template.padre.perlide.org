@@ -8,11 +8,227 @@
 
 [% WRAPPER chrome/styled_panel %]
 
-<a href="http://padre.perlide.org/trac/wiki/PadrePluginCookbook02">source</a>
+<a href=/plugin-dialog.html">Padre Plugin Dialog</a>
+
+<ul>
+  <li>This page complements {{{Padre::Plugin::Cookbook Recipe-02}}}, it is not meant to be installable, just an aid, with a suggested layout, enjoy. More detail will follow in subsequent Cookbooks.</li>
+  <li>You can either svn Padre::Plugin::Cookbook or build your own with Cookbook02.zip in Attachments.</li>
+  <li>Updated to Padre plug-in API 2.2</li>
+</ul>
+
+
+<h2>Step 1 - Create Skeleton</h2>
+
+Padre can do this for you see [wiki:Features/ProjectSkeletonGeneration Project Skeleton Generation]
+* Assumption you are building in your copy of Padre trunk.
+
+<pre>
+Padre-Plugin-Cookbook02/
+├── fbp
+│   └── MainFB.fbp
+├── lib
+│   └── Padre
+│       └── Plugin
+│           ├── Cookbook02
+│           │   ├── FBP
+│           │   │   └── MainFB.pm
+│           │   └── Main.pm
+│           └── Cookbook02.pm
+└── t
+</pre>
+
+<h2>Step 2 Create MainFB.fbp (xml)</h2>
+
+<ul>
+  <li>Use wxFormBuilder, v3.1.70</li>
+  <li>The table only shows the flow, not indentation, view file MainFB.fbp in wxFormBuilder for that.</li>
+  <li>fgSizer1 plays table tennis, {{{RadioBox}}} support added by Alias, much more elegant.</li>
+</ul>
+
+<table>
+<tr><th colspan="2">wxWidget</th><th colspan="4">Properties</th><th colspan="2">Events</th></tr>
+<tr><th>Icon</th><th>Type</th><td>name</td><td>label/title</td><td>public</td><td>other</td><td>type</td><td>value</td></tr>
+<tr><td style="background: #ffd"><img src="http://padre.perlide.org/trac/raw-attachment/wiki/PadrePluginCookbook02/wxproject.png"></td>
+    <td>Project</td><td>Cookbook02</td>n/a</td><td>n/a</td><td>n/a</td><td>n/a</td><td>n/a</td></tr>
+<tr><td style="background: #ffd"><img src="http://padre.perlide.org/trac/raw-attachment/wiki/PadrePluginCookbook02/wxdialog.png"></td>
+    <td>Dialog</td><td>Padre::Plugin::Cookbook02::FBP::MainFB</td><td>Main</td><td>n/a</td><td>wxRESIZE_BORDER</td><td>n/a</td><td>n/a</td></tr>
+<tr><td style="background: #ffd"><img src="http://padre.perlide.org/trac/raw-attachment/wiki/PadrePluginCookbook02/wxbsizer.png"></td>
+    <td>wxBoxSizer</td><td>bSizer1</td><td>n/a</td><td>n/a</td><td>n/a</td><td>n/a</td><td>n/a</td></tr>
+<tr><td style="background: #ffd"><img src="http://padre.perlide.org/trac/raw-attachment/wiki/PadrePluginCookbook02/wxbsizer.png"></td>
+    <td>wxBoxSizer</td><td>bSizer2</td><td>n/a</td><td>n/a</td><td>proportion = 0</td><td>n/a</td><td>n/a</td></tr>
+<tr><td style="background: #ffd"><img src="http://padre.perlide.org/trac/raw-attachment/wiki/PadrePluginCookbook02/wxstatic_text.png"></td>
+    <td>wxStaticText</td><td>heading</td><td>heading is public</td><td>public</td><td>proportion = 0</td><td>n/a</td><td>n/a</td></tr>
+<tr><td style="background: #ffd"><img src="http://padre.perlide.org/trac/raw-attachment/wiki/PadrePluginCookbook02/wxstatic_line.png"></td>
+    <td>wxStaticLine</td><td>m_staticline1</td><td>n/a</td><td>n/a</td><td>n/a</td><td>n/a</td><td>n/a</td></tr>
+<tr><td style="background: #ffd"><img src="http://padre.perlide.org/trac/raw-attachment/wiki/PadrePluginCookbook02/wxflex_grid_sizer.png"></td>
+    <td>wxFlexGridSizer</td><td>fgSizer1</td><td>n/a</td><td>n/a</td><td>n/a</td><td>n/a</td><td>n/a</td></tr>
+<tr><td style="background: #ffd"><img src="http://padre.perlide.org/trac/raw-attachment/wiki/PadrePluginCookbook02/wxcheckbox.png"></td>
+    <td>wxCheckBox</td><td>ttennis</td><td>TTennis</td><td>public</td><td>!checked</td><td>{{{OnCheckBox}}}</td><td>ttennis_checked</td></tr>
+<tr><td style="background: #ffd"><img src="http://padre.perlide.org/trac/raw-attachment/wiki/PadrePluginCookbook02/wxcheckbox.png"></td>
+     <td>wxCheckBox</td><td>ping</td><td>ping</td><td>public</td><td>!checked !enabled</td><td>{{{OnCheckBox}}}</td><td>ping_checked</td></tr>
+<tr><td style="background: #ffd"><img src="http://padre.perlide.org/trac/raw-attachment/wiki/PadrePluginCookbook02/wxspacer.png"></td>
+    <td>spacer</td><td>n/a</td><td>n/a</td><td>n/a</td><td>n/a</td><td>n/a</td><td>n/a</td></tr>
+<tr><td style="background: #ffd"><img src="http://padre.perlide.org/trac/raw-attachment/wiki/PadrePluginCookbook02/wxcheckbox.png"></td>
+     <td>wxCheckBox</td><td>pong</td><td>pong</td><td>public</td><td>!checked !enabled</td><td>{{{OnCheckBox}}}</td><td>pong_checked</td></tr>
+<tr><td style="background: #ffd"><img src="http://padre.perlide.org/trac/raw-attachment/wiki/PadrePluginCookbook02/wxstatic_text.png"></td>
+    <td>wxStaticText</td><td>m_staticText2</td><td>n/a</td><td>n/a</td><td>Static Text\nPadre Config DB\nuser defined\nattributes</td><td>n/a</td><td>n/a</td></tr>
+<tr><td style="background: #ffd"><img src="http://padre.perlide.org/trac/raw-attachment/wiki/PadrePluginCookbook02/wxradio_box.png"></td>
+    <td>wxRadioBox</td><td>user_name</td><td>User * Name</td><td>public</td><td>proportion = 0<br>choices = "nick" "cpan" "e-mail"</td><td>n/a</td><td>n/a</td></tr>
+<tr><td style="background: #ffd"><img src="http://padre.perlide.org/trac/raw-attachment/wiki/PadrePluginCookbook02/wxstatic_line.png"></td>
+    <td>wxStaticLine</td><td>m_staticline2</td><td>n/a</td><td>n/a</td><td>n/a</td><td>n/a</td><td>n/a</td></tr>
+<tr><td style="background: #ffd"><img src="http://padre.perlide.org/trac/raw-attachment/wiki/PadrePluginCookbook02/wxbsizer.png"></td>
+    <td>wxBoxSizer</td><td>bSizer3</td><td>n/a</td><td>n/a</td><td>proportion = 0<br>wxHORIZONTAL</td><td>n/a</td><td>n/a</td></tr>
+<tr><td style="background: #ffd"><img src="http://padre.perlide.org/trac/raw-attachment/wiki/PadrePluginCookbook02/wxstatic_text.png"></td>
+    <td>wxStaticText</td><td>name_label</td><td>name_label public</td><td>public</td><td>proportion = 0</td><td>n/a</td><td>n/a</td></tr>
+<tr><td style="background: #ffd"><img src="http://padre.perlide.org/trac/raw-attachment/wiki/PadrePluginCookbook02/wxtext_ctrl.png"></td>
+    <td>wxTextCtrl</td><td>name_value</td><td>m/t</td><td>public</td><td>n/a</td><td>n/a</td><td>n/a</td></tr>
+<tr><td style="background: #ffd"><img src="http://padre.perlide.org/trac/raw-attachment/wiki/PadrePluginCookbook02/wxstatic_line.png"></td>
+    <td>wxStaticLine</td><td>m_staticline3</td><td>n/a</td><td>n/a</td><td>n/a</td><td>n/a</td><td>n/a</td></tr>
+<tr><td style="background: #ffd"><img src="http://padre.perlide.org/trac/raw-attachment/wiki/PadrePluginCookbook02/wxflex_grid_sizer.png"></td>
+    <td>wxFlexGridSizer</td><td>fgSizer2</td><td>n/a</td><td>n/a</td><td>proportion = 0</td><td>n/a</td><td>n/a</td></tr>
+<tr><td style="background: #ffd"><img src="http://padre.perlide.org/trac/raw-attachment/wiki/PadrePluginCookbook02/wxstatic_text.png"></td>
+    <td>wxStaticText</td><td>m_staticText4</td><td>Choices:</td><td>n/a</td><td>proportion = 0</td><td>n/a</td><td>n/a</td></tr>
+<tr><td style="background: #ffd"><img src="http://padre.perlide.org/trac/raw-attachment/wiki/PadrePluginCookbook02/wxchoice.png"></td>
+    <td>wxChoice</td><td>choice</td><td>"CPL" "CPL" "BCPL" "B" "C" "PL"</td><td>public</td><td>proportion = 0</td><td>n/a</td><td>n/a</td></tr>
+<tr><td style="background: #ffd"><img src="http://padre.perlide.org/trac/raw-attachment/wiki/PadrePluginCookbook02/wxstatic_line.png"></td>
+    <td>wxStaticLine</td><td>m_staticline4</td><td>n/a</td><td>n/a</td><td>n/a</td><td>n/a</td><td>n/a</td></tr>
+<tr><td style="background: #ffd"><img src="http://padre.perlide.org/trac/raw-attachment/wiki/PadrePluginCookbook02/wxbsizer.png"></td>
+    <td>wxBoxSizer</td><td>bSizer4</td><td>n/a</td><td>n/a</td><td>proportion = 0<br>wxHORIZONTAL</td><td>n/a</td><td>n/a</td></tr>
+<tr><td style="background: #ffd"><img src="http://padre.perlide.org/trac/raw-attachment/wiki/PadrePluginCookbook02/wxbutton.png"></td>
+    <td>wxButton</td><td>output</td><td>Output</td><td>n/a</td><td>n/a</td><td>{{{OnButonClick}}}</td><td>output_clicked</td></tr>
+<tr><td style="background: #ffd"><img src="http://padre.perlide.org/trac/raw-attachment/wiki/PadrePluginCookbook02/wxbutton.png"></td>
+    <td>wxButton</td><td>update</td><td>Update</td><td>n/a</td><td>n/a</td><td>{{{OnButonClick}}}</td><td>update_clicked</td></tr>
+<tr><td style="background: #ffd"><img src="http://padre.perlide.org/trac/raw-attachment/wiki/PadrePluginCookbook02/wxbutton.png"></td>
+    <td>wxButton</td><td>close</td><td>Close</td><td>n/a</td><td>Default<br>wxID_CANCEL</td><td>n/a</td><td>n/a</td></tr>
+</table>
+
+<ul>
+  <li>Dialog must start with **Padre::Plugin** for Step 3 to work.</li>
+  <li>A Sizer is compulsory to hold our text.</li>
+  <li>wxRESIZE_BORDER lets you grab lower left hand corner.</li>
+  <li>wxALIGN_CENTER centers text</li>
+  <li>proportion = 0, to prevent stretching.</li>
+</ul>
+
+<h2>Step 3 {{{Padre::Plugin::FormBuilder}}}</h2>
+
+<ul>
+  <li>Use generator to create MainFB.pm from MainFB.fbp</li>
+  <li>Tip have {{{Padre::Plugin::Cookbook02.pm}}} Open before running generator.</li>
+</ul>
+
+<h2>Step 4 Perl Plug-in Code</h2>
+
+* Read POD for {{{Padre::Plugin}}}
+* Read POD for Cookbook02.pm and Main.pm
+* Run Tests, note results, //critiques welcome. 
+
+<h3>sub boilerplate</h3>
+
+To use Padre internal features
+
+<pre>
+sub set_name_label_value {
+	my $self   = shift;
+	my $main   = $self->main;
+</pre>
+
+<h3>Config</h3>
+
+To use Padre Configuration variables, first we need some more boilerplate.
+* Read POD for [http://search.cpan.org/~plaven/Padre/lib/Padre/Config.pm Padre::Config]
+
+<pre>
+my $config = $main->config;
+</pre>
+
+Then we can read the contets
+
+<pre>
+$config->identity_nickname
+</pre>
+
+You may ask how did I know which $config to call, just look in Tools->Preferences->Advanced.
+
+<h3>Output</h3>
+
+To use Padre Output window, to talk to our users, or we could just **say** to terminal :)
+
+ 1. Open Padre Output window:
+
+<pre>
+$main->show_output(1);
+ 1. Create a variable:
+</pre>
+
+<pre>
+my $output = $main->output;
+</pre>
+
+ 1. Clear the Padre Output window.
+
+<pre>
+$output->clear;
+</pre>
+
+ 1. Write to Padre Output window
+
+<pre>
+$output->AppendText("output cliked \n");
+</pre>
+
+<h2>Step 5 Run</h2>
+
+<ul>
+  <li>perl dev -a -die</li>
+  <li>You should now have Cookbook02 in your Tools menu, enjoy.</li>
+</ul>
+
+<h2>Foot Notes</h2>
+
+* YOU MUST REFERENCE this: wxAlphabetical class reference http://docs.wxwidgets.org/stable/wx_classref.html
+ * Tip {{{wxStaticText}}} has method {{{SetLabel}}}
+
+<h3>public attributes</h3>
+* The use of **public** causes {{{Padre::Plugin::FormBuilder}}} to generate an attribute for you.
+
+<pre>
+sub heading {
+	Wx::Window::FindWindowById($_[0]->{heading});
+}
+</pre>
+
+* which enables you to manipulate is value.
+* code snip from {{{Padre::Plugin::Cookbook02::Main::update_clicked}}}
+
+<pre>
+$self->heading->SetLabel('I am in Control');
+</pre>
+
+<h3>events handlers</h3>
+
+* The use of **{{{OnButonClick}}}** causes {{{Padre::Plugin::FormBuilder}}} to generate an empty event method for you (required method).
+
+<pre>
+sub update_clicked {
+	$_[0]->main->error('Handler method update_clicked for event update.OnButtonClick not implemented');
+}
+</pre>
+* which enables you to perform an action based on a user input.
+* code snip from {{{Padre::Plugin::Cookbook02}}}, you must create your own event handler.
+
+<pre>
+sub update_clicked {
+....
+}
+</pre>
+
+
+Snippets from {{{Padre::Plugin::Cookbook02::Main}}}
+
+<a href=/plugin-dialog.html">Padre Plugin Dialog</a>
 
 
 [% END %]
 [% END %]
-
-
 
