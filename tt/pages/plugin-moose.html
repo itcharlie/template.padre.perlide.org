@@ -1,0 +1,34 @@
+[% DEFAULT
+   title="Padre Plugin Moose"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<a href="/plugins.html">Plugins</a>
+
+<h2>TODO</h2>
+
+<ol>
+  <li>Implement a help provider for {{{Moose/Mouse/MooseX::Declare}}}
+  <li>More documentation in P:P:Moose and add pod to all others
+  <li>Add syntax highlighting for {{{MooseX::ClassAttribute}}}
+  <li>Attribute remainder property generation
+  <li>Implement "Delete" functionality
+  <li>Add help string per inspector property along with global
+  <li>Single / Multiple file per class / role option (bowtie++)
+  <li>Parse current file using PPI and display that in tree
+  <li>for MooseX, this is valid form of 'before foo ($x, $y, $z) { ... },'
+  <li> could we implement this, but only show $y if we used $x, otherwise hop to ...
+</ol>
+<img src="http://padre.perlide.org/trac/raw-attachment/wiki/PadrePluginMoose/P-P-Moose-0.17-1.png">
+
+<img src="http://padre.perlide.org/trac/raw-attachment/wiki/PadrePluginMoose/P-P-Moose-0.17-2.png">
+
+
+[% END %]
+[% END %]
+
