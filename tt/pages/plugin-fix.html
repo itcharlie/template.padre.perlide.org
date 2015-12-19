@@ -1,0 +1,217 @@
+[% DEFAULT
+   title="Padre Plugin Fix"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<a href="/plugins.html">Plugins</a>
+
+<h2>Usage</h2>
+
+<ul>
+  <li>install Padre-Plugin-Fix</li>
+  <li>enable in Plug-in Manager</li>
+  <li>{{{Tools/Fix/Simplify}}}</li>
+</ul>
+
+<h2>TODO</h2>
+
+<ul>
+  <li>Create a '''Suggestions table panel''' that contains the following columns:
+    <ul>
+      <li>Suggestion</li>
+      <li>Path</li>
+      <li>Line</li>
+    </ul>
+  </li>
+  <li>Run all suggestion checkers in the background and populate the '''Suggestions table panel'''.</li>
+  <li>Provide a way to specify which suggestions are enabled for the current project. (Maybe read custom entries from '''padre.yml''')</li>
+  <li>Move beginner checks from Padre here:
+    <pre>
+    Padre::Document::Perl::Beginner
+    </pre>
+  </li>
+  <li>Move {{{::QuickFix}}} from Padre here:
+    <pre>
+    Padre::QuickFix
+    Padre::Document::Perl::QuickFix
+    Padre::Document::Perl::QuickFix::StrictWarnings
+    Padre::Document::Perl::QuickFix::IncludeModule
+    </pre>
+  </li>
+  <li>Revisit syntax errors in [http://szabgab.com/scalar-found-where-operator-expected.html Scalar found where operator expected]</li>
+  <li>Use [https://metacpan.org/module/PPI::Transform PPI::Transform API]?</li>
+</ul>
+
+Uses PPI to identify and transform stuff from form A to B.
+
+<ul>
+  <li>Convert constant to uppercase</li>
+</ul>
+
+<pre>
+use constant pi => 3.14;
+# OR
+use constant {
+	pi   => 3.14,
+};
+</pre>
+
+  to this
+
+<pre>
+use constant PI => 3.14;
+# OR
+use constant {
+	PI   => 3.14,
+};
+</pre>
+
+* From ticket:502, Find code between subs:
+
+<pre>
+sub a {
+}
+
+die "hello world";
+
+sub b {
+}
+</pre>
+
+* From ticket:1200, Replace one or all occurrences of indirect notations such as this:
+
+<pre>
+new Something("bla");
+</pre>
+
+  should become
+
+<pre>
+Something->new("bla");
+</pre>
+
+
+<ul>
+  <li>Over selection text range, provide the ability to quote it and choose qq{} or q{}</li>
+  <li>Negate if block form with unless and vice versa</li>
+</ul>
+
+<pre>
+if(defined $fh) {
+  say "File is open";
+} else {
+  say "File is not open!";
+}
+</pre>
+
+  should become
+
+<pre>
+unless(defined $fh) {
+  say "File is not open!";
+} else {
+  say "File is open";
+}
+</pre>
+
+Transform if single statement into postfix form and vice versa:
+
+<pre>
+if(defined $fh) {
+  print "File is open";
+} 
+</pre>
+
+
+  should become
+
+<pre>
+print "File is open" if defined $fh;
+</pre>
+
+<ul>
+  <li>Add forgotten else clause to if block</li>
+  <li>Transform qq{string} where string does not contain escape sequences into q{string} or 'string'</li>
+  <li>if {{{use v5.10;}}} or greater is used, then {{{print "something\n"}}} can be transformed into {{{say "something"}}}</li>
+  <li>Transform {{{my $param1 = shift}}} into {{{my ($param1) = @_; }}} and vice versa</li>
+  <li>if-elsif-else transformation into given-when. Please see [http://perldoc.perl.org/perlsyn.html#Switch-statements Switch statements]</li>
+</ul>
+
+<pre>
+if($type eq 'a') {
+} elsif($type eq 'b') {
+} else {
+}
+</pre>
+
+  should become
+
+<pre>
+given($type) {
+when ('a') { }
+when ('b') { }
+default    { }
+}
+</pre>
+
+* Add ''{{{Padre::Document::Perl::Beginner}}}'' checks and convert them to '''PPI'''
+
+<img src="http://padre.perlide.org/trac/raw-attachment/wiki/PadrePluginFix/PadrePluginFix.png">
+
+<h2>Test Sample</h2>
+
+* assuming modern perl
+
+<pre>
+#!/usr/bin/env perl
+
+use 5.014;
+use strict;
+use warnings;
+
+use Carp;
+
+# Turn on $OUTPUT_AUTOFLUSH
+$| = 1;
+use feature 'unicode_strings';
+
+#1, the following " -> ' try for your self
+open ( my $filehandle, "<:utf8", "test.bin") or die $!;
+
+#2, food for thought only
+#before open ( my $filehandle, "<:utf8", "test.bin") or die $!;
+#after use Carp;
+#after my $filehandle = undef;
+#after open ( $filehandle, '<:encoding(UTF-8)', 'test.bin') or croak $!;
+
+my $word = readline $filehandle;
+
+#3, food for thought only
+#before print "word = $word\n";
+#after say 'word ='.$word;
+
+#4, food for thought only, an evil null if =~ fails
+#before my ($untainted) = $word =~ /^(\w+)$/;
+#after my $untainted = undef;
+#after $untainted = $word =~ /^(\w+)$/;
+
+say "untainted = $untainted";
+
+if ($untainted) {
+    # It passed the regex, so it is "safe".
+    system "echo $untainted";
+}
+
+1;
+
+__END__
+</pre>
+
+[% END %]
+[% END %]
+
