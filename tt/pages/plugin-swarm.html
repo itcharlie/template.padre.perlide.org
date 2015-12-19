@@ -1,0 +1,33 @@
+[% DEFAULT
+   title="Padre Plugin Swarm"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+
+<a href="/plugins.html">Plugins</a>
+= {{{Padre::Plugin::Swarm}}}
+
+Aim to provide a network transport layer and pluggable services that are transport agnostic.
+Transmit messages to other participants in the swarm. Including but not limited to
+
+<ul>
+  <li>instant messaging</li>
+  <li>snippets , an analogue of nopaste et al</li>
+  <li>cursor radar - see where and who has a cursor in '$commonfile'</li>
+  <li>games and time wasters (an absolute MUST)</li>
+  <li>pieces of geometry, Graph's describing objects in the SwarmVerse</li>
+</ul>
+
+Prior art: http://www.abisource.com/wiki/AbiCollab
+
+Challenges:
+  <a href="http://www.waveprotocol.org/draft-protocol-spec#intro-overview">Race with Google</a>
+
+[% END %]
+[% END %]
+
