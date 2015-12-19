@@ -1,0 +1,321 @@
+[% DEFAULT
+   title="Release"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+Once Padre or one of the plugins is released based on the following process it is uploaded to CPAN.
+There are various way [wiki:Distribution Repackaging and Distributing] those modules.
+
+<h2>Prerequisites to releasing Padre</h2>
+
+As the Release Manager you will be uploading the Padre tarball to pause, to ensure you have the 
+right permissions to do this you must obtain co-maintenance permissions for all of the namespaces in the Padre distribution. Talk to Gábor Szabó (szabgab), Adam Kennedy (Alias), or Steffen Müller (tsee) about this. Make sure you get Wx::Perl::Dialog, Wx::Perl::Dialog::Frame, Wx::Perl::Dialog::Simple, and Wx::Perl::Dialog::SingleChoice too.
+
+For the ppi_version utility, install PPI::PowerToys.
+
+<h2>Release of Padre using a branch</h2>
+
+In order to allow a few days of stabilization of Padre and to allow the translators to catch up while 
+allowing everyone else to freely work on the main trunk we release from a branch. 
+
+<p>
+
+A few (2 or 3) days before the planned release date the release manager creates an svn copy of trunk to branches/release-n.nn.
+
+<h2>The high level steps are as follows:</h2>
+
+<ul>
+  <li>Make sure all tests pass,</li>
+  <li>Set the release version, commit,</li>
+  <li>Tidy the project, commit,</li>
+  <li>Update Changes file, commit,</li>
+  <li>Rebuild the messages.pot, commit, ** no longer required **</li>
+  <li>Set the version from current dev to next production release, commit,</li>
+  <li>Branch</li>
+  <li>Announce branch and URL to dev list,</li>
+  <li>Allow a few days for translators,</li>
+  <li>Build Tar Ball,</li>
+  <li>Test where you can.</li>
+  <li>Upload to PAUSE.</li>
+  <li>Prior to merge back, set version to current dev version ( should be  +1 ), commit,</li>
+  <li>Merge changes on Branch back to Trunk, this should only be the translations if all went well.</li>
+</ul>
+
+<h2>Detailed Steps for a Release</h2>
+
+Note: All commands are taken as relative to your Padre directory ( the one with Makefile.PL in it )
+
+<ol>
+  <li>run perltidy on the trunk  {{{ ../tools/tidy_project.pl }}}</li>
+  <li>commit </li>
+  <li>Update the Changes file, noting the date of the release being the date you start the branch</li>
+  <li>commit</li>
+  <li>set the version from the current development version number to the release version number ( should be even numbered for released odd numbers for development )</li>
+  <li>Note: there is a script in tools that will update the $VERSION string, however PPI::PowerToys has an awesome ppi_version, use this when you can: {{{ppi_version change old_ver new_ver}}}, ie {{{ppi_version change 0.81 0.82}}}</li>
+  <li>commit</li>
+  <li>rebuild the "messages.pot" file, run {{{ ../tools/update_pot_file.pl }}}</li>
+  <li>commit</li>
+</ol>
+
+At this point trunk is ready for you to make the branch:
+ * {{{ svn cp http://svn.perlide.org/padre/trunk/Padre http://svn.perlide.org/padre/branches/Padre-X.XX   }}} (replace X.XX with the future version number)
+
+You have now created the for Padre.
+
+To complete the final tasks on trunk, update the Changes file by "opening" the next version.
+
+ * Modify Changes, set the next development version number, this should be odd and the next release version number should be even, ie if you have just branched release-0.82, then changes gets updated with:
+
+0.84 TBA
+
+0.83 Dev - not released.
+
+Make the changes to the version number to the next development cycle number:
+{{{ppi_version change 0.82 0.83}}}
+
+* Commit the changes
+
+From this point onwards you switch your working copy between the branch and trunk as needed.  To switch between trunk and the branch:
+
+<ul>
+  <li>{{{ svn switch http://svn.perlide.org/padre/branches/Padre-X.XX }}} .</li>
+  <li>then every commit will go to the branch while the plugins are still from trunk</li>
+  <li>the release can be done here but probably it is better NOT to run the perl tidy on the branch as it will make merging very difficult</li>
+</ul>
+
+
+<h2>Announce the Branch in padre-dev</h2>
+
+Announce the branch in the dev mailing list and put out a call for translators, an email template is provided:
+
+<pre>
+
+Hi Team,
+
+I have just made a branch of trunk for the next Padre release <version>.
+
+Could all translators be so kind as to update their language.
+
+To do so, either check out a working copy of the branch here:
+
+{{{svn co http://svn.perlide.org/padre/branches/Padre-<version>}}}
+
+or alternately you can switch your working copy:
+
+{{{svn switch http://svn.perlide.org/padre/branches/Padre-<version>}}}
+
+Please commit all changes to the branch for inclusion into the next great release of Padre.
+
+Regards,
+
+NAME
+Padre Release Manager.
+</pre>
+
+<h2>Do the regular release process</h2>
+
+<ol>
+  <li>The release manager first builds a distribution and when she is sure it creates a good release, she can run the release.pl script again to also tag the release in SVN and then ask others to test it:
+      <ul>
+         <li>the environment variable RELEASE_TESTING should be set to ensure testing for a release is run.</li>
+         <li>the release.pl script will set it if the variable isn't found.  If you want more control over the testing before a release set RELEASE_TESTING to 1 to test, 0 to turn testing off.</li>
+         <li>run {{{ perl ../tools/release.pl --revision REV --version VERSION }}} will try to create a distribution using a temporary directory and copy the resulting Padre-X.XX.tar.gz in the current directory. </li>
+         <li>Test it by yourself (install it using pip, run it)</li>
+         <li>run {{{ perl ../tools/release.pl --revision REV --version VERSION --tag }}} This will also create a tag in SVN. </li>
+         <li>Upload it somewhere public and ask Gabor to copy to http://perlide.org/download/source/</li>
+         <li>Tell people on IRC #padre about it and ask them to test it</li>
+      </ul>
+    </li>
+  <li>Upload to PAUSE</li>
+  <li>Send announcement to [http://mail.perlide.org/mailman/listinfo/padre-dev padre-dev] mailing list</li>
+  <li>Send announcement to [http://mail.perlide.org/mailman/listinfo/padre-news padre-news] mailing list (Gabor might need to send the message but at leas he needs to approve it after you sent it)</li>
+  <li>Submit announcement to http://use.perl.org/ or some other well-read blog (e.g. one that is syndicated on Iron Man and on http://blogs.padre.perlide.org/ )</li>
+  <li>Update the [wiki:Release_History Release History]</li>
+  <li>Add the version number to the list of versions in Trac. A trac admin needs to do this:
+     <ul>
+        <li>Go to Admin/Versions in the "Name:" box type in the version number eg. 0.45, click on "Add"</li>
+        <li>Select the radio box on the right hand side of the newly added line and click on "Apply changes"</li>
+     </ul>
+    </li>
+  <li>Important: Assign primary maintainer status to Gabor (PAUSE ID 'SZABGAB') for all namespaces that are new in the current release.
+     <ul>
+        <li>Log into your PAUSE account</li>
+        <li>Click "View Permissions" in the menu</li>
+        <li>Note all Padre::* classes for which you are listed as "first-come" (as opposed to "co-maint").</li>
+        <li>Click "Change Permissions" in the menu</li>
+        <li>Under "2. You are primary maintainer:" select any one or all of the Padre::* namespaces that appear in the list view.</li>
+        <li>Click Select for "2.1 Pass primary maintainership status to somebody else (giving it up at the same time)"</li>
+        <li>Make sure all Padre::* namespaces are selected in the new listbox.</li>
+        <li>Enter "SZABGAB" in the text field.</li>
+        <li>Click "Pass Maintainership Status".</li>
+        <li>You will automatically become co-maintainer instead of primary maintainer of the classes in question.</li>
+     </ul>
+   </li>
+  <li>Update [http://en.wikipedia.org/wiki/Padre_%28software%29 Padre's Wikipedia] page with the new version number</li>
+  <li>ppm creation:
+     <ul>
+         <li>tar xzf Padre-X.XX.tar.gz</li>
+         <li>perl Makefile.PL</li>
+         <li>make</li>
+         <li>make ppm  will create a Padre.ppd file and a Padre.tar.gz file</li>
+         <li>change the other files in /trunk/ppm according to the README there</li>
+         <li>upload Padre.tar.gz as Padre-X.XX.tar.gz to http://perlide.org/download/ppm/</li>
+         <li>upload the other files from trunk/ppm to http://perlide.org/download/ppm/</li>
+     </ul>
+   </li>
+  <li>Create executable for Linux:
+    <ul>
+      <li>make exe</li>
+      <li>Upload to http://perlide.org/download/binary/</li>
+    </ul>
+  </li>
+</ol>
+
+<h2>Merging back to trunk</h2>
+
+<ol>
+  <li>set the version in the branch to the current development version, {{{ppi_version change old_ver new_ver}}}</li>
+  <li>when finished merge the branch back to trunk:</li>
+  <li>{{{ svn switch http://svn.perlide.org/padre/trunk/Padre }}} .</li>
+  <li>{{{ svn log --stop-on-copy  http://svn.perlide.org/padre/branches/Padre-X.XX }}}</li>
+  <li>Take the FIRST and LAST revision number from that log</li>
+  <li>{{{ svn merge -rFIRST:LAST http://svn.perlide.org/padre/branches/Padre-X.XX/ }}} .</li>
+  <li>If you do not get any merge conflicts, then follow the next step, otherwise use "Resolving Merge Conflicts" as a quick guide to help resolve any conflicts.</li>
+  <li>{{{ svn commit -m'merge -rFIRST:LAST http://svn.perlide.org/padre/branches/Padre-X.XX/' }}}</li>
+  <li>now you can remove the release branch:</li>
+  <li>{{{ svn rm http://svn.perlide.org/padre/branches/Padre-X.XX/ }}}</li>
+</ol>
+
+
+<h2>Resolving Merge Conflicts</h2>
+
+If you are fortunate you will not see merge conflicts when you merge the branch back to trunk, however
+if you do, then the following is a quick crib on how to deal with it.
+<p>
+
+When dealing with merge conflicts consider "where you are".  If you switched from the branch to trunk, the notion of "theirs-full" is going to be the branch that you are merging in.  If you are merging trunk back to the branch, then trunk will be "theirs" and the branch will be "mine".
+<p>
+
+When you make a mistake with the merge, you can undo the merge with {{{ svn merge -c -15702 . }}} where the revision number here is the revision number of the commit to trunk you just made after merging.
+<p>
+
+Once you have done that, commit the change to trunk, start the merge from the branch again, keeping in mind "where you are".
+<p>
+
+Note: you will likely get a conflict with messages.pot, you can "skip" this conflict by selecting "tf", "Theirs Full"
+option if you are merging trunk to the branch, or "mf", "Mine Full" if the merge is the branch to trunk.
+<p>
+
+When svn updating you SVN will halt at the file in conflict asking you what to do, simply select "postpone" as 
+we will go back to the conflicted file(s) after the merge has completed.
+<p>
+
+SVN will create three files if there is a merge conflict in trunk and the branch, a 'left.merge', 'working' and 'right.merge' file.
+<p>
+
+The simple way to work this out, is open the actual file in vim.
+<p>
+
+Look for lines that begin with &gt;&gt;&gt; or &lt;&lt;&lt; 
+<p>
+
+Depending on which lines you keep, remove the lines between &gt;&gt;&gt; or &lt;&lt;&lt; and === and remove these lines too.
+<p>
+
+Once you have completed the merge and are happy with the changes, tell svn you have resolved the problem:
+<p>
+
+svn resolved file-name
+<p>
+
+This removes the merge conflict files.
+<p>
+
+Once you have completed all the conflicts, return back to the parent directory and svn commit with a message like 'merge -rFIRST:LAST http://svn.perlide.org/padre/branches/Padre-X.XX/'
+as this shows up in the log where you merged the branch back.
+<p>
+
+<h2>Release of Plugins and other packages</h2>
+
+The packages can use either Makefile.PL (Module::Install) or Build.PL  (Module::Build).
+We have not tested the below process with ExtUtils::Makemaker
+<p>
+
+
+No need to keep MANIFEST and META.yml in version control!
+<p>
+
+Add to MANIFEST.SKIP
+
+<pre>
+# avoid pot files (gettext)
+\.pot$
+</pre>
+
+<p>
+
+
+If you are using Module::Build
+<p>
+
+Don't add a Makefile.PL to the version control as it will be created during packaging
+
+
+<h2>Release process</h2>
+
+<ol>
+  <li>cd to the directory of the plugin or the package</li>
+  <li>../tools/</li>
+  <li>run {{{ perl ../tools/tidy_project.pl }}} (commit)</li>
+  <li>run {{{ perl ../tools/update_version_number.pl VERSION }}} and update Changes (commit)</li>
+  <li>run {{{ perl ../tools/release.pl REV VERSION [--tag] }}} </li>
+  <li>upload to PAUSE</li>
+</ol>
+
+
+<h2>Release Manager</h2>
+
+The current release manager is Peter Lavender (waxhead on [wiki:IRC IRC]).
+
+<h2>Release schedule</h2>
+
+The exact release schedule is decided by the current release manager, below are the general guidelines
+<p>
+
+Padre is released to CPAN about once every week when trunk seems to be in a stable state.
+<p>
+
+Once a month we set aside a version for a "packaged" release for which we use a longer time on the release branch.
+<p>
+
+We take the latest regular release and base the "packaged" release right on the regular release.
+So for example we have 0.43, 0.44, regular releases then based on 0.44 we create a release branch for 0.45
+We give the translators a few days to catch up on this branch. That time will also allow
+people to give feedback on 0.44 so we can fix really critical issues on the 0.45 branch.
+<p>
+
+This release should be scheduled just a few days after Rakudo is released.
+<p>
+
+Once it is done CSJewell  creates the windows [wiki:Distribution distributions] based on Strawberry Perl.
+<p>
+
+That means we have these "packaged" and translated releases by ~ 20-25th of every month.
+<p>
+
+See this post http://mail.perlide.org/pipermail/padre-dev/2009-August/001203.html
+and create a better tuned process for the "packaged" releases.
+
+<h2>Pre-Release Tests (proposal)</h2>
+
+* [wiki:PreReleaseChecklist]
+
+
+[% END %]
+[% END %]
+
