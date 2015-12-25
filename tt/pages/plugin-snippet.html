@@ -1,0 +1,83 @@
+[% DEFAULT
+   title="Padre Plugin Snippet"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<a href="/plugins.html">Plugins</a>
+
+<img src="http://padre.perlide.org/trac/raw-attachment/wiki/PadrePluginSnippet/PadrePluginSnippet.png">
+
+<h2>Notes</h2>
+
+<ul>
+  <li><b>Snippet mode</b> can be entered through <b>&lt;trigger&gt;&lt;TAB&gt;</b></li>
+  <li><b>&lt;trigger&gt;</b> should be matched on a <b>word boundary</b> that ends with the current position</li>
+  <li><b>Shift-TAB</b> traverses all <b>variables</b> (<b>circular</b> is a useful snipMate feature). <b>Does not break snippet mode</b>.</li>
+  <li>Movement keys and deletion: Up/down/right/left/page up/page down/home/end/delete automatically <b>exit snippet mode</b></li>
+  <li>Cancel current selection when exiting snippet mode</li>
+</ul>
+
+== Sample snippet file
+<pre>
+---
+#
+# Moose snippets bundle for Padre::Plugin::Moose
+# Written by Ahmad M. Zawawi (azawawi)
+#
+# Adapted from 'TextMate Bundle for Moose' by Chris Prather (perigrin)
+# https://github.com/perigrin/perl-moose.tmbundle/Snippets
+# 
+
+# after method modifier
+after: |
+  after '${1:method_name}' => sub {
+      ${2:# body...}
+  }; 
+
+# before method modifier
+before: |
+  before '${1:method_name}' => sub {
+      ${2:# body...}
+  }; 
+
+# Property
+has: has '${1:property}' => ( is => '${2:rw}', isa  => '${3:Str}', );
+</pre>
+
+<h2>TODO</h2>
+
+<ul>
+  <li>Support extended syntax ${index:default_value:list_of_values}</li>
+  <li>Support predefined special variables inside default_value http://manual.macromates.com/en/environment_variables.html</li>
+  <li>Import snipMate snippets facility</li>
+  <li>Import {{{TextMate}}} snippets facility</li>
+  <li><strike>Add mojo <b>HTML</b> snippet to the mix <a href="https://github.com/kraih/mojo-tmbundle/blob/master/Snippets/Template.tmSnippet">Template</a></strike></li>
+  <li>Support a way to <b>change</b> the current subscope</li>
+  <li>Detect whether we're {{{__DATA__}}} or not (to do some interesting mimetype things to Mojo HTML stuff</li>
+  <li>Add support for {{{MooseX::Getopt}}}</li>
+  <li>Add snippets support for {{{MooseX::Singleton}}}</li>
+  <li>Add snippets support for {{{MooseX::ClassAttribute}}}</li>
+  <li>Add snippets support For {{{Moo}}} / {{{Mo}}}</li>
+  <li>Handle here&lt;tab&gt; snippet (Here docs). The lines are not indented...</li>
+  <li>Respect the current file indentation</li>
+</ul>
+
+<h2>Resources</h2>
+
+<ul>
+  <li><a href="http://www.vim.org/scripts/script.php?script_id=2540">snipMate on vim</a></li>
+  <li><a href="http://manual.macromates.com/en/snippets">TextMate Manual/Snippets</a></li>
+  <li><a href="http://manual.macromates.com/en/scope_selectors">TextMate Scope selectors</a></li>
+  <li><a href="http://www.zalas.eu/how-to-use-textmate-like-snippets-in-vim">How to use snipMate</a></li>
+</ul>
+
+
+[% END %]
+[% END %]
+
+
