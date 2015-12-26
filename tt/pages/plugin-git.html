@@ -1,0 +1,238 @@
+[% DEFAULT
+   title="Plugin Git"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<a href="/plugins.html">Plugins</a>
+
+To Enable {{{Padre::Plugin::Git}}} in Padre, go to Tools->Plug-in Manager, select Git in left area.
+<p>
+Please note version compatibility, it's important, you can check what version is installed for {{{Git}}} use Plug-in Manager for Padre look in Help -> About -> Information
+<p>
+
+Padre::Plugin::Git v0.12  - Padre 0.97+
+Padre::Plugin::Git v0.03  - Padre 0.96
+
+<h2>Icon</h2>
+
+<img src="http://padre.perlide.org/trac/raw-attachment/wiki/PadrePluginGit/git.png">
+
+Author <a href="https://github.com/github/gitscm-next">Scott Chacon</a>
+<a href="http://creativecommons.org/licenses/by/3.0/">Licence</a>
+
+<h2>History</h2>
+
+after banging my head on git, and being kicked by several to get over it, I decide that the best solution was to update the Git plugin on my little journey of enlightenment.
+<p>
+
+so after reading the early chapters of {{{ProGit}}} the following came to be. 
+<p>
+
+<h3>assumptions</h3>
+
+<ul>
+  <li>I have assumed that setting up your git repro as such has been done. or forking in {{{GitHub}}} -> https://help.github.com/articles/fork-a-repo</li>
+  <li>local - git repro that is local to your editor, ie. same machine!</li>
+  <li>origin
+     <ul>
+       <li>repro on external server</li>
+       <li>repro in your {{{GitHub}}}</li>
+     </ul>
+     </li>
+  <li>upstream: the repro your origin is forked from</li>
+  <li>File assume current in editor.</li>
+  <li>Directory within project</li>
+  <li>Project -> project_dir</li>
+</ul>
+
+<h2>Usage</h2>
+
+most of the output is displayed in a dialogue, but sometimes I use the status bar
+<p>
+
+<b>Tools -&gt;Git</b> ( only visible if current file is in a .git repository )
+
+<h3>local</h3>
+
+<pre>
+* Staging
+ * Stage File
+ * Stage All
+ * Unstage File ( reset HEAD file )
+ * Stage Patch ( git add -p file )
+* Commit
+ * Commit File
+ * Commit Project
+ * Commit amend
+ * Commit All ( stages and commits all -> git commit -a)
+ * Commit Patch ( git commit -p file )
+* Checkout
+ * Checkout File
+* Status
+ * File Status
+ * Directory Status
+ * Project Status
+* Diff
+ * Diff of File
+ * Diff of Staged File
+ * Diff of Directory
+ * Diff of Project
+* Log ( need better names )
+ * log --stat -2
+ * log -p -2
+ * log pretty
+* Blame
+ * Blame, Current file ( for dod+ )
+</pre>
+
+<h3>Origin</h3>
+
+<pre>
+* Origin
+ * Show Origin Info.
+ * Push to Origin
+ * Fetch from Origin
+ * Pull from Origin
+</pre>
+
+<h3>Upstream</h3>
+
+<pre>
+* Upstream
+ * Show Upstream Info.
+ * Fetch Upstream
+ * Merge Upstream Master
+</pre>
+
+<h3>Branching</h3>
+
+<pre>
+* Branching
+ * Branch Info
+ * Fetch All Branches from Origin
+</pre>
+
+
+<h3>GitHub</h3>
+
+<pre>
+* GitHub Pull Request
+ * see "GitHUb Access" below, with out it, it won't work.
+</pre>
+
+<b>NB.</b> Context menu -> Commit All
+
+<h2>Scenarios</h2>
+
+<h3>Scenario 1</h3>
+
+So you have just forked a {{{GitHub}}} repo and cloned to your local machine, made a change to a file.
+
+<pre>
+* local Stage File
+* local Commit File
+* Push to Origin
+* {{{GitHub}}} Pull Request
+</pre>
+
+four clicks that's all
+
+<h3>Scenario 2</h3>
+
+Your {{{GitHub}}} fork is out of sync with the master origin.
+
+<pre>
+* Fetch Upstream
+* Merge Upstream Master
+* Push to Origin
+</pre>
+
+Tip use the Show * Info before and after to check if you want to.
+
+<h2>GitHUb Access</h2>
+
+To be able to use the github pull request, we will need a //username// and //token// being stored in environment variables (in .bash_profile or wherever) external to {{{Padre-Plugin-Git}}}
+
+<pre>
+* my $user  = $ENV{GITHUB_USER};
+ * {{{https://github.com/username}}} all we need is the username bit.
+* my $token = $ENV{GITHUB_TOKEN};
+ * https://metacpan.org/module/FAYLAND/Net-GitHub-0.46/lib/Net/GitHub.pm#FAQ suggest you use {{{Padre-Plugin-Git}}} as the note for this token.
+</pre>
+
+<pre>
+my $o     = $oauth->create_authorization(
+	{   scopes => [ 'user', 'public_repo', 'repo', 'gist' ], # just ['public_repo']
+		note => 'Padre-Plugin-Git',
+	}
+);
+</pre>
+
+nb http://www.wired.com/wiredenterprise/2012/05/torvalds_github/
+
+<h2>Changes</h2>
+
+* Auto write git commits to project Changes file
+
+This use CPAN::Changes to write git commits to project Change file, 
+This abuses the {{$NEXT}} token as a valid version, ( this is what it looks for {{$NEXT}} token in your Changes file )
+<p>
+see CPAN::Changes::Spec for format
+<p>
+
+suggest you make a copy first
+
+<pre>
+{{$NEXT}}
+ - bump version to 0.01_06 [3a67ed7]
+ - we don't die any more if client can't connect to a server, as we are a
+   gui [7eaee9c]
+
+0.01_06 2012-11-03
+ - Update Changes to CPAN::Changes::Spec [abb591e]
+ - Update Changes to CPAN::Changes::Spec [bde5532]
+ - randomly select a status responses to correspond to wiki page [30bb6fa]
+</pre>
+
+<h2>Limitations</h2>
+
+This provides Simple / Basic git cmd interface and a bit more.
+<p>
+
+//An example of this is the Stage / Commit -p(--patch) option which just fires up a terminal, for the interactivity//
+<p>
+
+if you want more, should look at the following, per say, or check the Git page.
+
+<pre>
+* git gui
+* git cola
+* gitg
+</pre>
+
+<h2>ToDo</h2>
+
+<pre>
+* basic local - DONE
+* basic remote - DONE
+* GitHub pull request - DONE
+
+* await critiques :)
+* release to CPAN - DONE
+* mj41> bowtie: my daily git workflow is probably too complex ...  
+ * git gui (to select lines to stage), 
+ * git ci -a --fixup anySHA, 
+ * git rebase -i, 
+ * git reset --hard, 
+ * git co somebranch
+</pre>
+
+
+[% END %]
+[% END %]
+
