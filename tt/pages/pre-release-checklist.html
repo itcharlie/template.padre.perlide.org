@@ -23,163 +23,194 @@ Sample reporting for  each feature:
 
 In case of failure please include the following information in the bug report:
 
- * OS: 
- * Perl: 
- * Wx: 
- * wxWidgets: 
- * Wx::Perl::ProcessStream: 
- * PPI: 
+<ul>
+  <li>OS: </li>
+  <li>Perl: </li>
+  <li>Wx: </li>
+  <li>wxWidgets: </li>
+  <li>Wx::Perl::ProcessStream: </li>
+  <li>PPI: </li>
+</ul>
 
 
+<h2>Prepare for the testing</h2>
 
-== Prepare for the testing ==
-
- * check whether you are running the to-be-released Padre version by opening the "About" box
+ check whether you are running the to-be-released Padre version by opening the "About" box
 
 If you'd like to test the current development version of Padre then please check it out
 as 
-{{{
+
+<pre>
 svn co http://svn.perlide.org/padre/trunk/Padre
-}}}
+</pre>
+
 and then run it from there.
 
 If you'd like to test the release branch then please check out the release branch:
-{{{
+
+<pre>
 svn co http://svn.perlide.org/padre/branches/Padre-0.84/
-}}}
+</pre>
 
 Do the regular things: 
-{{{
+
+<pre>
 perl Makefile.PL
 make
 make test
-}}}
+</pre>
 
 and then launch padre using
-{{{
+
+<pre>
 perl -Ilib script/padre
-}}}
+</pre>
 
 Other possibility is to actually install the release candidate using
-{{{
+
+<pre>
 make install
-}}}
+</pre>
 
 and then launch by just typing
-{{{
+
+<pre>
 padre
-}}}
+</pre>
 
-== What to report ==
- * for each single item
-  * OK or
-   * crashes
-   * inconsistent behaviour
-   * actions that do not work as expected
- * for each section
-  * How much time did it take you to perform the tests?
+<h2>What to report</h2>
 
-= Test Cases =
+<ul>
+ <li>for each single item OK or
+  <ul>
+    <li>crashes</li>
+    <li>inconsistent behaviour</li>
+    <li>actions that do not work as expected</li>
+  </ul></li>
+ <li>for each section How much time did it take you to perform the tests?</li>
+</ul>
+
+<h2>Test Cases</h2>
 
 
-== Perl 5 scripts ==
+<h3>Perl 5 scripts</h3>
 
 see #496
 
- 1. open a Perl script (using Ctrl-o or File/Open)
- 1. run it by hitting F5
- 1. change to the other output variant (external window or internal pane) (Tools/Preferences/Run Parameters/Use external window for execution)
- 1. run it by hitting Shift-F5
- 1. enable syntax checks (View/Show Syntax Check)
- 1. introduce a syntax error and inspect resulting output
- 1. click on the syntax error to jump to the position of the error
- 1. enable autocomplete at "Tools"->"Preferences"->"Autocomplete"
- 1. start typing a word which is already in the file (maybe "warn" from "warnings")
- 1. hit Ctrl-Space, select a suggestion and confirm it
- 1. enable bracket autocomplete at "Tools"->"Preferences"->"Behavior"
- 1. type ( [ { " ' - each of them should get its closing part automatically
+<ol>
+    <li>open a Perl script (using Ctrl-o or File/Open)</li>
+    <li>run it by hitting F5</li>
+    <li>change to the other output variant (external window or internal pane) (Tools/Preferences/Run Parameters/Use external window for execution)</li>
+    <li>run it by hitting Shift-F5</li>
+    <li>enable syntax checks (View/Show Syntax Check)</li>
+    <li>introduce a syntax error and inspect resulting output</li>
+    <li>click on the syntax error to jump to the position of the error</li>
+    <li>enable autocomplete at "Tools"->"Preferences"->"Autocomplete"</li>
+    <li>start typing a word which is already in the file (maybe "warn" from "warnings")</li>
+    <li>hit Ctrl-Space, select a suggestion and confirm it</li>
+    <li>enable bracket autocomplete at "Tools"->"Preferences"->"Behavior"</li>
+    <li>type ( [ { " ' - each of them should get its closing part automatically</li>
+</ol>
 
+<pre>
  || Who || SVN revision || Padre version || system || status ||
  || szabgab || r14034 || v0.84 || Ubuntu 10.10 || fail (crash) #1167 (also: Shift-F5 does not do anything) ||
+</pre>
 
-== Perl 5 modules ==
- 1. open a large Perl module from the Padre source
- 1. enable "View"->"Show Functions"
- 1. double-click on a function name to jump to its location in the file
-    * the text cursor should be at the corresponding function in the file
- 1. enable "View"->"Show Outline"
- 1. double-click on a method name to jump to its location in the file
-    * the text cursor should be at the corresponding location in the file
+<h3>Perl 5 modules</h3>
 
-== Text files ==
- 1. "File" -> "New"
- 1. save it as {{{file.txt}}}
- 1. save it as {{{file}}}
- 1. load a text file from disk
- 1. use "Edit" -> "Go To ..." to jump to a given line
- 1. use "Edit" -> "Go To ..." to jump to a given character position
+<ol>
+    <li>open a large Perl module from the Padre source
+    <li>enable "View"->"Show Functions"
+    <li>double-click on a function name to jump to its location in the file<br>
+        the text cursor should be at the corresponding function in the file</li>
+    <li>enable "View"->"Show Outline"
+    <li>double-click on a method name to jump to its location in the file<br>
+       the text cursor should be at the corresponding location in the file</li>
+</ol>
 
-== Saving perl file without extension needs to remember its mime-type ==
+<h3>Text files</h3>
+
+<ol>
+    <li>"File" -> "New"</li>
+    <li>save it as {{{file.txt}}}</li>
+    <li>save it as {{{file}}}</li>
+    <li>load a text file from disk</li>
+    <li>use "Edit" -> "Go To ..." to jump to a given line</li>
+    <li>use "Edit" -> "Go To ..." to jump to a given character position</li>
+</ol>
+
+<h3>Saving perl file without extension needs to remember its mime-type</h3>
 
 See #1107, #849
 
- 1. "File" -> "New"
- 1. type in 
-{{{
+<ol>
+   <li>"File" -> "New"</li>
+   <li>type in 
+<pre>
 #!/usr/bin/perl
 use strict;
 use warnings;
-}}}
- 1. save it as {{{file}}}
- 1. Check if the mime-type (3rd box on the status bar) says "Perl 5"
- 1. Close the file
- 1. Open The file using "File" -> "Open"
- 1. Check if the mime-type (3rd box on the status bar) says "Perl 5"
- 1. Open The file using "File" -> "Save As"
- 1. save it as {{{file2}}}
- 1. Check if the mime-type (3rd box on the status bar) says "Perl 5"
-
- 1. Repeat the above but this time the content of the file should be
-{{{
+</pre>
+</li>
+    <li>save it as {{{file}}}</li>
+    <li>Check if the mime-type (3rd box on the status bar) says "Perl 5"</li>
+    <li>Close the file</li>
+    <li>Open The file using "File" -> "Open"</li>
+    <li>Check if the mime-type (3rd box on the status bar) says "Perl 5"</li>
+    <li>Open The file using "File" -> "Save As"</li>
+    <li>save it as {{{file2}}}</li>
+    <li>Check if the mime-type (3rd box on the status bar) says "Perl 5"</li>
+    <li>Repeat the above but this time the content of the file should be
+<pre>
 #!/usr/bin/env perl
 
 print 42;
-}}}
-
- 1. A third time in which case the content should be
-{{{
+</pre>
+</li>
+     <li>A third time in which case the content should be
+<pre>
 #!/usr/local/bin/perl
 
 print "ok";
-}}}
+</pre>
+</li>
+</ol>
 
-== Package 'main' lost in outline if followed by another package ==
+<h3>Package 'main' lost in outline if followed by another package</h3>
+
 See #1206
- 1. "File" -> "New"
- 1. add three lines of code
-{{{
+
+<ol>
+   <li>"File" -> "New"</li>
+   <li>add three lines of code
+<pre>
 sub foo{}
 package umpf;
 sub bar{}
-}}}
- 1. Check the 'Outline': foo() and bar() are shown in package 'umpf', but foo() is in package 'main'
+</pre></li>
+    <li>Check the 'Outline': foo() and bar() are shown in package 'umpf', but foo() is in package 'main'</li>
+</ol>
 
-== Some other stuff to be tested ==
+<h3>Some other stuff to be tested</h3>
 
- 1. Open Padre with several files
- 1. cycle through the files using the keyboard: Ctrl-PageUp and Ctrl-PageDown
- 1. close one tab
- 1. go to "File" -> "Recent Files" and re-open the file ( #1143, #1148 )
+<ol>
+   <li>Open Padre with several files</li>
+   <li>cycle through the files using the keyboard: Ctrl-PageUp and Ctrl-PageDown</li>
+   <li>close one tab</li>
+   <li>go to "File" -> "Recent Files" and re-open the file ( #1143, #1148 )</li>
+</ol>
 
-== Word Wrap ==
+<h3>Word Wrap</h3>
+
  ''View -> Word-Wrap''.
  by enabling word wrap, padre wont let you expand the code block horizontally, if you'll try it will go to the next line.
 
-== Fresh Padre Installation ==
+<h3>Fresh Padre Installation</h3>
 
 TODO: we should add some tests to check if a fresh Padre installation (or an upgrade) works
 
-= Other Features =
+<h3>Other Features</h3>
 
 Many of the entries have been moved to their individual pages already. They are all linked 
 from the [wiki:Features] page.
