@@ -1,0 +1,191 @@
+[% DEFAULT
+   title="Pre-Release Checklist"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<h2>Reports by version and tester</h2>
+
+ * 0.82: <a href="/trac/wiki/PreReleaseChecklist/0.82/zenog">PreReleaseChecklist/0.82/zenog</a>
+
+Sample reporting for  each feature:
+
+<pre>
+ || Who || SVN revision || Padre version || system || status ||
+ || szabgab || r13895 || v0.84 || Ubuntu 10.10 || fail #1107 ||
+ || szabgab || r15835 || v0.86 || Ubuntu 10.10 || success ||
+ || szabgab || r15835 || v0.86 || Strawberry Perl 5.12 || success ||
+</pre>
+
+In case of failure please include the following information in the bug report:
+
+ * OS: 
+ * Perl: 
+ * Wx: 
+ * wxWidgets: 
+ * Wx::Perl::ProcessStream: 
+ * PPI: 
+
+
+
+== Prepare for the testing ==
+
+ * check whether you are running the to-be-released Padre version by opening the "About" box
+
+If you'd like to test the current development version of Padre then please check it out
+as 
+{{{
+svn co http://svn.perlide.org/padre/trunk/Padre
+}}}
+and then run it from there.
+
+If you'd like to test the release branch then please check out the release branch:
+{{{
+svn co http://svn.perlide.org/padre/branches/Padre-0.84/
+}}}
+
+Do the regular things: 
+{{{
+perl Makefile.PL
+make
+make test
+}}}
+
+and then launch padre using
+{{{
+perl -Ilib script/padre
+}}}
+
+Other possibility is to actually install the release candidate using
+{{{
+make install
+}}}
+
+and then launch by just typing
+{{{
+padre
+}}}
+
+== What to report ==
+ * for each single item
+  * OK or
+   * crashes
+   * inconsistent behaviour
+   * actions that do not work as expected
+ * for each section
+  * How much time did it take you to perform the tests?
+
+= Test Cases =
+
+
+== Perl 5 scripts ==
+
+see #496
+
+ 1. open a Perl script (using Ctrl-o or File/Open)
+ 1. run it by hitting F5
+ 1. change to the other output variant (external window or internal pane) (Tools/Preferences/Run Parameters/Use external window for execution)
+ 1. run it by hitting Shift-F5
+ 1. enable syntax checks (View/Show Syntax Check)
+ 1. introduce a syntax error and inspect resulting output
+ 1. click on the syntax error to jump to the position of the error
+ 1. enable autocomplete at "Tools"->"Preferences"->"Autocomplete"
+ 1. start typing a word which is already in the file (maybe "warn" from "warnings")
+ 1. hit Ctrl-Space, select a suggestion and confirm it
+ 1. enable bracket autocomplete at "Tools"->"Preferences"->"Behavior"
+ 1. type ( [ { " ' - each of them should get its closing part automatically
+
+ || Who || SVN revision || Padre version || system || status ||
+ || szabgab || r14034 || v0.84 || Ubuntu 10.10 || fail (crash) #1167 (also: Shift-F5 does not do anything) ||
+
+== Perl 5 modules ==
+ 1. open a large Perl module from the Padre source
+ 1. enable "View"->"Show Functions"
+ 1. double-click on a function name to jump to its location in the file
+    * the text cursor should be at the corresponding function in the file
+ 1. enable "View"->"Show Outline"
+ 1. double-click on a method name to jump to its location in the file
+    * the text cursor should be at the corresponding location in the file
+
+== Text files ==
+ 1. "File" -> "New"
+ 1. save it as {{{file.txt}}}
+ 1. save it as {{{file}}}
+ 1. load a text file from disk
+ 1. use "Edit" -> "Go To ..." to jump to a given line
+ 1. use "Edit" -> "Go To ..." to jump to a given character position
+
+== Saving perl file without extension needs to remember its mime-type ==
+
+See #1107, #849
+
+ 1. "File" -> "New"
+ 1. type in 
+{{{
+#!/usr/bin/perl
+use strict;
+use warnings;
+}}}
+ 1. save it as {{{file}}}
+ 1. Check if the mime-type (3rd box on the status bar) says "Perl 5"
+ 1. Close the file
+ 1. Open The file using "File" -> "Open"
+ 1. Check if the mime-type (3rd box on the status bar) says "Perl 5"
+ 1. Open The file using "File" -> "Save As"
+ 1. save it as {{{file2}}}
+ 1. Check if the mime-type (3rd box on the status bar) says "Perl 5"
+
+ 1. Repeat the above but this time the content of the file should be
+{{{
+#!/usr/bin/env perl
+
+print 42;
+}}}
+
+ 1. A third time in which case the content should be
+{{{
+#!/usr/local/bin/perl
+
+print "ok";
+}}}
+
+== Package 'main' lost in outline if followed by another package ==
+See #1206
+ 1. "File" -> "New"
+ 1. add three lines of code
+{{{
+sub foo{}
+package umpf;
+sub bar{}
+}}}
+ 1. Check the 'Outline': foo() and bar() are shown in package 'umpf', but foo() is in package 'main'
+
+== Some other stuff to be tested ==
+
+ 1. Open Padre with several files
+ 1. cycle through the files using the keyboard: Ctrl-PageUp and Ctrl-PageDown
+ 1. close one tab
+ 1. go to "File" -> "Recent Files" and re-open the file ( #1143, #1148 )
+
+== Word Wrap ==
+ ''View -> Word-Wrap''.
+ by enabling word wrap, padre wont let you expand the code block horizontally, if you'll try it will go to the next line.
+
+== Fresh Padre Installation ==
+
+TODO: we should add some tests to check if a fresh Padre installation (or an upgrade) works
+
+= Other Features =
+
+Many of the entries have been moved to their individual pages already. They are all linked 
+from the [wiki:Features] page.
+
+
+
+[% END %]
+[% END %]
+
