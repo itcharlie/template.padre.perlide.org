@@ -1,0 +1,178 @@
+[% DEFAULT
+   title="Developer Howto"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+This page should describe (or link to) various process that developers of Padre 
+might want to do.   Move stuff from <a href="/development.html">Development</a> to this page or link to that page
+
+<h2>Open a Ticket file a bug or a feature request</h2>
+
+In order to open a ticket first you need to register on the Trac of Padre. 
+Unfortunately due to excessive spam and our lack of capability to setup SPAM 
+filter we had to disable the registration form and we have to manually enable
+for every new person. Don't worry though as it is easy to do so. You just have
+to join us on IRC ( http://padre.perlide.org/irc.html?channel=padre ) (TODO describe IRC more)
+and ask us to open the registration form for you.
+
+Once registered there is a link to  [wiki:Tickets Create Ticket] 
+
+<h2>Setup Development Environment</h2>
+
+We recommend first installing a released version of Padre as described on <a href="http://padre.perlide.org/download.html">download</a> and on
+<a href="/download/">Download</a>.
+Once that's working on your system it will be easier to switch to development mode.
+
+In order to develop padre you will need to have a Subversion client. 
+
+The URL of our SVN repository is at http://svn.perlide.org/padre/trunk/
+
+It is required to setup a few more utilities to get the developer's environment ready. 
+Specifically you need to install Module::Install and Module::Install::PadrePlugin from CPAN. See instructions below:
+
+To run Padre from the workspace checked out from SVN type "perl dev"
+
+<pre>
+$ perl dev -h
+Usage: ./dev
+        -h          show this help
+        -d          run Padre in the command line debugger (-d)
+	-t          write tracing information to .padre/debug.log
+        -p          profile using Devel::NYTProf
+        -a          load all plugins in the svn checkout
+        --die       add DIE handler
+        --fulltrace full sourcecode trace to STDERR
+</pre>
+
+<h2>Windows</h2>
+
+For Windows we recommend the Tortoise SVN client you can download from http://tortoisesvn.tigris.org/
+
+To install Module::Install open a command prompt and navigate to the folder of the 
+source code (e.g. d:\padre\padre) and type in the following command "cpan Module::Install" (notice: this is case sensitive)
+
+Now you are ready to compile the code you are using.  in the same root of your source code tpye "perl Makefile.PL" and press enter
+Once this finished type "dmake" and press enter
+
+<h2>Linux</h2>
+
+<pre>
+$ cpan Module::Install
+</pre>
+
+Alternatively, you can follow nxadm's post for creating a Padre development environment with perlbrew and cpanm, leaving your system's perl untouched:
+<a href="http://nxadm.wordpress.com/2010/12/10/build-padre-svn-easily-with-perlbrew-and-cpanm/">Build Padre svn easily with perlbrew and cpanm</a>
+
+
+<h2>Create a Patch</h2>
+
+For open source projects (like this one) everyone has read access to the repository, and anyone can make a contribution to the project. So how are those contributions controlled? If just anyone could commit changes, the project would be permanently unstable and probably permanently broken. In this situation the change is managed by submitting a patch file to the development team, who do have write access. They can review the patch first, and then either submit it to the repository or reject it back to the author. 
+Patch files are simply Unified-Diff files showing the differences between your working copy and the base revision. 
+
+Prepare your changes according to the guide lines on the <a href="/development.html">Development</a> page
+
+Once your changes are ready you can prepare them for deployment using the following steps:
+1) create a patch file
+2) attach the patch file to the relevant ticket
+
+<h2>Command Line</h2>
+
+If the only changes you have made to your checkout are related to the patch you want to create, you can create a patch by going to the root of your working copy and typing:
+
+$ svn diff > patch_name.patch
+
+This will create a file called "patch_name.patch" which will contain information about all the changes you have made to your working copy.
+
+<h2>TortoiseSVN</h2>
+
+First you need to make and test your changes. Then instead of using TortoiseSVN → Commit... on the parent folder, you select TortoiseSVN → Create Patch... [[BR]]
+
+you can now select the files you want included in the patch, just as you would with a full commit. This will produce a single file containing a summary of all the changes you have made to the selected files since the last update from the repository. [[BR]]
+
+Just save the file using a filename of your choice. Patch files can have any extension you like, in our project you should use the .patch extension.  The file name should look like <my_patch_file_name.patch>.  You are now ready to submit your patch file.[[BR]]
+ 
+<h2>Submitting the patch file</h2>
+
+Submitting a patch in the padre project simply means attaching the patch file created to a Ticket.
+
+Find the relevant ticket in Trac and attach the patch file you created to that Ticket.  If you fixed something which did not have an open ticket    you should first open a ticket and then attach the patch file.
+
+The patch file will be reviewed by an authorized developer who will either apply the patch or get in touch (usually on IRC http://webchat.perl.org/?channels=padre) with the person submitting the fix to discuss any issues
+
+
+<h2>Translate Padre</h2>
+
+We have a separate page for people who would like to get involved in the translation of Padre.
+See <a href="/translation-intro.html">Translation Intro</a>
+
+<h2>Improve the Web site of Padre</h2>
+
+There are a number of tickets open for improving the web site: report:11
+In addition you are welcome to open your own tickets.
+
+The web site of Padre is partially built using Template Toolkit and partially relies on [http://padre.perlide.org/trac/ Trac].
+Everything in the http://padre.perlide.org/trac is under Trac or generated by trac from the SVN repository.
+
+The source of the rest of the web site can be found in SVN in http://svn.perlide.org/padre/trunk/template.padre.perlide.org/
+
+In order to make changes to the website you will have to
+
+ * Check out the source from SVN
+ * Install the necessary perl modules (try running {{{ perl Build.PL  }}} in the checked out directory
+ * Make changes
+ * Build the web site on your machine so you can see if your changes were good
+ * Send a patch or commit to svn if you got a commit bit
+
+<h2>Release, packaging and Distribution</h2>
+
+See <a href="/release.html">Release</a> and <a href="/distribution.html">Distribution</a>
+
+
+<h2>How to run Padre from a GNOME launcher</h2>
+
+When you run Padre from your terminal, your shell environment influence what path the "padre" command is resolved to ($SHELL), what @INC path Perl uses ($PERL5LIB), etc..
+
+This is particularly important if you have Padre installed in a user specific directory, such as under ~/perl5/bin/padre if you are using local::lib.
+
+When you run Padre from a GNOME launcher, shell environment variables that come from scripts such as ~/.bashrc are not loaded, and hence a naive launcher using "padre" as the command will result in an error because the command will not resolve to the correct location.
+
+A simple workaround is to create a bash script which uses local::lib (or sets the PERL5LIB environment variable by some other means) and then calls padre:
+
+<pre>
+#!/bin/bash
+eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
+padre
+# for troubleshooting add this to the end of the previous line:
+# >/tmp/padre_out 2>/tmp/padre_err
+</pre>
+
+If you are using a fancy dock system such as Docky, you may experience the annoying behaviour that when you click on your Padre shortcut, a second icon appears (with a low-res Padre icon) representing the running Padre process, rather than the Padre shortcut recognising that the new process belongs to it and displaying a marker to indicate that the shortcut is running. You can solve this by running the following steps:
+
+<ul>
+   <li>Remove any existing shortcuts/launchers you have previously created for Padre</li>
+   <li>Create a wrapper bash script as described above, and save it somewhere in your $PATH, such as /usr/local/bin/padre</li>
+   <li>Add a new GNOME Menu item using the following settings:
+       <ul>
+          <li>Name: Padre</li>
+          <li>Command: /usr/local/bin/padre</li>
+          <li>Icon: $HOME/perl5/lib/perl5/auto/share/dist/Padre/icons/padre/64x64/logo.png</li>
+       </ul></li>
+   <li>Execute /usr/local/bin/padre from your terminal. Padre will launch with a high-res icon. Right-click on the icon and choose "Pin to Dock"</li>
+   <li>Henceforth, you can run Padre without the annoying Dock behaviour by clicking on the persistent Padre icon in your Dock or alternatively by using your  GNOME launcher</li>
+</ul>
+
+<h2>How to create a dialog using wxWidgets</h2>
+
+Adam Kennedy wrote an entry about this:
+<a href="http://use.perl.org/~Alias/journal/39642">Creating GUI code for Padre - A walk through a new feature</a>
+
+
+[% END %]
+[% END %]
+
+
