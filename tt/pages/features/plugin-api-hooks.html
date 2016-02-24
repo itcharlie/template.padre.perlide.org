@@ -1,0 +1,75 @@
+[% DEFAULT
+   title="Padre Plugin API - Hooks"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+Plugins could add hooks to Padre core functions.
+
+Each of the following hooks is a key in the hash reference returned by the padre_hooks method of a plugin.
+
+The value should be
+<ul>
+ <li>a code reference</li>
+ <li>an array ref of code references</li>
+</ul>
+
+The first argument of all hooks is the plugin object = the hook is called like a method of the plugin. This argument isn't shown in the hook list.
+
+Note: The list should be sorted alphabetically ignoring "before_" and "after_" prefixes of hooks
+
+Note2: The usage samples should give you a hint how a hook could be used. They may not be useful for other cases (like svn auto-commit).
+
+<h2>before_delete</h2>
+
+<pre>
+|| Arguments || Padre::File object being deleted ||
+|| Return value || undef or text ||
+|| Called || before any file is removed from disk ||
+|| Usage Example || protect important files from deletion ||
+</pre>
+
+This hook should return undef if everything is ok. Any returned text is treated as an error message and shown to the user. The deletion process is stopped on the first hook returning an error message.
+Return an empty, but defined string will about delete but not show any error, use this only to override Padre's internal delete!
+
+<h2>after_delete</h2>
+
+<pre>
+|| Arguments || Deleted Padre::File object ||
+|| Return value || ignored ||
+|| Called || after any file has been removed from disk ||
+|| Usage Example || svn delete ||
+</pre>
+
+Notice: The file is already gone! The Padre::File object given as argument may do unusual things like returning a caches size even if the file doesn't exist any longer.
+
+<h2>before_save</h2>
+
+<pre>
+|| Arguments || Padre::Document object being saved ||
+|| Return value || undef or text ||
+|| Called || before any file is written to disk ||
+|| Usage Example || tidy Perl source on every save ||
+</pre>
+
+This hook should return undef if everything is ok. Any returned text is treated as an error message and shown to the user. The save process is stopped on the first hook returning an error message.
+Return an empty, but defined string will about save but not show any error, use this only to override Padre's internal save!
+
+<h2>after_save</h2>
+
+<pre>
+|| Arguments || Padre::Document object being saved ||
+|| Return value || ignored ||
+|| Called || after any file is written to disk ||
+|| Usage Example || svn commit on save ||
+</pre>
+
+
+[% END %]
+[% END %]
+
+
