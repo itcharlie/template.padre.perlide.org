@@ -1,0 +1,108 @@
+[% DEFAULT
+   title="SVN MIME Types"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+<h2> Description</h2>
+
+Correctly setting svn:mime types will allow files to be displayed in colour in wiki browser, and stored correctly in SVN. (The following was derived from the links below and extensive testing on a development network) I strongly encourage you to read the links provide, so that you become conversant with the concepts contained within, thus making the following sections obvious. 
+
+<h2>Synopsis</h2>
+
+For Perl files *.pl
+{{{
+    svn:eol-style=native        ; sets line ending translation for SVN storage
+    svn:mime-type=text/x-perl   ; tells pygments how to display
+    svn:executable              ; enables client to make executable
+}}}
+For Perl files *.pm
+{{{
+    svn:eol-style=native        ; sets line ending translation for SVN storage
+    svn:mime-type=text/x-perl   ; tells pygments how to display
+}}}
+
+'' '''Note:''' dolmen is in favor of using instead ''{{{application/x-perl}}}'' as this is the
+setting used by some platforms (at least Debian, Ubuntu) and is the value used [http://padre.perlide.org/trac/browser/trunk/Padre/lib/Padre/MimeTypes.pm?rev=15377#L943 inside Padre].
+His other arguments were developed on the [http://irclog.perlgeek.de/padre/2011-08-14#i_4275910 IRC channel].''
+
+PPS, dolman, you have missed the point, This page is about **svn:mime-type** only, hence text/x-perl is correct in this context.
+
+<h2>svn:eol-style=native from SVN Chapter 3. Advanced Topics</h2>
+
+native
+
+This causes the file to contain the EOL markers that are native to the operating system on which Subversion was run. In other words,
+if a user on a Windows machine checks out a working copy that contains a file with an svn:eol-style property set to native, that file will contain CRLF EOL markers. A Unix user checking out a working copy that contains the same file will see LF EOL markers in his copy of the file.
+
+Note that Subversion will actually store the file in the repository using normalised LF EOL markers regardless of the operating system. This is basically transparent to the user, though.
+
+<h2>Enabling Subversion Auto-Props</h2>
+
+ --//this needs to be checked//
+
+Open your Subversion config file in a text editor. The file locations are as follows:
+
+* Windows: C:\Documents and Settings\<user>\Application Data\Subversion\config
+* OS X: ?
+* Linix: ~/.subversion/config
+* eclipse generate a text file and import.
+
+Add the following text at the very end of the file: 
+<pre>
+[miscellany]
+enable-auto-props = yes
+
+[auto-props]
+*.pl = svn:eol-style=native; svn:mime-type=text/x-perl; svn:executable
+*.PL = svn:eol-style=native; svn:mime-type=text/x-perl
+*.pm = svn:eol-style=native; svn:mime-type=text/x-perl
+*.psgi = svn:eol-style=native; svn:mime-type=text/x-perl
+*.perl = svn:eol-style=native; svn:mime-type=text/x-perl
+*.t = svn:eol-style=native; svn:mime-type=text/x-perl
+*.png = svn:mime-type=image/png
+*.gif = svn:mime-type=image/gif
+*.jpg = svn:mime-type=image/jpeg
+*.yml = svn:eol-style=native; svn:mime-type=application/x-yaml
+*.yaml = svn:eol-style=native; svn:mime-type=application/x-yaml
+*.js = svn:eol-style=native; svn:mime-type=application/javascript
+*.sh = svn:eol-style=native; svn:mime-type=application/x-sh
+*.xsl = svn:eol-style=native; svn:mime-type=application/xsl+xml
+*.xslt = svn:eol-style=native; svn:mime-type=application/xslt+xml
+*.svg = svn:eol-style=native; svn:mime-type=image/svg+xml
+*.ico = svn:mime-type=image/vnd.microsoft.icon
+*.css = svn:eol-style=native; svn:mime-type=text/css
+*.htm = svn:eol-style=native; svn:mime-type=text/html
+*.html = svn:eol-style=native; svn:mime-type=text/html
+*.tt = svn:eol-style=native; svn:mime-type=text/html
+*.tt2 = svn:eol-style=native; svn:mime-type=text/html
+*.awk = svn:eol-style=native; svn:mime-type=text/x-awk
+*.diff = svn:eol-style=native; svn:mime-type=text/x-diff
+*.patch = svn:eol-style=native; svn:mime-type=text/x-diff
+*.sql = svn:eol-style=native; svn:mime-type=text/x-sql
+*.glade = svn:eol-style=native; svn:mime-type=text/xml
+*.xml = svn:eol-style=native; svn:mime-type=text/xml
+</pre>
+
+
+<h2>Links Re: svn:mime</h2>
+
+* trac http://trac.edgewall.org/wiki/TracSyntaxColoring
+
+* pygments http://pygments.org/docs/lexers/
+
+* short description, refresher http://subclipse.tigris.org/svnant/svn.html#propset
+
+* SVN Manual http://subversion.apache.org/docs/
+ * Chapter 3. Advanced Topics
+  * File Portability http://svnbook.red-bean.com/nightly/en/svn.advanced.props.file-portability.html
+ * Chapter 9. Subversion Complete Reference
+  * Subversion Properties http://svnbook.red-bean.com/nightly/en/svn.ref.properties.html
+
+<h2>ToDo</h2>
+
+* Please check and provided feedback, thanks.
