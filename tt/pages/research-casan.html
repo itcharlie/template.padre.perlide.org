@@ -1,0 +1,185 @@
+[% DEFAULT
+   title="Research::Casan"
+   description=""
+%]
+[% WRAPPER lib/xhtml_doc
+
+%]
+
+[% WRAPPER chrome/styled_panel %]
+
+this page needs an update, testing Hyppolit
+
+
+<h2>Research::Casan</h2>
+
+This page stores my ideas and thoughts and other stuff related to my use of Padre.
+I will be commenting on releases and connect wishes/comments to tickets when possible.
+I will be making comments on: Padre, CPAN6, Rakudo, Parrot, Mod_parrot, DBDI, git/svn, MySQL/PostgreSQL, FreeBSD
+which is the toolchain I will keep an eye on, helping me to build web applications in perl6.
+
+<h2>PADRE</h2>
+
+<b>Feature Requests</b> These have not been targeted any milestones
+
+<ul>
+   <li>wish I don't have to save a file for running some fast test code in the editor and get output to the output window</li>
+   <li>wish the output window supported input prompt as if the code were run in a shell</li>
+   <li>wish use v6; or perl6 specific syntax in file was enough to have status bar reflect: application/x-perl6 mime</li>
+   <li>wish the sidescrollbar in the edit area is set to auto, so it only displays if the content is wide enough to require</li>
+   <li>wish the core didn't open so many external windows via the browser, integrated in the ide by default, with settings options</li>
+</ul>
+
+<b>Plugin Ideas</b> (these projects I should do myself and not expect anyone else to do them, I'ld rather the core system works)
+
+<ul>
+    <li>wish: file explorer panel and VCS integration and project management via plugin</li>
+    <li>wish: visual memory manager in the gui for debugging and understanding memory usage</li>
+    <li>wish: cpan integration - gui for core and extras module management and dependency relations and install log</li>
+    <li>wish: integrated parrot/rakudo/perl5 upgrade/downgrade/activator/deactivator mechanism </li>
+    <li>wish: additional languages come as plugins</li>
+    <li>wish: GUI designer - wxwidgets especially</li>
+    <li>wish: SQL database designer/manager</li>
+    <li>wish: UML designer with stub code generator</li>
+    <li>wish: application starter guide(gui, script, daemon, systray app, webapp)</li>
+    <li>wish: application mode, the gui becomes context aware</li>
+    <li>wish: gui app, module, distribution deployment manager</li>
+    <li>wish: lightweight web&database server with mod_parrot support for testing</li>
+    <li>wish: padre developer community, for support services</li>
+</ul>
+
+<b>Misc</b>
+
+Padre Release Process: [http://padre.perlide.org/wiki/Development]
+
+<h2>PADRE on Windows Vista</h2>
+
+<b>padre-Standalone-5.10.0-alpha-1.exe released: 2009.01.18</b>
+http://use.perl.org/~Alias/journal/38312?from=rss 
+. Installed on Windows Vista
+. Created a shortcut C:\padre\perl\bin\padre.bat (with start in: c:\padre\perl\bin)
++ installer works
++ editor works
++ uninstall works
+! uninstaller does not remove c:\padre\cpan\histfile
+- wish the console window temporarily necessary for starting padre will die soon
+- wish the installation could be to any destination=portable
+- wish the installation included parrot/rakudo
+
+<b>strawberry-perl-5.10.0.3-portable-beta-1-padre-0.25_2.zip released: 2009.01.16</b>
+http://www.szabgab.com/blog/2009/01/1231761972.html 
+http://padre.perlide.org/wiki/PortableStrawberry 
+. Installed on Windows Vista
+. Created a shortcut C:\portable\perl\bin\portablepadre.bat (with start in: c:\padre\perl\bin)
++ editor works
++ comes with parrot 0.8.2
++ uninstalls easily, simply delete the c:\portable directory
++ files saved with .p6 extension is recognized in the status bar with: application/x-perl6 mime
++ RUN ctrl-F5 c:\portable\parrot\parrot.exe c:\portable\parrot\languages\perl6\perl6.pbc c:\lab\p6p6ext.p6 runs perl6 code
++ files saved with .p6 extension and run via F5 is interpreted by parrot.exe perl6.pbc with output to output window
+- wish the portable is portable
+- wish the console window temporarily necessary for starting padre will die soon
+
+<b>Suggestion</b>
+.merge the two projects
+.build an installer with multiple selections:
+  1. install everything in "preferred destination" with registry and quicklink start menu folder and uninstall entries
+  2. install strawberry in "c:\program files\strawberry" and padre in "c:\program files\padre" or other destinations
+  3. install everything barebone in "preferred destination", and offer to create quicklink in "pref dest"
+..include offer to install or not install padre, parrot, non-core perl runtime, maybe even make downloadable and not included, etc
+..this way we would have a single point of entry for all perl on windows
+..1. is like a monolith solution for developers doing things the windows way
+..2. is like a live up to the standard defaults option
+..3. is like the portable solution, dump and forget
+..(4?). is deploy/update perl5/parrot(et al) runtime :)
+..(5?). when deploying perl applications, have the installer check/update the runtime to match, locate runtime location through registry.
+..!avoid mutual interdependency hell. eg. appA requires lib1versionX, appB requires lib1versionY, choose a strategy. keep it clean.
+
+
+<h2>PADRE on FreeBSD</h2>
+
+No comments yet
+
+<h2>PERL6</h2>
+.perl6 is the language by definition = see rakudo for implementation
+..still undefined=moving target, when is the basics defined? already perhaps, what are the basics?
+
+<h2>RAKUDO</h2>
+
+Patrick Michaud++ 
+bug reports by mail only: rakudobug@perl.org ! 
+production ready?: 2010.01.19 when the parrot dependency is deemed prime for production use
+..but also requires cpan6 and mod_parrot and mod_perl6/rakudo
+
+<h2>PARROT</h2>
+
+Simon Cozens, Jeff Goff, Steve Fink, Leo Toetsch, Chip Salzenberg, Jerry Gay, Patrick Michaud, Will Coleda,
+Matt Diephouse, chromatic, Allison Randal, Jonathan Worthington
+[http://www.parrot.org]
+[http://www.parrotcode.org/docs/]
+[https://trac.parrot.org/parrot/wiki/ParrotRoadmap]
+[https://trac.parrot.org/parrot/roadmap]
+1.0 release date: 2009.03.17 = stable API for language implementors eg. perl6=rakudo
+2.0 release date: 2010.01.19 = production use, now we will begin to see business applications
+until then?: learn perl6, mod_perl6, padre, perl6 webapp, guiapp, daemonapp, script design patterns
+until then?: write documentation, and experiment with the code, write pseudo code and demo apps
+until then?: develop developer tools and tutorials
+until then?: migrate cpan5 modules to cpan6
+until then?: develop in perl5 with moose or other OO helper
+
+<h2>MOD_PARROT</h2>
+
+Jeff Horwitz++
+http://www.parrot.org/mod_parrot 
+
+
+<h2>MOD_PERL6(RAKUDO)</h2>
+
+Jeff Horwitz++
+. the language specific module, will sit on top of a shared mod_parrot, using a shared parrot, on a shared apache
+
+<h2>CPAN6</h2>
+
+? when can & will CPAN5 module owners begin to create CPAN6 counterparts?
+. This needs to take off we all know that, but is there anyone driving this initiative?
+
+<h2>DBDI</h2>
+
+Tim Bunce?, Lathos?
+
+<h2>APACHE</h2>
+
+No comments yet
+
+<h2>GIT/SUBVERSION</h2>
+
+No comments yet
+
+<h2>MySQL/PostgreSQL</h2>
+
+No comments yet
+
+<h2>FreeBSD</h2>
+
+No comments yet
+
+<h2>General FAQ</h2>
+
+Q: Will perl6 code be able to use cpan5 modules? When?
+A: ?
+
+Q: when to use class+method and when to use package+sub in perl6?
+A: ?
+
+<h2>Little Book</h2>
+
+<b>Padre Universe</b>
+
+- Workstation: Windows
+- Server: FreeBSD
+
+
+[% END %]
+[% END %]
+
+
